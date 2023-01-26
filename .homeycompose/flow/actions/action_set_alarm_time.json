@@ -1,0 +1,33 @@
+{
+  "title": {
+    "en": "Alarm time"
+  },
+  "titleFormatted": {
+    "en": "Set [[alarm]] time to [[alarmtime]]"
+  },
+  "hint": {
+    "en": "Sets the time for an alarm in local time as HH:mm string."
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "alarm",
+      "title": {
+        "en": "Select alarm"
+      },
+      "placeholder": {
+        "en": "Name of alarm"
+      }
+    },
+    {
+      "type": "text",
+      "name": "alarmtime",
+      "title": {
+        "en": "Time"
+      },
+      "placeholder": {
+        "en": "HH:mm"
+      }
+    }
+  ]
+}

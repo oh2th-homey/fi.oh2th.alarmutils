@@ -1,0 +1,47 @@
+{
+  "title": {
+    "en": "Alarm created"
+  },
+  "hint": {
+    "en": "Triggers when an alarm has been created."
+  },
+  "tokens": [
+    {
+      "type": "string",
+      "name": "name",
+      "title": {
+        "en": "Name"
+      },
+      "example": {
+        "en": "Named alarm"
+      }
+    },
+    {
+      "type": "boolean",
+      "name": "enabled",
+      "title": {
+        "en": "Enabled"
+      }
+    },
+    {
+      "type": "string",
+      "name": "time",
+      "title": {
+        "en": "Scheduled time"
+      },
+      "example": {
+        "en": "18:07"
+      }
+    },
+    {
+      "type": "string",
+      "name": "next",
+      "title": {
+        "en": "Next Occurrance"
+      },
+      "example": {
+        "en": "2023-01-23T12:09:00.000Z"
+      }
+    }
+  ]
+}

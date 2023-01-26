@@ -1,0 +1,44 @@
+{
+  "id": "fi.oh2th.alarmutils",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Alarm Utilities"
+  },
+  "description": {
+    "en": "Manage Homey alarms from flows"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Tapio Heiskanen",
+    "email": "oh2th@iki.fi"
+  },
+  "brandColor": "#4a90e2",
+  "tags": {
+    "en": [
+      "alarms",
+      "clock"
+    ]
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Tapio Heiskanen"
+      }
+    ]
+  }
+}
