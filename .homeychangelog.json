@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "Homey Community TopicId and linking to source and support."
+  },
+  "1.0.2": {
+    "en": "FIX: getAlarms on update"
   }
 }
