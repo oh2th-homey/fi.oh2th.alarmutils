@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "Initial release - Flow card to set Homey Alarm time."
+  },
+  "1.0.1": {
+    "en": "Homey Community TopicId and linking to source and support."
   }
 }
