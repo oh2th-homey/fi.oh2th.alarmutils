@@ -1,0 +1,198 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "fi.oh2th.alarmutils",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Alarm Utilities"
+  },
+  "description": {
+    "en": "Manage Homey alarms from flows"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Tapio Heiskanen",
+    "email": "oh2th@iki.fi"
+  },
+  "brandColor": "#4a90e2",
+  "tags": {
+    "en": [
+      "alarms",
+      "clock"
+    ]
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Tapio Heiskanen"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "oh2th"
+      },
+      "githubSponsors": {
+        "username": "oh2th"
+      }
+    }
+  },
+  "source": "https://github.com/oh2th/fi.oh2th.alarmutils",
+  "bugs": {
+    "url": "https://github.com/oh2th/fi.oh2th.alarmutils/issues"
+  },
+  "homeyCommunityTopicId": 75592,
+  "support": "https://github.com/oh2th/fi.oh2th.alarmutils/discussions/categories/general",
+  "homepage": "https://oh2th.fi/tapio/homey/",
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "Alarm created"
+        },
+        "hint": {
+          "en": "Triggers when an alarm has been created."
+        },
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Name"
+            },
+            "example": {
+              "en": "Named alarm"
+            }
+          },
+          {
+            "type": "boolean",
+            "name": "enabled",
+            "title": {
+              "en": "Enabled"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Scheduled time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Occurrance"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000Z"
+            }
+          }
+        ],
+        "id": "alarm_created"
+      },
+      {
+        "title": {
+          "en": "Alarm updated"
+        },
+        "hint": {
+          "en": "Triggers when an alarm has been updated."
+        },
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Name"
+            },
+            "example": {
+              "en": "Named alarm"
+            }
+          },
+          {
+            "type": "boolean",
+            "name": "enabled",
+            "title": {
+              "en": "Enabled"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Scheduled time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Occurrance"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000Z"
+            }
+          }
+        ],
+        "id": "alarm_updated"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Alarm time"
+        },
+        "titleFormatted": {
+          "en": "Set [[alarm]] time to [[alarmtime]]"
+        },
+        "hint": {
+          "en": "Sets the time for an alarm in local time as HH:mm string."
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "alarm",
+            "title": {
+              "en": "Select alarm"
+            },
+            "placeholder": {
+              "en": "Name of alarm"
+            }
+          },
+          {
+            "type": "text",
+            "name": "alarmtime",
+            "title": {
+              "en": "Time"
+            },
+            "placeholder": {
+              "en": "HH:mm"
+            }
+          }
+        ],
+        "id": "action_set_alarm_time"
+      }
+    ]
+  }
+}
