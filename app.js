@@ -54,9 +54,9 @@ class AlarmUtils extends Homey.App {
     try {
       this.log(`${this.myAppIdVersion} - Found alarms: '${JSON.stringify(this.alarms)}'`);
       // Trigger when new alarm is created and update the alarm cache.
-      this.api.alarms.on('alarm.create', (alarm) => {
-        this.alarms = this.api.alarms.getAlarms();
-        this.log(`${this.myAppIdVersion} - Found alarms: '${JSON.stringify(this.alarms)}'`);
+      this.api.alarms.on('alarm.create', async (alarm) => {
+        this.alarms = await this.api.alarms.getAlarms();
+        this.log(`${this.myAppIdVersion} - On create found alarms: '${JSON.stringify(this.alarms)}'`);
         this.homey.flow
           .getTriggerCard('alarm_created')
           .trigger({
@@ -69,9 +69,9 @@ class AlarmUtils extends Homey.App {
           .then(this.log(`${this.myAppIdVersion} - Trigger - alarm_created: "${alarm.name}"`));
       });
       // Trigger when alarm is updated and update the alarm cache.
-      this.api.alarms.on('alarm.update', (alarm) => {
-        this.alarms = this.api.alarms.getAlarms();
-        this.log(`${this.myAppIdVersion} - Found alarms: '${JSON.stringify(this.alarms)}'`);
+      this.api.alarms.on('alarm.update', async (alarm) => {
+        this.alarms = await this.api.alarms.getAlarms();
+        this.log(`${this.myAppIdVersion} - On update found alarms: '${JSON.stringify(this.alarms)}'`);
         this.homey.flow
           .getTriggerCard('alarm_updated')
           .trigger({
@@ -85,9 +85,9 @@ class AlarmUtils extends Homey.App {
       });
       // When alarm is deleted, update the alarm cache. Not really useful to trigger a flow for now.
       // Future development, compare the alarms before and after the delete and trigger a flow with the deleted alarm.
-      this.api.alarms.on('alarm.delete', () => {
+      this.api.alarms.on('alarm.delete', async () => {
         this.log(`${this.myAppIdVersion} - Trigger - An alarm deleted.`);
-        this.alarms = this.api.alarms.getAlarms();
+        this.alarms = await this.api.alarms.getAlarms();
       });
     } catch (error) {
       this.log(`${this.homey.manifest.id} setAlarmUpdatedListeners - Error: '${error}'`);
