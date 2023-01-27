@@ -1,0 +1,92 @@
+{
+  "title": {
+    "en": "Alarm minutes ahead of time"
+  },
+  "titleFormatted": {
+    "en": "Set [[alarm]] time [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]]."
+  },
+  "hint": {
+    "en": "Sets the time for an alarm in local time as HH:mm string. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if alarm time will be before midnight. Enable the alarm separately."
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "alarm",
+      "title": {
+        "en": "Select alarm"
+      },
+      "placeholder": {
+        "en": "Name of alarm"
+      }
+    },
+    {
+      "type": "number",
+      "name": "minutes",
+      "title": {
+        "en": "Minutes"
+      },
+      "placeholder": {
+        "en": "60"
+      }
+    },
+    {
+      "type": "time",
+      "name": "time",
+      "title": {
+        "en": "Time"
+      },
+      "placeholder": {
+        "en": "HH:mm"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "monday",
+      "title": {
+        "en": "Monday"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "tuesday",
+      "title": {
+        "en": "Tuesday"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "wednesday",
+      "title": {
+        "en": "Wednesday"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "thursday",
+      "title": {
+        "en": "Repeat Thursdays"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "friday",
+      "title": {
+        "en": "Friday"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "saturday",
+      "title": {
+        "en": "Saturday"
+      }
+    },
+    {
+      "type": "checkbox",
+      "name": "sunday",
+      "title": {
+        "en": "Sunday"
+      }
+    }
+  ]
+}
