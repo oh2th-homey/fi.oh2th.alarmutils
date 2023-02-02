@@ -6,4 +6,4 @@ Adjust an alarms set time from a flow to get dynamic Homey alarms.
 
 ## Example flows
 
-![Example flows](/assets/images/flow-examples.png)
+![Example flows](/local_assets/flow-examples.png)
