@@ -34,7 +34,7 @@
         store: {},
         settings: {
           time: document.getElementById('time').value,
-          tz: document.getElementById('tz').value,
+          timezone: document.getElementById('timezone').value,
           repeat_monday: document.getElementsByName('repeat_monday')[0].checked,
           repeat_tuesday: document.getElementsByName('repeat_tuesday')[0].checked,
           repeat_wednesday: document.getElementsByName('repeat_wednesday')[0].checked,
@@ -67,8 +67,8 @@
     </div>
 
     <div class="homey-form-group">
-      <label class="homey-form-label" for="tz" data-i18n="settings.tz"><!--settings.tz--></label>
-      <input class="homey-form-input" id="tz" type="text" value="Europe/Helsinki" />
+      <label class="homey-form-label" for="timezone" data-i18n="settings.timezone"><!--settings.timezone--></label>
+      <input class="homey-form-input" id="timezone" type="text" value="Europe/Helsinki" />
     </div>
   </fieldset>
   <fieldset class="homey-form-checkbox-set">

@@ -330,7 +330,7 @@
               }
             },
             {
-              "id": "tz",
+              "id": "timezone",
               "type": "text",
               "label": {
                 "en": "Timezone"
