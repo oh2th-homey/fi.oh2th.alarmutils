@@ -1,0 +1,124 @@
+<script type="application/javascript">
+  $(function () {
+    $('#function_add').click(function () {
+      var randomUUID = function () {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = (d + Math.random() * 16) % 16 | 0;
+          d = Math.floor(d / 16);
+          return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
+      };
+
+      // Validate input
+      if (!document.getElementById('name').value) {
+        Homey.alert(Homey.__("error.name_required"));
+        return;
+      }
+      if (!document.getElementById('time').value) {
+        Homey.alert(Homey.__("error.time_required"));
+        return;
+      }
+      if (!document.getElementById('tz').value) {
+        Homey.alert(Homey.__("error.tz_required"));
+        return;
+      }
+
+      // Create device
+      Homey.createDevice({
+        name: document.getElementById('name').value,
+        data: {
+          id: randomUUID(),
+        },
+        store: {},
+        settings: {
+          time: document.getElementById('time').value,
+          tz: document.getElementById('tz').value,
+          repeat_monday: document.getElementsByName('repeat_monday')[0].checked,
+          repeat_tuesday: document.getElementsByName('repeat_tuesday')[0].checked,
+          repeat_wednesday: document.getElementsByName('repeat_wednesday')[0].checked,
+          repeat_thursday: document.getElementsByName('repeat_thursday')[0].checked,
+          repeat_friday: document.getElementsByName('repeat_friday')[0].checked,
+          repeat_saturday: document.getElementsByName('repeat_saturday')[0].checked,
+          repeat_sunday: document.getElementsByName('repeat_sunday')[0].checked
+        },
+      });
+      Homey.done();
+    });
+  });
+</script>
+
+<header class="homey-header">
+  <h1 class="homey-title" data-i18n="settings.title"><!--settings.title--></h1>
+</header>
+
+<form class="homey-form">
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend" data-i18n="settings.configuration"><!--settings.configuration--></legend>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
+      <input class="homey-form-input" id="name" type="text" value="Scheduler" />
+    </div>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="time" data-i18n="settings.time"><!--settings.time--></label>
+      <input class="homey-form-input" id="time" type="text" value="13:00" />
+    </div>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="tz" data-i18n="settings.tz"><!--settings.tz--></label>
+      <input class="homey-form-input" id="tz" type="text" value="Europe/Helsinki" />
+    </div>
+  </fieldset>
+  <fieldset class="homey-form-checkbox-set">
+    <legend class="homey-form-checkbox-set-title" data-i18n="settings.repetition"><!--settings.repetition--></legend>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_monday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.monday"><!--settings.monday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_tuesday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.tuesday"><!--settings.tuesday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_wednesday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.wednesday"><!--settings.wednesday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_thursday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.thursday"><!--settings.thursday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_friday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.friday"><!--settings.friday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_saturday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.saturday"><!--settings.saturday--></span>
+    </label>
+
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_sunday" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.sunday"><!--settings.sunday--></span>
+    </label>
+
+  </fieldset>
+  <div class="homey-form-group buttons">
+    <button class="homey-button-primary-full" id="function_add"
+      data-i18n="settings.function_add"><!--settings.function_add--></button>
+  </div>
+</form>

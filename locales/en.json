@@ -1,1 +1,23 @@
-{}
+{
+  "settings": {
+    "title": "New Scheduler",
+    "configuration": "Configuration",
+    "name": "Scheduler name:",
+    "time": "Time",
+    "tz": "Timezone",
+    "repetition": "Repeat every",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "function_add": "Add scheduler",
+    "error": {
+      "name_required": "Name is required",
+      "time_required": "Time is required",
+      "tz_required": "Timezone is required"
+    }
+  }
+}

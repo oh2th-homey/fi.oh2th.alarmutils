@@ -293,10 +293,9 @@
       "name": {
         "en": "Scheduler"
       },
-      "class": "other",
+      "class": "sensor",
       "capabilities": [
-        "onoff",
-        "alarm_generic"
+        "is_enabled"
       ],
       "platforms": [
         "local"
@@ -309,18 +308,123 @@
       },
       "pair": [
         {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
+          "id": "scheduler"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Schedule time of day"
+          },
+          "children": [
+            {
+              "id": "time",
+              "type": "text",
+              "label": {
+                "en": "Time HH:mm"
+              },
+              "value": "00:00",
+              "hint": {
+                "en": "Time in 24h format HH:mm."
+              }
+            },
+            {
+              "id": "tz",
+              "type": "text",
+              "label": {
+                "en": "Timezone"
+              },
+              "value": "Europe/Helsinki",
+              "hint": {
+                "en": "Timezone name from TZ database."
+              }
+            }
+          ]
         },
         {
-          "id": "add_devices",
-          "template": "add_devices"
+          "type": "group",
+          "label": {
+            "en": "Repeat every"
+          },
+          "children": [
+            {
+              "id": "repeat_monday",
+              "type": "checkbox",
+              "label": {
+                "en": "Monday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_tuesday",
+              "type": "checkbox",
+              "label": {
+                "en": "Tuesday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_wednesday",
+              "type": "checkbox",
+              "label": {
+                "en": "Wednesday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_thursday",
+              "type": "checkbox",
+              "label": {
+                "en": "Thursday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_friday",
+              "type": "checkbox",
+              "label": {
+                "en": "Friday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_saturday",
+              "type": "checkbox",
+              "label": {
+                "en": "Saturday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_sunday",
+              "type": "checkbox",
+              "label": {
+                "en": "Sunday"
+              },
+              "value": true
+            }
+          ]
         }
       ],
       "id": "scheduler"
     }
-  ]
+  ],
+  "capabilities": {
+    "is_enabled": {
+      "type": "boolean",
+      "title": {
+        "en": "Schedule is enabled"
+      },
+      "hint": {
+        "en": "Schedule is enabled"
+      },
+      "icon": "./assets/clock-enable.svg",
+      "uiComponent": "toggle",
+      "uiQuickAction": true,
+      "getable": true,
+      "setable": true,
+      "insights": false
+    }
+  }
 }
