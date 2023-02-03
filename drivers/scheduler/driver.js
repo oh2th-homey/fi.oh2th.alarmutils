@@ -1,6 +1,5 @@
 'use strict';
 
-const { randomUUID } = require('crypto');
 const { Driver } = require('homey');
 
 module.exports = class SchedulerDriver extends Driver {
