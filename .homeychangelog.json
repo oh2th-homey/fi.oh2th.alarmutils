@@ -10,5 +10,8 @@
   },
   "1.1.0": {
     "en": "Add: New card - Alarm NN minutes ahead of time"
+  },
+  "1.2.0": {
+    "en": "ADD: Scheduler device with trigger"
   }
 }
