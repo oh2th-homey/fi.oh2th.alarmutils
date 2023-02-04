@@ -13,5 +13,8 @@
   },
   "1.2.0": {
     "en": "ADD: Scheduler device with trigger"
+  },
+  "1.3.0": {
+    "en": "ADD: Action flow cards for Scheduler devices"
   }
 }
