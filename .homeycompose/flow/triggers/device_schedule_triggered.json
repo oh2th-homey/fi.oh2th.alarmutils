@@ -1,0 +1,47 @@
+{
+  "title": {
+    "en": "Scheduler triggered"
+  },
+  "hint": {
+    "en": "Scheduler triggered"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ],
+  "tokens": [
+    {
+      "type": "string",
+      "name": "name",
+      "title": {
+        "en": "Name"
+      },
+      "example": {
+        "en": "Schedule name"
+      }
+    },
+    {
+      "type": "string",
+      "name": "time",
+      "title": {
+        "en": "Time"
+      },
+      "example": {
+        "en": "18:07"
+      }
+    },
+    {
+      "type": "string",
+      "name": "next",
+      "title": {
+        "en": "Next Occurrance"
+      },
+      "example": {
+        "en": "2023-01-23T12:09:00.000Z"
+      }
+    }
+  ]
+}

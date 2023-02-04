@@ -7,19 +7,24 @@ const { CronJob, CronTime } = require('cron');
 module.exports = class SchedulerDevice extends Device {
 
   async onInit() {
-    this.log(`${this.getName()} - init`);
+    this.log(`${this.getName()} - onInit`);
+
+    this.initCapabilityListeners();
 
     const settings = this.getSettings();
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
     this.initCronJob(cronTime, timeZone, runOnce);
 
-    this.initCapabilityListeners();
-
-    this.log(`${this.getName()} - init done`);
+    this.log(`${this.getName()} - onInit - done`);
   }
 
   async onAdded() {
-    this.log(`${this.getName()} - has been added`);
+    this.log(`${this.getName()} - onAdded`);
+
+    // start cronjob if enabled
+    this.cronJob.start();
+    this.log(`${this.getName()} - onAdded - next at ${this.cronJob.nextDates(1)}`);
+    this.log(`${this.getName()} - onAdded - done`);
   }
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
@@ -33,15 +38,21 @@ module.exports = class SchedulerDevice extends Device {
 
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(newSettings);
     this.initCronJob(cronTime, timeZone, runOnce);
+
+    this.log(`${this.getName()} - onSettings - done`);
   }
 
   async onRenamed(name) {
-    this.log(`${this.getName()} - was renamed`);
+    this.log(`${this.getName()} - onRenamed`);
   }
 
   async onDeleted() {
-    this.clearIntervals();
-    this.log(`${this.getName()} - has been deleted`);
+    if (typeof this.cronJob !== 'undefined') {
+      this.log(`${this.getName()} - onDeleted - stopping cronjob`);
+      this.cronJob.stop();
+      this.cronJob = undefined;
+    }
+    this.log(`${this.getName()} - onDeleted - done`);
   }
 
   /**
@@ -115,16 +126,15 @@ module.exports = class SchedulerDevice extends Device {
         this.log(`${this.getName()} - cronJob - runOnce - not running again`);
         return;
       }
-      this.log(`${this.getName()} - cronJob - next tick at ${this.cronJob.nextDates(1)}`);
+      this.log(`${this.getName()} - cronJob - next at ${this.cronJob.nextDates(1)}`);
     });
 
     // start cronjob if enabled
     if (this.getCapabilityValue('is_enabled')) {
       this.cronJob.start();
       this.log(`${this.getName()} - initCronjob - cronjob started`);
+      this.log(`${this.getName()} - initCronjob - next at ${this.cronJob.nextDates(1)}`);
     }
-
-    this.log(`${this.getName()} - initCronjob - next tick at ${this.cronJob.nextDates(1)}`);
   }
 
   async initCapabilityListeners() {
@@ -144,7 +154,23 @@ module.exports = class SchedulerDevice extends Device {
 
   async runTriggers() {
     this.log(`${this.getName()} - runTriggers`);
-    // this.triggerFlowCard('trigger');
+
+    const timeNow = new Date().toLocaleString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+    });
+    const timeNext = String(this.cronJob.nextDates(1));
+
+    await this.homey.flow
+      .getDeviceTriggerCard('device_schedule_triggered')
+      .trigger(this, {
+        name: this.getName(),
+        time: timeNow,
+        next: timeNext,
+      })
+      .catch(this.error)
+      .then(this.log(`${this.getName()} - runTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`));
+
+    this.log(`${this.getName()} - runTriggers - done`);
   }
 
 };
