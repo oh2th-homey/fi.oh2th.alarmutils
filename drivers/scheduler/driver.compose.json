@@ -33,10 +33,10 @@
           "label": {
             "en": "Time HH:mm"
           },
-          "value": "00:00",
           "hint": {
-            "en": "Time in 24h format HH:mm."
-          }
+            "en": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute."
+          },
+          "value": "00:00"
         },
         {
           "id": "timezone",
@@ -44,10 +44,10 @@
           "label": {
             "en": "Timezone"
           },
-          "value": "Europe/Helsinki",
           "hint": {
             "en": "Timezone name from TZ database."
-          }
+          },
+          "value": "Europe/Helsinki"
         }
       ]
     },
@@ -57,6 +57,17 @@
         "en": "Repeat every"
       },
       "children": [
+        {
+          "id": "repeat_help",
+          "type": "label",
+          "label": {
+            "en": "The days of the week to repeat."
+          },
+          "hint": {
+            "en": "If no days selected, the scheduler executes once."
+          },
+          "value": ""
+        },
         {
           "id": "repeat_monday",
           "type": "checkbox",
