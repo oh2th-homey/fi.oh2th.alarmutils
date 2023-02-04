@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "cron": "^2.2.0",
-    "homey-api": "^1.10.10"
+    "homey-api": "^1.10.15"
   }
 }

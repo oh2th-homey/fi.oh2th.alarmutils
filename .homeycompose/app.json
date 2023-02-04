@@ -7,10 +7,10 @@
     "local"
   ],
   "name": {
-    "en": "Alarm Utilities"
+    "en": "Action Scheduler - Alarm Utilities"
   },
   "description": {
-    "en": "Manage Homey alarms from flows"
+    "en": "Dynamic flow scheduling"
   },
   "category": [
     "tools"
@@ -31,7 +31,8 @@
   "tags": {
     "en": [
       "alarms",
-      "clock"
+      "clock",
+      "scheduler"
     ]
   },
   "contributors": {
