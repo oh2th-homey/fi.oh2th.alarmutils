@@ -6,7 +6,7 @@
     "en": "Set scheduler time to [[time]]"
   },
   "hint": {
-    "en": "Sets the time local time as HH:mm string."
+    "en": "Sets schedule time as HH:mm string."
   },
   "args": [
     {
