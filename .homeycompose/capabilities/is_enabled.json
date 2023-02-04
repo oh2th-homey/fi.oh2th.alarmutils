@@ -1,7 +1,7 @@
 {
   "type": "boolean",
   "title": {
-    "en": "Schedule is enabled"
+    "en": "Schedule enabled"
   },
   "hint": {
     "en": "Schedule is enabled"

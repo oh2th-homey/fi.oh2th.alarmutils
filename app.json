@@ -273,7 +273,7 @@
             "type": "checkbox",
             "name": "thursday",
             "title": {
-              "en": "Repeat Thursdays"
+              "en": "Thursday"
             }
           },
           {
@@ -333,6 +333,153 @@
           }
         ],
         "id": "action_set_alarm_time"
+      },
+      {
+        "title": {
+          "en": "Schedule ahead of time"
+        },
+        "titleFormatted": {
+          "en": "Schedule [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]]."
+        },
+        "hint": {
+          "en": "Sets the schedule in local time as HH:mm string. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight."
+        },
+        "args": [
+          {
+            "type": "number",
+            "name": "minutes",
+            "title": {
+              "en": "Minutes"
+            },
+            "placeholder": {
+              "en": "60"
+            }
+          },
+          {
+            "type": "time",
+            "name": "time",
+            "title": {
+              "en": "Time"
+            },
+            "placeholder": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "type": "checkbox",
+            "name": "monday",
+            "title": {
+              "en": "Monday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "tuesday",
+            "title": {
+              "en": "Tuesday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "wednesday",
+            "title": {
+              "en": "Wednesday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "thursday",
+            "title": {
+              "en": "Thursday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "friday",
+            "title": {
+              "en": "Friday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "saturday",
+            "title": {
+              "en": "Saturday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "sunday",
+            "title": {
+              "en": "Sunday"
+            },
+            "value": false
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_ahead_time"
+      },
+      {
+        "title": {
+          "en": "Enable scheduler"
+        },
+        "titleFormatted": {
+          "en": "Set scheduler enabled to [[enabled]]"
+        },
+        "hint": {
+          "en": "Enable or disable scheduler"
+        },
+        "args": [
+          {
+            "type": "checkbox",
+            "name": "enabled"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_enabled"
+      },
+      {
+        "title": {
+          "en": "Scheduler time"
+        },
+        "titleFormatted": {
+          "en": "Set scheduler time to [[time]]"
+        },
+        "hint": {
+          "en": "Sets the time local time as HH:mm string."
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "time",
+            "title": {
+              "en": "Time"
+            },
+            "placeholder": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_time"
       }
     ]
   },
@@ -473,7 +620,7 @@
     "is_enabled": {
       "type": "boolean",
       "title": {
-        "en": "Schedule is enabled"
+        "en": "Schedule enabled"
       },
       "hint": {
         "en": "Schedule is enabled"
