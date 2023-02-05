@@ -1,1 +1,25 @@
-{}
+{
+  "settings": {
+    "title": "New Scheduler",
+    "configuration": "Configuration",
+    "name": "Scheduler name:",
+    "time": "Time",
+    "time_help": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute",
+    "tz": "Timezone",
+    "repetition": "Repeat every",
+    "repetition_help": "The days of the week to repeat the scheduler. If no days selected, the scheduler executes once.",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "function_add": "Add scheduler",
+    "error": {
+      "name_required": "Name is required",
+      "time_required": "Time is required",
+      "timezone_required": "Timezone is required"
+    }
+  }
+}

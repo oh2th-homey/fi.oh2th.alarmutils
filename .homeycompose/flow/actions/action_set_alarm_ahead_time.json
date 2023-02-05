@@ -64,7 +64,7 @@
       "type": "checkbox",
       "name": "thursday",
       "title": {
-        "en": "Repeat Thursdays"
+        "en": "Thursday"
       }
     },
     {

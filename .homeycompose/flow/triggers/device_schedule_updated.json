@@ -1,0 +1,57 @@
+{
+  "title": {
+    "en": "Schedule updated"
+  },
+  "hint": {
+    "en": "Triggers when schedule is updated."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ],
+  "tokens": [
+    {
+      "type": "string",
+      "name": "name",
+      "title": {
+        "en": "Schedule Name"
+      },
+      "example": {
+        "en": "Schedule's name"
+      }
+    },
+    {
+      "type": "boolean",
+      "name": "enabled",
+      "title": {
+        "en": "Schedule Enabled"
+      },
+      "example": {
+        "en": "true"
+      }
+    },
+    {
+      "type": "string",
+      "name": "time",
+      "title": {
+        "en": "Schedule Time"
+      },
+      "example": {
+        "en": "18:07"
+      }
+    },
+    {
+      "type": "string",
+      "name": "next",
+      "title": {
+        "en": "Next Scheduled Time"
+      },
+      "example": {
+        "en": "2023-01-23T12:09:00.000+0200"
+      }
+    }
+  ]
+}

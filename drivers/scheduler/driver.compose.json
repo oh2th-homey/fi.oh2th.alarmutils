@@ -1,0 +1,131 @@
+{
+  "name": {
+    "en": "Scheduler"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "is_enabled",
+    "text_schedule_next"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "scheduler"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Schedule time of day"
+      },
+      "children": [
+        {
+          "id": "time",
+          "type": "text",
+          "label": {
+            "en": "Time HH:mm"
+          },
+          "hint": {
+            "en": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute."
+          },
+          "value": "00:00"
+        },
+        {
+          "id": "timezone",
+          "type": "text",
+          "label": {
+            "en": "Timezone"
+          },
+          "hint": {
+            "en": "Timezone name from TZ database."
+          },
+          "value": "Europe/Helsinki"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Repeat every"
+      },
+      "children": [
+        {
+          "id": "repeat_help",
+          "type": "label",
+          "label": {
+            "en": "The days of the week to repeat."
+          },
+          "hint": {
+            "en": "If no days selected, the scheduler executes once."
+          },
+          "value": ""
+        },
+        {
+          "id": "repeat_monday",
+          "type": "checkbox",
+          "label": {
+            "en": "Monday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_tuesday",
+          "type": "checkbox",
+          "label": {
+            "en": "Tuesday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_wednesday",
+          "type": "checkbox",
+          "label": {
+            "en": "Wednesday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_thursday",
+          "type": "checkbox",
+          "label": {
+            "en": "Thursday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_friday",
+          "type": "checkbox",
+          "label": {
+            "en": "Friday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_saturday",
+          "type": "checkbox",
+          "label": {
+            "en": "Saturday"
+          },
+          "value": true
+        },
+        {
+          "id": "repeat_sunday",
+          "type": "checkbox",
+          "label": {
+            "en": "Sunday"
+          },
+          "value": true
+        }
+      ]
+    }
+  ]
+}

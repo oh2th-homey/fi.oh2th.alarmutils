@@ -1,17 +1,17 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "fi.oh2th.alarmutils",
-  "version": "1.1.0",
+  "version": "1.5.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Alarm Utilities"
+    "en": "Action Scheduler"
   },
   "description": {
-    "en": "Manage Homey alarms from flows"
+    "en": "Dynamic flow scheduling"
   },
   "category": [
     "tools"
@@ -32,7 +32,8 @@
   "tags": {
     "en": [
       "alarms",
-      "clock"
+      "clock",
+      "scheduler"
     ]
   },
   "contributors": {
@@ -156,6 +157,130 @@
           }
         ],
         "id": "alarm_updated"
+      },
+      {
+        "title": {
+          "en": "Schedule triggered"
+        },
+        "hint": {
+          "en": "Triggers on next scheduled time."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Schedule Name"
+            },
+            "example": {
+              "en": "Schedule's name"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Schedule Time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Scheduled Time"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000+0200"
+            }
+          }
+        ],
+        "id": "device_schedule_triggered"
+      },
+      {
+        "title": {
+          "en": "Schedule updated"
+        },
+        "hint": {
+          "en": "Triggers when schedule is updated."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Schedule Name"
+            },
+            "example": {
+              "en": "Schedule's name"
+            }
+          },
+          {
+            "type": "boolean",
+            "name": "enabled",
+            "title": {
+              "en": "Schedule Enabled"
+            },
+            "example": {
+              "en": "true"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Schedule Time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Scheduled Time"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000+0200"
+            }
+          }
+        ],
+        "id": "device_schedule_updated"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "Scheduler !{{is|isn't}} enabled"
+        },
+        "hint": {
+          "en": "Scheduler is/isn't enabled."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_enabled"
       }
     ],
     "actions": [
@@ -225,7 +350,7 @@
             "type": "checkbox",
             "name": "thursday",
             "title": {
-              "en": "Repeat Thursdays"
+              "en": "Thursday"
             }
           },
           {
@@ -285,7 +410,318 @@
           }
         ],
         "id": "action_set_alarm_time"
+      },
+      {
+        "title": {
+          "en": "Schedule ahead of time"
+        },
+        "titleFormatted": {
+          "en": "Schedule [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]]."
+        },
+        "hint": {
+          "en": "Schedule given minutes before HH:mm time. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight."
+        },
+        "args": [
+          {
+            "type": "number",
+            "name": "minutes",
+            "title": {
+              "en": "Minutes"
+            },
+            "placeholder": {
+              "en": "60"
+            }
+          },
+          {
+            "type": "time",
+            "name": "time",
+            "title": {
+              "en": "Time"
+            },
+            "placeholder": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "type": "checkbox",
+            "name": "monday",
+            "title": {
+              "en": "Monday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "tuesday",
+            "title": {
+              "en": "Tuesday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "wednesday",
+            "title": {
+              "en": "Wednesday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "thursday",
+            "title": {
+              "en": "Thursday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "friday",
+            "title": {
+              "en": "Friday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "saturday",
+            "title": {
+              "en": "Saturday"
+            },
+            "value": false
+          },
+          {
+            "type": "checkbox",
+            "name": "sunday",
+            "title": {
+              "en": "Sunday"
+            },
+            "value": false
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_ahead_time"
+      },
+      {
+        "title": {
+          "en": "Enable scheduler"
+        },
+        "titleFormatted": {
+          "en": "Set scheduler enabled to [[enabled]]"
+        },
+        "hint": {
+          "en": "Enable or disable scheduler"
+        },
+        "args": [
+          {
+            "type": "checkbox",
+            "name": "enabled"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_enabled"
+      },
+      {
+        "title": {
+          "en": "Scheduler time"
+        },
+        "titleFormatted": {
+          "en": "Set scheduler time to [[time]]"
+        },
+        "hint": {
+          "en": "Sets schedule time as HH:mm."
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "time",
+            "title": {
+              "en": "Time"
+            },
+            "placeholder": {
+              "en": "HH:mm"
+            }
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "device_schedule_time"
       }
     ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Scheduler"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "is_enabled",
+        "text_schedule_next"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/scheduler/assets/images/small.png",
+        "large": "/drivers/scheduler/assets/images/large.png",
+        "xlarge": "/drivers/scheduler/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "scheduler"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Schedule time of day"
+          },
+          "children": [
+            {
+              "id": "time",
+              "type": "text",
+              "label": {
+                "en": "Time HH:mm"
+              },
+              "hint": {
+                "en": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute."
+              },
+              "value": "00:00"
+            },
+            {
+              "id": "timezone",
+              "type": "text",
+              "label": {
+                "en": "Timezone"
+              },
+              "hint": {
+                "en": "Timezone name from TZ database."
+              },
+              "value": "Europe/Helsinki"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Repeat every"
+          },
+          "children": [
+            {
+              "id": "repeat_help",
+              "type": "label",
+              "label": {
+                "en": "The days of the week to repeat."
+              },
+              "hint": {
+                "en": "If no days selected, the scheduler executes once."
+              },
+              "value": ""
+            },
+            {
+              "id": "repeat_monday",
+              "type": "checkbox",
+              "label": {
+                "en": "Monday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_tuesday",
+              "type": "checkbox",
+              "label": {
+                "en": "Tuesday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_wednesday",
+              "type": "checkbox",
+              "label": {
+                "en": "Wednesday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_thursday",
+              "type": "checkbox",
+              "label": {
+                "en": "Thursday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_friday",
+              "type": "checkbox",
+              "label": {
+                "en": "Friday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_saturday",
+              "type": "checkbox",
+              "label": {
+                "en": "Saturday"
+              },
+              "value": true
+            },
+            {
+              "id": "repeat_sunday",
+              "type": "checkbox",
+              "label": {
+                "en": "Sunday"
+              },
+              "value": true
+            }
+          ]
+        }
+      ],
+      "id": "scheduler"
+    }
+  ],
+  "capabilities": {
+    "is_enabled": {
+      "type": "boolean",
+      "title": {
+        "en": "Schedule Enabled"
+      },
+      "hint": {
+        "en": "Schedule is enabled"
+      },
+      "icon": "./assets/clock-enable.svg",
+      "uiComponent": "toggle",
+      "uiQuickAction": true,
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "text_schedule_next": {
+      "type": "string",
+      "title": {
+        "en": "Schedule Next"
+      },
+      "hint": {
+        "en": "Next scheduled time"
+      },
+      "uiComponent": null,
+      "getable": true,
+      "setable": false,
+      "insights": false
+    }
   }
 }

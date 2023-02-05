@@ -1,0 +1,15 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Schedule Enabled"
+  },
+  "hint": {
+    "en": "Schedule is enabled"
+  },
+  "icon": "./assets/clock-enable.svg",
+  "uiComponent": "toggle",
+  "uiQuickAction": true,
+  "getable": true,
+  "setable": true,
+  "insights": false
+}

@@ -1,16 +1,16 @@
 {
   "id": "fi.oh2th.alarmutils",
-  "version": "1.1.0",
+  "version": "1.5.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Alarm Utilities"
+    "en": "Action Scheduler"
   },
   "description": {
-    "en": "Manage Homey alarms from flows"
+    "en": "Dynamic flow scheduling"
   },
   "category": [
     "tools"
@@ -31,7 +31,8 @@
   "tags": {
     "en": [
       "alarms",
-      "clock"
+      "clock",
+      "scheduler"
     ]
   },
   "contributors": {

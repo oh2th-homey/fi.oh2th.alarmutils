@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Scheduler time"
+  },
+  "titleFormatted": {
+    "en": "Set scheduler time to [[time]]"
+  },
+  "hint": {
+    "en": "Sets schedule time as HH:mm."
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "time",
+      "title": {
+        "en": "Time"
+      },
+      "placeholder": {
+        "en": "HH:mm"
+      }
+    },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ]
+}

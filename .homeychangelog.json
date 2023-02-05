@@ -10,5 +10,20 @@
   },
   "1.1.0": {
     "en": "Add: New card - Alarm NN minutes ahead of time"
+  },
+  "1.2.0": {
+    "en": "ADD: Scheduler device with trigger"
+  },
+  "1.3.0": {
+    "en": "ADD: Action flow cards for Scheduler devices"
+  },
+  "1.3.1": {
+    "en": "FIX: Readmes"
+  },
+  "1.4.0": {
+    "en": "ADD: Flow cards and capabilities"
+  },
+  "1.5.0": {
+    "en": "Scheduler Device - Dynamic flow trigger. App rebranding."
   }
 }

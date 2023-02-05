@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Enable scheduler"
+  },
+  "titleFormatted": {
+    "en": "Set scheduler enabled to [[enabled]]"
+  },
+  "hint": {
+    "en": "Enable or disable scheduler"
+  },
+  "args": [
+    {
+      "type": "checkbox",
+      "name": "enabled"
+    },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ]
+}
