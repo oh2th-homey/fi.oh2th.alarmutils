@@ -3,14 +3,15 @@
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob, CronTime } = require('cron');
-const { strToMins, minsToStr } = require('../../lib/helpers');
+const { strToMins, minsToStr, sleep } = require('../../lib/helpers');
 
 module.exports = class SchedulerDevice extends Device {
 
   async onInit() {
     this.log(`${this.getName()} - onInit`);
 
-    this.initCapabilityListeners();
+    await this.checkCapabilities();
+    await this.initCapabilityListeners();
 
     const settings = this.getSettings();
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
@@ -24,14 +25,15 @@ module.exports = class SchedulerDevice extends Device {
 
     // start cronjob if enabled
     this.cronJob.start();
-    this.log(`${this.getName()} - onAdded - next at ${this.cronJob.nextDates(1)}`);
+    this.setCapabilityValue('is_enabled', true);
+    this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
     this.log(`${this.getName()} - onAdded - done`);
   }
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
     this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
 
-    this.reInitCronJob(newSettings);
+    this.restartCronJob(newSettings);
 
     this.log(`${this.getName()} - onSettings - done`);
   }
@@ -119,59 +121,95 @@ module.exports = class SchedulerDevice extends Device {
         this.log(`${this.getName()} - cronJob - runOnce - not running again`);
         return;
       }
-      this.log(`${this.getName()} - cronJob - next at ${this.cronJob.nextDates(1)}`);
+      this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
     });
 
     // start cronjob if enabled
-    if (await this.getCapabilityValue('is_enabled')) {
+    if (this.getCapabilityValue('is_enabled')) {
       this.cronJob.start();
       this.log(`${this.getName()} - initCronjob - cronjob started`);
-      this.log(`${this.getName()} - initCronjob - next at ${this.cronJob.nextDates(1)}`);
+      this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
     }
   }
 
-  reInitCronJob(settings) {
+  /**
+   * @description Restart cronjob from saved settings and trigger device_schedule_updated
+   *
+   * @param {Object} settings settings object
+   */
+  async restartCronJob(settings) {
     if (typeof this.cronJob !== 'undefined') {
-      this.log(`${this.getName()} - reInitCronJob - stopping cronjob`);
+      this.log(`${this.getName()} - restartCronJob - stopping cronjob`);
       this.cronJob.stop();
       this.cronJob = undefined;
     }
 
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
     this.initCronJob(cronTime, timeZone, runOnce);
+
+    const timeNext = this.getNextScheduledTime();
+    this.homey.flow.getDeviceTriggerCard('device_schedule_updated')
+      .trigger(this, {
+        name: this.getName(),
+        enabled: this.getCapabilityValue('is_enabled'),
+        time: settings.time,
+        next: timeNext[0].toString(),
+      })
+      .catch(this.error)
+      .then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${timeNext}`));
   }
 
+  /**
+   * @description Enable cronjob
+   */
   async schedulerEnable() {
     this.log(`${this.getName()} - schedulerEnable`);
     this.setCapabilityValue('is_enabled', true);
     this.cronJob.start();
   }
 
+  /**
+   * @description Disable cronjob
+   */
   async schedulerDisable() {
     this.log(`${this.getName()} - schedulerDisable`);
     this.setCapabilityValue('is_enabled', false);
     this.cronJob.stop();
   }
 
+  /**
+   * @description get next scheduled time
+   * @returns {String} next scheduled time
+   */
+  getNextScheduledTime() {
+    return String(this.cronJob.nextDates(1));
+  }
+
+  /**
+   * @description Trigger flow cards for cronjob
+   */
   async cronJobRunTriggers() {
     this.log(`${this.getName()} - runTriggers`);
 
     const timeNow = new Date().toLocaleString('en-US', {
       hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
     });
-    const timeNext = String(this.cronJob.nextDates(1));
 
-    await this.homey.flow
-      .getDeviceTriggerCard('device_schedule_triggered')
+    this.homey.flow.getDeviceTriggerCard('device_schedule_triggered')
       .trigger(this, {
         name: this.getName(),
         time: timeNow,
-        next: timeNext,
+        next: getNextScheduledTime(),
       })
       .catch(this.error)
-      .then(this.log(`${this.getName()} - runTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`));
+      .then(this.log(`${this.getName()} - runTriggers - device_schedule_triggered at ${timeNow} next at ${getNextScheduledTime()}`));
 
     this.log(`${this.getName()} - runTriggers - done`);
+  }
+
+  async setCapability_TEXT_SCHEDULE_NEXT(scheduleNext) {
+    this.log(`${this.getName()} - setCapability_TEXT_SCHEDULE_NEXT - ${scheduleNext}`);
+    this.setCapabilityValue('text_schedule_next', scheduleNext);
   }
 
   /**
@@ -207,7 +245,7 @@ module.exports = class SchedulerDevice extends Device {
     await this.setSettings({
       time,
     });
-    this.reInitCronJob(this.getSettings());
+    this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - done`);
   }
 
@@ -241,8 +279,51 @@ module.exports = class SchedulerDevice extends Device {
     }
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - newSettings: ${JSON.stringify(newSettings)}`);
     await this.setSettings(newSettings);
-    this.reInitCronJob(this.getSettings());
+    this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - done`);
+  }
+
+  /**
+   * Check if Capabilities has changed and update them
+   */
+  async checkCapabilities() {
+    try {
+      const driverManifest = this.driver.manifest;
+      const driverCapabilities = driverManifest.capabilities;
+      const deviceCapabilities = this.getCapabilities();
+
+      this.log(`[Device] ${this.getName()} - checkCapabilities for`, driverManifest.id);
+      this.log(`[Device] ${this.getName()} - Found capabilities =>`, deviceCapabilities);
+
+      await this.updateCapabilities(driverCapabilities, deviceCapabilities);
+
+      return deviceCapabilities;
+    } catch (error) {
+      this.log(error);
+    }
+  }
+
+  async updateCapabilities(driverCapabilities, deviceCapabilities) {
+    try {
+      const newC = driverCapabilities.filter((d) => !deviceCapabilities.includes(d));
+      const oldC = deviceCapabilities.filter((d) => !driverCapabilities.includes(d));
+
+      this.log(`[Device] ${this.getName()} - Got old capabilities =>`, oldC);
+      this.log(`[Device] ${this.getName()} - Got new capabilities =>`, newC);
+
+      oldC.forEach((c) => {
+        this.log(`[Device] ${this.getName()} - updateCapabilities => Remove `, c);
+        this.removeCapability(c);
+      });
+      await sleep(2000);
+      newC.forEach((c) => {
+        this.log(`[Device] ${this.getName()} - updateCapabilities => Add `, c);
+        this.addCapability(c);
+      });
+      await sleep(2000);
+    } catch (error) {
+      this.log(error);
+    }
   }
 
 };

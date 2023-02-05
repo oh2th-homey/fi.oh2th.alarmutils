@@ -4,7 +4,8 @@
   },
   "class": "sensor",
   "capabilities": [
-    "is_enabled"
+    "is_enabled",
+    "text_schedule_next"
   ],
   "platforms": [
     "local"

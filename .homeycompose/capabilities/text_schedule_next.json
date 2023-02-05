@@ -1,0 +1,13 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Schedule Next"
+  },
+  "hint": {
+    "en": "Next scheduled time"
+  },
+  "uiComponent": null,
+  "getable": true,
+  "setable": false,
+  "insights": false
+}

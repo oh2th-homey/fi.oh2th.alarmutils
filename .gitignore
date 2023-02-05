@@ -15,6 +15,7 @@ Thumbs.db
 
 # snyk
 .dccache
+.iac-data/
 
 # Homey exclude
 /env.json

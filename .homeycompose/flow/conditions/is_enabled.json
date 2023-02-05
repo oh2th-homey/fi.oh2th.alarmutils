@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Scheduler !{{is|isn't}} enabled"
+  },
+  "hint": {
+    "en": "Scheduler is/isn't enabled."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ]
+}

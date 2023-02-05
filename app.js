@@ -4,6 +4,7 @@ const Homey = require('homey');
 const { HomeyAPIApp } = require('homey-api');
 const { strToMins, minsToStr } = require('./lib/helpers');
 const flowActions = require('./lib/flows/actions');
+const flowConditions = require('./lib/flows/conditions');
 const flowTriggers = require('./lib/flows/triggers');
 
 const INTERVAL = 5000;
@@ -24,6 +25,7 @@ class AlarmUtils extends Homey.App {
     this.log(`${this.myAppIdVersion} - Found alarms: '${JSON.stringify(this.alarms, null, 2)}'`);
 
     await flowActions.init(this);
+    await flowConditions.init(this);
     await flowTriggers.init(this);
     // await this.setCheckAlarmAPIInterval();
 

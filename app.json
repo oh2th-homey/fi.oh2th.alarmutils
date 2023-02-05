@@ -160,10 +160,10 @@
       },
       {
         "title": {
-          "en": "Scheduler triggered"
+          "en": "Schedule triggered"
         },
         "hint": {
-          "en": "Scheduler triggered"
+          "en": "Triggers on next scheduled time."
         },
         "args": [
           {
@@ -177,17 +177,17 @@
             "type": "string",
             "name": "name",
             "title": {
-              "en": "Name"
+              "en": "Schedule Name"
             },
             "example": {
-              "en": "Schedule name"
+              "en": "Schedule's name"
             }
           },
           {
             "type": "string",
             "name": "time",
             "title": {
-              "en": "Time"
+              "en": "Schedule Time"
             },
             "example": {
               "en": "18:07"
@@ -197,14 +197,90 @@
             "type": "string",
             "name": "next",
             "title": {
-              "en": "Next Occurrance"
+              "en": "Next Scheduled Time"
             },
             "example": {
-              "en": "2023-01-23T12:09:00.000Z"
+              "en": "2023-01-23T12:09:00.000+0200"
             }
           }
         ],
         "id": "device_schedule_triggered"
+      },
+      {
+        "title": {
+          "en": "Schedule updated"
+        },
+        "hint": {
+          "en": "Triggers when schedule is updated."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Schedule Name"
+            },
+            "example": {
+              "en": "Schedule's name"
+            }
+          },
+          {
+            "type": "boolean",
+            "name": "enabled",
+            "title": {
+              "en": "Schedule Enabled"
+            },
+            "example": {
+              "en": "true"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Schedule Time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Scheduled Time"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000+0200"
+            }
+          }
+        ],
+        "id": "device_schedule_updated"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "Scheduler !{{is|isn't}} enabled"
+        },
+        "hint": {
+          "en": "Scheduler is/isn't enabled."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_enabled"
       }
     ],
     "actions": [
@@ -461,7 +537,7 @@
           "en": "Set scheduler time to [[time]]"
         },
         "hint": {
-          "en": "Sets the time local time as HH:mm string."
+          "en": "Sets schedule time as HH:mm string."
         },
         "args": [
           {
@@ -491,7 +567,8 @@
       },
       "class": "sensor",
       "capabilities": [
-        "is_enabled"
+        "is_enabled",
+        "text_schedule_next"
       ],
       "platforms": [
         "local"
@@ -631,6 +708,19 @@
       "uiQuickAction": true,
       "getable": true,
       "setable": true,
+      "insights": false
+    },
+    "text_schedule_next": {
+      "type": "string",
+      "title": {
+        "en": "Schedule next"
+      },
+      "hint": {
+        "en": "Next scheduled time"
+      },
+      "uiComponent": null,
+      "getable": true,
+      "setable": false,
       "insights": false
     }
   }

@@ -1,9 +1,9 @@
 {
   "title": {
-    "en": "Schedule triggered"
+    "en": "Schedule updated"
   },
   "hint": {
-    "en": "Triggers on next scheduled time."
+    "en": "Triggers when schedule is updated."
   },
   "args": [
     {
@@ -21,6 +21,16 @@
       },
       "example": {
         "en": "Schedule's name"
+      }
+    },
+    {
+      "type": "boolean",
+      "name": "enabled",
+      "title": {
+        "en": "Schedule Enabled"
+      },
+      "example": {
+        "en": "true"
       }
     },
     {
