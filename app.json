@@ -1,14 +1,14 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "fi.oh2th.alarmutils",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Action Scheduler - Alarm Utilities"
+    "en": "Action Scheduler"
   },
   "description": {
     "en": "Dynamic flow scheduling"
@@ -419,7 +419,7 @@
           "en": "Schedule [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]]."
         },
         "hint": {
-          "en": "Sets the schedule in local time as HH:mm string. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight."
+          "en": "Schedule given minutes before HH:mm time. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight."
         },
         "args": [
           {
@@ -537,7 +537,7 @@
           "en": "Set scheduler time to [[time]]"
         },
         "hint": {
-          "en": "Sets schedule time as HH:mm string."
+          "en": "Sets schedule time as HH:mm."
         },
         "args": [
           {

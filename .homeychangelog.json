@@ -22,5 +22,8 @@
   },
   "1.4.0": {
     "en": "ADD: Flow cards and capabilities"
+  },
+  "1.5.0": {
+    "en": "Scheduler Device - Dynamic flow trigger. App rebranding."
   }
 }
