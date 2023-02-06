@@ -89,7 +89,14 @@ module.exports = class SchedulerDevice extends Device {
 
     const cronTime = `0 ${minutes} ${hours} * * ${weekdays}`;
     const timeZone = settings.timezone;
-    return { cronTime, timeZone, runOnce };
+
+    try {
+      // eslint-disable-next-line no-new
+      new CronTime(cronTime, timeZone);
+      return { cronTime, timeZone, runOnce };
+    } catch (error) {
+      this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
+    }
   }
 
   /**
