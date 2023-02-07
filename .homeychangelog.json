@@ -25,5 +25,8 @@
   },
   "1.5.0": {
     "en": "Scheduler Device - Dynamic flow trigger. App rebranding."
+  },
+  "1.5.1": {
+    "en": "FIX: Check user input for time format at setup"
   }
 }
