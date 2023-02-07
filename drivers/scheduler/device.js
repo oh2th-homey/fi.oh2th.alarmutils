@@ -33,6 +33,25 @@ module.exports = class SchedulerDevice extends Device {
   async onSettings({ oldSettings, newSettings, changedKeys }) {
     this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
 
+    // Check input from newSettings for time string format
+    // Test against valid time string formats:
+    // 13:00
+    // *:*
+    // 00:*
+    // 01:*/5
+    // Test against invalid time string formats:
+    // 24:00
+    // 12:60
+    // */2:*/70
+    // If this is updated, also update the regex in the pair/scheduler.html file
+    const timePattern = new RegExp(/^(\b([0-9]|[01][0-9]|2[0-3])\b|(\*)((\/)(\b([2-9]|1[0-9]|2[0-4])\b))?):(\b([0-9]|[0-5][0-9])\b|(\*)((\/)(\b([2-9]|[1-5][0-9]|60)\b))?)$/);
+    if (changedKeys.includes('time')) {
+      if (!timePattern.test(newSettings.time)) {
+        this.error(`${this.getName()} - onSettings - Invalid time string format: ${newSettings.time}`);
+        return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
+      }
+    }
+
     this.restartCronJob(newSettings);
 
     this.log(`${this.getName()} - onSettings - done`);

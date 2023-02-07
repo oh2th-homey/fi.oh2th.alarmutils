@@ -1,4 +1,8 @@
 <script type="application/javascript">
+  // Set default timezone
+  document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+
   $(function () {
     $('#function_add').click(function () {
       var randomUUID = function () {
@@ -13,15 +17,15 @@
 
       // Validate input
       if (!document.getElementById('name').value) {
-        Homey.alert(Homey.__("error.name_required"));
+        Homey.alert(Homey.__('settings.error.name_required'));
         return;
       }
-      if (!document.getElementById('time').value) {
-        Homey.alert(Homey.__("error.time_required"));
+      if (!document.getElementById('time').checkValidity()) {
+        Homey.alert(Homey.__('settings.error.time_invalid'));
         return;
       }
       if (!document.getElementById('timezone').value) {
-        Homey.alert(Homey.__("error.timezone_required"));
+        Homey.alert(Homey.__('settings.error.timezone_required'));
         return;
       }
 
@@ -46,7 +50,6 @@
       });
       Homey.done();
     });
-    document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
   });
 </script>
 
@@ -64,7 +67,7 @@
 
     <div class="homey-form-group">
       <label class="homey-form-label" for="time" data-i18n="settings.time"><!--settings.time--></label>
-      <input class="homey-form-input" id="time" type="text" value="13:00" />
+      <input class="homey-form-input" id="time" type="text" pattern="^(\b([0-9]|[01][0-9]|2[0-3])\b|(\*)((\/)(\b([2-9]|1[0-9]|2[0-4])\b))?):(\b([0-9]|[0-5][0-9])\b|(\*)((\/)(\b([2-9]|[1-5][0-9]|60)\b))?)$" value="13:00" />
       <p class="homey-form-label" data-i18n="settings.time_help"><!--settings.time_help--></p>
     </div>
 
