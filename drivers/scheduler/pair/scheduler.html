@@ -1,7 +1,7 @@
 <script type="application/javascript">
   // Set default timezone
   document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
-
+  validZones = Intl.supportedValuesOf('timeZone');
 
   $(function () {
     $('#function_add').click(function () {
@@ -21,11 +21,11 @@
         return;
       }
       if (!document.getElementById('time').checkValidity()) {
-        Homey.alert(Homey.__('settings.error.time_invalid'));
+        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${document.getElementById('time').value}`);
         return;
       }
-      if (!document.getElementById('timezone').value) {
-        Homey.alert(Homey.__('settings.error.timezone_required'));
+      if (!validZones.includes(document.getElementById('timezone').value)) {
+        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${document.getElementById('timezone').value}`);
         return;
       }
 

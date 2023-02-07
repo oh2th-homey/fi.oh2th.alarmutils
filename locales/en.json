@@ -19,8 +19,9 @@
     "error": {
       "name_required": "Name is required",
       "time_required": "Time is required",
-      "time_invalid": "Enter time as HH:mm or *:mm or HH:* or *:*",
-      "timezone_required": "Timezone is required"
+      "time_invalid": "Enter time as [HH]:[mm], [*]:[mm], [HH]:[*] or [*]:[*]",
+      "timezone_required": "Timezone is required",
+      "timezone_invalid": "Enter Timezone as Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc."
     }
   }
 }
