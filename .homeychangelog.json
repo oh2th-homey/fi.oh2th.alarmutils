@@ -28,5 +28,8 @@
   },
   "1.5.1": {
     "en": "FIX: Check user input for time format at setup"
+  },
+  "1.5.2": {
+    "en": "Check user input for Timezone"
   }
 }
