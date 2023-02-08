@@ -5,9 +5,11 @@
     "name": "Scheduler name:",
     "time": "Time",
     "time_help": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute",
-    "tz": "Timezone",
+    "timezone": "Timezone",
+    "runonce": "Run once",
+    "runonce_help": "Stop the scheduler after first execution.",
     "repetition": "Repeat every",
-    "repetition_help": "The days of the week to repeat the scheduler. If no days selected, the scheduler executes once.",
+    "repetition_help": "The days of the week to repeat the scheduler. If no days selected, the scheduler is disabled.",
     "monday": "Monday",
     "tuesday": "Tuesday",
     "wednesday": "Wednesday",
@@ -23,5 +25,8 @@
       "timezone_required": "Timezone is required",
       "timezone_invalid": "Enter Timezone as Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc."
     }
+  },
+  "message": {
+    "not_scheduled": "Not Scheduled"
   }
 }

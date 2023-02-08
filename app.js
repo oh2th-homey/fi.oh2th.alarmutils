@@ -27,7 +27,6 @@ class AlarmUtils extends Homey.App {
     await flowActions.init(this);
     await flowConditions.init(this);
     await flowTriggers.init(this);
-    // await this.setCheckAlarmAPIInterval();
 
     this.log(`${this.myAppIdVersion} - onInit - started.`);
   }

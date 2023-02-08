@@ -49,6 +49,17 @@
             "en": "Timezone name from TZ database."
           },
           "value": "Europe/Helsinki"
+        },
+        {
+          "id": "runonce",
+          "type": "checkbox",
+          "label": {
+            "en": "Run Once"
+          },
+          "hint": {
+            "en": "Stop the scheduler after first execution."
+          },
+          "value": false
         }
       ]
     },
@@ -65,7 +76,7 @@
             "en": "The days of the week to repeat."
           },
           "hint": {
-            "en": "If no days selected, the scheduler executes once."
+            "en": "If no days selected, the scheduler is disabled."
           },
           "value": ""
         },

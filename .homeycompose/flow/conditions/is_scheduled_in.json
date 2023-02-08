@@ -1,0 +1,53 @@
+{
+  "title": {
+    "en": "!{{Is|Isn't}} scheduled in"
+  },
+  "titleFormatted": {
+    "en": "Next run !{{is|isn't}} scheduled in [[minutes]]."
+  },
+  "hint": {
+    "en": "Next run is/isn't scheduled in selected time."
+  },
+  "args": [
+    {
+      "name": "minutes",
+      "type": "dropdown",
+      "values": [
+        { "id": "1", "title": { "en": "1 minutes" } },
+        { "id": "5", "title": { "en": "5 minutes" } },
+        { "id": "10", "title": { "en": "10 minutes" } },
+        { "id": "15", "title": { "en": "15 minutes" } },
+        { "id": "30", "title": { "en": "30 minutes" } },
+        { "id": "60", "title": { "en": "1 hour" } },
+        { "id": "120", "title": { "en": "2 hours" } },
+        { "id": "180", "title": { "en": "3 hours" } },
+        { "id": "240", "title": { "en": "4 hours" } },
+        { "id": "300", "title": { "en": "5 hours" } },
+        { "id": "360", "title": { "en": "6 hours" } },
+        { "id": "420", "title": { "en": "7 hours" } },
+        { "id": "480", "title": { "en": "8 hours" } },
+        { "id": "540", "title": { "en": "9 hours" } },
+        { "id": "600", "title": { "en": "10 hours" } },
+        { "id": "660", "title": { "en": "11 hours" } },
+        { "id": "720", "title": { "en": "12 hours" } },
+        { "id": "780", "title": { "en": "13 hours" } },
+        { "id": "840", "title": { "en": "14 hours" } },
+        { "id": "900", "title": { "en": "15 hours" } },
+        { "id": "960", "title": { "en": "16 hours" } },
+        { "id": "1020", "title": { "en": "17 hours" } },
+        { "id": "1080", "title": { "en": "18 hours" } },
+        { "id": "1140", "title": { "en": "19 hours" } },
+        { "id": "1200", "title": { "en": "20 hours" } },
+        { "id": "1260", "title": { "en": "21 hours" } },
+        { "id": "1320", "title": { "en": "22 hours" } },
+        { "id": "1380", "title": { "en": "23 hours" } },
+        { "id": "1440", "title": { "en": "24 hours" } }
+      ]
+    },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=scheduler"
+    }
+  ]
+}

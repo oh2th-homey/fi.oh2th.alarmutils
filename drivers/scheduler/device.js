@@ -23,10 +23,16 @@ module.exports = class SchedulerDevice extends Device {
   async onAdded() {
     this.log(`${this.getName()} - onAdded`);
 
-    // start cronjob if enabled
-    this.cronJob.start();
-    this.setCapabilityValue('is_enabled', true);
-    this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
+    const {
+      repeat_monday, repeat_tuesday, repeat_wednesday, repeat_thursday,
+      repeat_friday, repeat_saturday, repeat_sunday,
+    } = this.getSettings();
+    if (!repeat_monday && !repeat_tuesday && !repeat_wednesday && !repeat_thursday && !repeat_friday && !repeat_saturday && !repeat_sunday) {
+      this.schedulerDisable();
+    } else {
+      this.schedulerEnable();
+    }
+
     this.log(`${this.getName()} - onAdded - done`);
   }
 
@@ -76,6 +82,7 @@ module.exports = class SchedulerDevice extends Device {
   }
 
   async onDeleted() {
+    this.log(`${this.getName()} - onDeleted`);
     if (typeof this.cronJob !== 'undefined') {
       this.log(`${this.getName()} - onDeleted - stopping cronjob`);
       this.cronJob.stop();
@@ -88,18 +95,18 @@ module.exports = class SchedulerDevice extends Device {
    * @description Get the cronTime string from the settings
    *
    * @param {Object} settings The settings object
-   * @returns {Object} cronTime, runOnce, timeZone
+   * @returns {Object} cronTime, timeZone, runOnce
    * @example
-   * const { cronTime, runOnce, timeZone } = await this.getSettingsCronTime();
-   * this.initCronJob(cronTime, runOnce, timeZone);
+   * const { cronTime, timeZone, runOnce } = await this.getSettingsCronTime();
+   * this.initCronJob(cronTime, timeZone, runOnce);
    * // cronTime: '0 0 12 * * 1-5'
    * // timeZone: 'Europe/Helsinki'
-   * // runOnce: false - if any weekday is selected, runOnce will be false
+   * // runOnce: false (or true)
    */
   getSettingsCronTime(settings) {
     const hours = settings.time.split(':')[0];
     const minutes = settings.time.split(':')[1];
-    let runOnce = false;
+    const runOnce = settings.runonce;
     let weekdays = [
       settings.repeat_sunday ? '0' : null,
       settings.repeat_monday ? '1' : null,
@@ -114,10 +121,10 @@ module.exports = class SchedulerDevice extends Device {
 
     if (weekdays === '') {
       weekdays = '*';
-      runOnce = true;
+      this.setCapabilityValue('is_enabled', false);
     } else if (weekdays === '0,1,2,3,4,5,6') {
       weekdays = '*';
-      runOnce = false;
+      this.setCapabilityValue('is_enabled', true);
     }
 
     const cronTime = `0 ${minutes} ${hours} * * ${weekdays}`;
@@ -159,17 +166,14 @@ module.exports = class SchedulerDevice extends Device {
       if (runOnce) {
         this.schedulerDisable();
         this.log(`${this.getName()} - cronJob - runOnce - not running again`);
-        return;
       }
-      this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
     });
 
     // start cronjob if enabled
     if (this.getCapabilityValue('is_enabled')) {
-      this.cronJob.start();
-      this.log(`${this.getName()} - initCronjob - cronjob started`);
-      this.setCapability_TEXT_SCHEDULE_NEXT(this.getNextScheduledTime());
+      this.schedulerEnable();
     }
+    return this.getNextScheduledTime();
   }
 
   /**
@@ -185,18 +189,17 @@ module.exports = class SchedulerDevice extends Device {
     }
 
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
-    this.initCronJob(cronTime, timeZone, runOnce);
+    const timeNext = this.initCronJob(cronTime, timeZone, runOnce);
 
-    const timeNext = this.getNextScheduledTime();
     this.homey.flow.getDeviceTriggerCard('device_schedule_updated')
       .trigger(this, {
         name: this.getName(),
         enabled: this.getCapabilityValue('is_enabled'),
         time: settings.time,
-        next: timeNext[0].toString(),
+        next: String(timeNext),
       })
       .catch(this.error)
-      .then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${timeNext}`));
+      .then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(timeNext)}`));
   }
 
   /**
@@ -206,6 +209,7 @@ module.exports = class SchedulerDevice extends Device {
     this.log(`${this.getName()} - schedulerEnable`);
     this.setCapabilityValue('is_enabled', true);
     this.cronJob.start();
+    return this.getNextScheduledTime();
   }
 
   /**
@@ -215,6 +219,7 @@ module.exports = class SchedulerDevice extends Device {
     this.log(`${this.getName()} - schedulerDisable`);
     this.setCapabilityValue('is_enabled', false);
     this.cronJob.stop();
+    return this.getNextScheduledTime();
   }
 
   /**
@@ -222,14 +227,22 @@ module.exports = class SchedulerDevice extends Device {
    * @returns {String} next scheduled time
    */
   getNextScheduledTime() {
-    return String(this.cronJob.nextDates(1));
+    const { runonce } = this.getSettings();
+    if (runonce || !this.getCapabilityValue('is_enabled')) {
+      this.setCapabilityValue('text_schedule_next', this.homey.__('message.not_scheduled'));
+      return this.homey.__('message.not_scheduled');
+    }
+    const nextRun = this.cronJob.nextDates(1);
+    this.setCapabilityValue('text_schedule_next', String(nextRun));
+
+    return String(nextRun);
   }
 
   /**
    * @description Trigger flow cards for cronjob
    */
   async cronJobRunTriggers() {
-    this.log(`${this.getName()} - runTriggers`);
+    this.log(`${this.getName()} - cronJobRunTriggers`);
 
     const timeNow = new Date().toLocaleString('en-US', {
       hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
@@ -239,17 +252,12 @@ module.exports = class SchedulerDevice extends Device {
       .trigger(this, {
         name: this.getName(),
         time: timeNow,
-        next: getNextScheduledTime(),
+        next: this.getNextScheduledTime(),
       })
       .catch(this.error)
-      .then(this.log(`${this.getName()} - runTriggers - device_schedule_triggered at ${timeNow} next at ${getNextScheduledTime()}`));
+      .then(this.log(`${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${this.getNextScheduledTime()}`));
 
-    this.log(`${this.getName()} - runTriggers - done`);
-  }
-
-  async setCapability_TEXT_SCHEDULE_NEXT(scheduleNext) {
-    this.log(`${this.getName()} - setCapability_TEXT_SCHEDULE_NEXT - ${scheduleNext}`);
-    this.setCapabilityValue('text_schedule_next', scheduleNext);
+    this.log(`${this.getName()} - cronJobRunTriggers - done`);
   }
 
   /**
@@ -257,27 +265,17 @@ module.exports = class SchedulerDevice extends Device {
    */
   async initCapabilityListeners() {
     this.log(`${this.getName()} - initCapabilityListeners`);
-    this.registerCapabilityListener('is_enabled', this.onCapability_IS_DEVICE_SCHEDULE_ENABLED.bind(this));
-  }
-
-  async onCapability_IS_DEVICE_SCHEDULE_ENABLED(value) {
-    this.log(`${this.getName()} - onCapability_ENABLED {${value}}`);
-    try {
-      if (value) return Promise.resolve(this.cronJob.start());
-      return Promise.resolve(this.cronJob.stop());
-    } catch (error) {
-      return Promise.reject(error);
-    }
+    this.registerCapabilityListener('is_enabled', this.onCapability_IS_ENABLED.bind(this));
   }
 
   /**
-   * Handle action listeners
+   * Handle listeners
    */
-  async onAction_DEVICE_SCHEDULE_ENABLED(enabled) {
-    this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_ENABLED '${enabled}'`);
+  async onCapability_IS_ENABLED(enabled) {
+    this.log(`${this.getName()} - onCapability_IS_ENABLED '${enabled}'`);
     if (enabled) this.schedulerEnable();
     else this.schedulerDisable();
-    this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_ENABLED - done`);
+    this.log(`${this.getName()} - onCapability_IS_ENABLED - done`);
   }
 
   async onAction_DEVICE_SCHEDULE_TIME(time) {
