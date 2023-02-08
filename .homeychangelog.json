@@ -31,5 +31,8 @@
   },
   "1.5.2": {
     "en": "Check user input for Timezone"
+  },
+  "1.6.0": {
+    "en": "New condition card: Is scheduled in (minutes)."
   }
 }
