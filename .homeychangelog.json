@@ -34,5 +34,8 @@
   },
   "1.6.0": {
     "en": "New condition card: Is scheduled in (minutes)."
+  },
+  "1.7.0": {
+    "en": "NEW: Conditions for today, tomorrow, this week and next week. FIX: Update homey-api to 1.10.18"
   }
 }
