@@ -480,6 +480,82 @@
           }
         ],
         "id": "is_scheduled_in"
+      },
+      {
+        "title": {
+          "en": "!{{Is|Isn't}} scheduled next week"
+        },
+        "titleFormatted": {
+          "en": "Next run !{{is|isn't}} scheduled for next week."
+        },
+        "hint": {
+          "en": "Next run is/isn't scheduled for next week."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_scheduled_next_week"
+      },
+      {
+        "title": {
+          "en": "!{{Is|Isn't}} scheduled this week"
+        },
+        "titleFormatted": {
+          "en": "Next run !{{is|isn't}} scheduled for this week."
+        },
+        "hint": {
+          "en": "Next run is/isn't scheduled for this week."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_scheduled_this_week"
+      },
+      {
+        "title": {
+          "en": "!{{Is|Isn't}} scheduled today"
+        },
+        "titleFormatted": {
+          "en": "Next run !{{is|isn't}} scheduled for today."
+        },
+        "hint": {
+          "en": "Next run is/isn't scheduled for today."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_scheduled_today"
+      },
+      {
+        "title": {
+          "en": "!{{Is|Isn't}} scheduled tomorrow"
+        },
+        "titleFormatted": {
+          "en": "Next run !{{is|isn't}} scheduled for tomorrow."
+        },
+        "hint": {
+          "en": "Next run is/isn't scheduled for tomorrow."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          }
+        ],
+        "id": "is_scheduled_tomorrow"
       }
     ],
     "actions": [
