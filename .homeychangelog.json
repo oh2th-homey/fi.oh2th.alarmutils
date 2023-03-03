@@ -37,5 +37,8 @@
   },
   "1.7.0": {
     "en": "NEW: Conditions for today, tomorrow, this week and next week. FIX: Update homey-api to 1.10.18"
+  },
+  "1.8.0": {
+    "en": "BREAK: Deprecating Homey Alarms flow cards - use the included Scheduler device instead."
   }
 }
