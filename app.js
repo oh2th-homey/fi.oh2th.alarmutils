@@ -59,7 +59,6 @@ class AlarmUtils extends Homey.App {
   async sendNotifications() {
     const ntfy_deprecation_01 = '[Action Scheduler] (1/2) - Support for the Homey Alarms API will be removed in a future version of this app.';
     const ntfy_deprecation_02 = '[Action Scheduler] (2/2) - Please migrate your flows to use the included Scheduler devices instead of the Homey Alarms.';
-    const ntfy_deprecation_03 = '[Action Scheduler] (3/3) - Homey Pro 2023 devices will not support the Homey Alarms API.';
 
     await this.homey.notifications.createNotification({
       excerpt: ntfy_deprecation_01,
@@ -76,16 +75,6 @@ class AlarmUtils extends Homey.App {
     }).catch((err) => {
       console.error(err);
     });
-
-    if (this.homey.platform === 'local' && this.homey.platformVersion === 2) {
-      await this.homey.notifications.createNotification({
-        excerpt: ntfy_deprecation_03,
-      }).then((result) => {
-        console.log(result);
-      }).catch((err) => {
-        console.error(err);
-      });
-    }
   }
 
 }
