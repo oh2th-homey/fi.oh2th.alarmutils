@@ -8,6 +8,7 @@
   "hint": {
     "en": "Sets the time for an alarm in local time as HH:mm string. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if alarm time will be before midnight. Enable the alarm separately."
   },
+  "deprecated": true,
   "args": [
     {
       "type": "autocomplete",

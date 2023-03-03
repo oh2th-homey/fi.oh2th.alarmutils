@@ -5,6 +5,7 @@
   "hint": {
     "en": "Triggers when an alarm has been created."
   },
+  "deprecated": true,
   "tokens": [
     {
       "type": "string",

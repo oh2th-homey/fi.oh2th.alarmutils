@@ -8,6 +8,7 @@
   "hint": {
     "en": "Sets the time for an alarm in local time as HH:mm string."
   },
+  "deprecated": true,
   "args": [
     {
       "type": "autocomplete",
