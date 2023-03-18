@@ -162,10 +162,81 @@
       },
       {
         "title": {
+          "en": "Scheduled time is in N minutes."
+        },
+        "titleFormatted": {
+          "en": "Scheduled time is in [[minutes]] minutes."
+        },
+        "hint": {
+          "en": "Scheduled time is in N minutes."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=scheduler"
+          },
+          {
+            "type": "number",
+            "name": "minutes",
+            "title": {
+              "en": "minutes"
+            },
+            "placeholder": {
+              "en": "Minutes before scheduled time"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "type": "string",
+            "name": "name",
+            "title": {
+              "en": "Schedule Name"
+            },
+            "example": {
+              "en": "Schedule's name"
+            }
+          },
+          {
+            "type": "string",
+            "name": "time",
+            "title": {
+              "en": "Schedule Time"
+            },
+            "example": {
+              "en": "18:07"
+            }
+          },
+          {
+            "type": "string",
+            "name": "next",
+            "title": {
+              "en": "Next Scheduled Time"
+            },
+            "example": {
+              "en": "2023-01-23T12:09:00.000+0200"
+            }
+          },
+          {
+            "type": "number",
+            "name": "minutesToNext",
+            "title": {
+              "en": "Minutes before scheduled time"
+            },
+            "example": {
+              "en": "73"
+            }
+          }
+        ],
+        "id": "device_schedule_trigger_in"
+      },
+      {
+        "title": {
           "en": "Schedule triggered"
         },
         "hint": {
-          "en": "Triggers on next scheduled time."
+          "en": "Triggered on scheduled time."
         },
         "args": [
           {
