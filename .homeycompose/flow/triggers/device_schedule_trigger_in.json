@@ -1,12 +1,12 @@
 {
   "title": {
-    "en": "Scheduled time was N minutes ago."
+    "en": "Scheduled time is in N minutes."
   },
   "titleFormatted": {
-    "en": "Scheduled time was [[minutes]] minutes ago."
+    "en": "Scheduled time is in [[minutes]] minutes."
   },
   "hint": {
-    "en": "Scheduled time was 1-60 minutes ago."
+    "en": "Scheduled time is in N minutes."
   },
   "args": [
     {
@@ -20,10 +20,8 @@
       "title": {
         "en": "minutes"
       },
-      "min": 1,
-      "max": 60,
       "placeholder": {
-        "en": "5"
+        "en": "Minutes before scheduled time"
       }
     }
   ],
@@ -57,6 +55,17 @@
       "example": {
         "en": "2023-01-23T12:09:00.000+0200"
       }
+    },
+    {
+      "type": "number",
+      "name": "minutesToNext",
+      "title": {
+        "en": "Minutes before scheduled time"
+      },
+      "example": {
+        "en": "73"
+      }
     }
+
   ]
 }
