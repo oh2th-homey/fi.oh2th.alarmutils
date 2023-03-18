@@ -43,5 +43,8 @@
   },
   "1.9.0": {
     "en": "ADD: Trigger flow card - Scheduled time is in N minutes."
+  },
+  "1.9.1": {
+    "en": "ADD: Date and Time values as sensors for next scheduled trigger"
   }
 }
