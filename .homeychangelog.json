@@ -40,5 +40,8 @@
   },
   "1.8.0": {
     "en": "BREAK: Deprecating Homey Alarms flow cards - use the included Scheduler device instead."
+  },
+  "1.9.0": {
+    "en": "ADD: Trigger flow card - Scheduled time is in N minutes."
   }
 }
