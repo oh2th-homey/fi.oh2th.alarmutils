@@ -5,7 +5,9 @@
   "class": "sensor",
   "capabilities": [
     "is_enabled",
-    "text_schedule_next"
+    "text_schedule_next",
+    "text_schedule_date",
+    "text_schedule_time"
   ],
   "platforms": [
     "local"

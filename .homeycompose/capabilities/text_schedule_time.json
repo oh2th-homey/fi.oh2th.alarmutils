@@ -1,13 +1,13 @@
 {
   "type": "string",
   "title": {
-    "en": "Schedule Next"
+    "en": "Scheduled time"
   },
   "hint": {
-    "en": "Next scheduled date and time"
+    "en": "Next scheduled time"
   },
   "icon": "./assets/clock-enable.svg",
-  "uiComponent": null,
+  "uiComponent": "sensor",
   "getable": true,
   "setable": false,
   "insights": false
