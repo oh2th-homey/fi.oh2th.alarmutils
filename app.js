@@ -2,14 +2,13 @@
 
 const Homey = require('homey');
 const { HomeyAPIApp } = require('homey-api');
-const { strToMins, minsToStr } = require('./lib/helpers');
+// CronJob from https://github.com/kelektiv/node-cron
+const { CronJob } = require('cron');
 const flowActions = require('./lib/flows/actions');
 const flowConditions = require('./lib/flows/conditions');
 const appFlowActions = require('./lib/app-flows/actions');
 const appFlowActions2 = require('./lib/app-flows/actions-platform2');
 const appFlowTriggers = require('./lib/app-flows/triggers');
-
-const INTERVAL = 5000;
 
 class AlarmUtils extends Homey.App {
 
@@ -43,17 +42,42 @@ class AlarmUtils extends Homey.App {
     }
 
     this.sendNotifications();
+    this.initAppCronJob();
 
     this.log(`${this.myAppIdVersion} - onInit - started.`);
   }
 
-  async clearIntervals() {
-    try {
-      this.log(`${this.myAppIdVersion} - clearIntervals.`);
-      clearInterval(this.onPollInterval);
-    } catch (error) {
-      this.log(`${this.myAppIdVersion} - clearIntervals - Error: '${error}'`);
-    }
+  async onUninit() {
+    this.log(`${this.myAppIdVersion} - onUninit - stopping...`);
+    this.cronJob.stop();
+    this.cronJob = undefined;
+    this.log(`${this.myAppIdVersion} - onUninit - stopped.`);
+  }
+
+  async initAppCronJob() {
+    this.log(`${this.myAppIdVersion} - initAppCronjob`);
+
+    // create cronjob with cronTime and timeZone, do not start yet
+    this.appCronJob = new CronJob({
+      cronTime: '0 * * * * *',
+      onTick: () => {
+        this.log(`${this.myAppIdVersion} - onAppInterval`);
+
+        // Get all configured scheduler devices.
+        const schedulerDriver = this.homey.drivers.getDriver('scheduler');
+        const schedulerDevices = schedulerDriver.getDevices();
+        // Iterate over all scheduler devices and check if any of them should be triggered.
+        schedulerDevices.forEach((schedulerDevice) => {
+          this.log(`${this.myAppIdVersion} - Checking scheduler device: ${schedulerDevice.getName()}`);
+        });
+      },
+      start: false,
+      // timeZone: 'Europe/Amsterdam',
+    });
+    this.appCronJob.start();
+  }
+
+  onAppInterval() {
   }
 
   async sendNotifications() {
@@ -62,18 +86,10 @@ class AlarmUtils extends Homey.App {
 
     await this.homey.notifications.createNotification({
       excerpt: ntfy_deprecation_01,
-    }).then((result) => {
-      console.log(result);
-    }).catch((err) => {
-      console.error(err);
     });
 
     await this.homey.notifications.createNotification({
       excerpt: ntfy_deprecation_02,
-    }).then((result) => {
-      console.log(result);
-    }).catch((err) => {
-      console.error(err);
     });
   }
 

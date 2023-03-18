@@ -3,14 +3,14 @@
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob, CronTime } = require('cron');
-const { strToMins, minsToStr, sleep } = require('../../lib/helpers');
+const { strToMins, minsToStr, checkCapabilities } = require('../../lib/helpers');
 
 module.exports = class SchedulerDevice extends Device {
 
   async onInit() {
     this.log(`${this.getName()} - onInit`);
 
-    await this.checkCapabilities();
+    await checkCapabilities(this);
     await this.initCapabilityListeners();
 
     const settings = this.getSettings();
@@ -319,49 +319,6 @@ module.exports = class SchedulerDevice extends Device {
     await this.setSettings(newSettings);
     this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - done`);
-  }
-
-  /**
-   * Check if Capabilities has changed and update them
-   */
-  async checkCapabilities() {
-    try {
-      const driverManifest = this.driver.manifest;
-      const driverCapabilities = driverManifest.capabilities;
-      const deviceCapabilities = this.getCapabilities();
-
-      this.log(`[Device] ${this.getName()} - checkCapabilities for`, driverManifest.id);
-      this.log(`[Device] ${this.getName()} - Found capabilities =>`, deviceCapabilities);
-
-      await this.updateCapabilities(driverCapabilities, deviceCapabilities);
-
-      return deviceCapabilities;
-    } catch (error) {
-      this.log(error);
-    }
-  }
-
-  async updateCapabilities(driverCapabilities, deviceCapabilities) {
-    try {
-      const newC = driverCapabilities.filter((d) => !deviceCapabilities.includes(d));
-      const oldC = deviceCapabilities.filter((d) => !driverCapabilities.includes(d));
-
-      this.log(`[Device] ${this.getName()} - Got old capabilities =>`, oldC);
-      this.log(`[Device] ${this.getName()} - Got new capabilities =>`, newC);
-
-      oldC.forEach((c) => {
-        this.log(`[Device] ${this.getName()} - updateCapabilities => Remove `, c);
-        this.removeCapability(c);
-      });
-      await sleep(2000);
-      newC.forEach((c) => {
-        this.log(`[Device] ${this.getName()} - updateCapabilities => Add `, c);
-        this.addCapability(c);
-      });
-      await sleep(2000);
-    } catch (error) {
-      this.log(error);
-    }
   }
 
 };

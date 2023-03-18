@@ -1,15 +1,30 @@
 {
   "title": {
-    "en": "Schedule triggered"
+    "en": "Scheduled time was N minutes ago."
+  },
+  "titleFormatted": {
+    "en": "Scheduled time was [[minutes]] minutes ago."
   },
   "hint": {
-    "en": "Triggered on scheduled time."
+    "en": "Scheduled time was 1-60 minutes ago."
   },
   "args": [
     {
       "type": "device",
       "name": "device",
       "filter": "driver_id=scheduler"
+    },
+    {
+      "type": "number",
+      "name": "minutes",
+      "title": {
+        "en": "minutes"
+      },
+      "min": 1,
+      "max": 60,
+      "placeholder": {
+        "en": "5"
+      }
     }
   ],
   "tokens": [
