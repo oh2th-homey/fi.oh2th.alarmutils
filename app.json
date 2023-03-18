@@ -918,7 +918,9 @@
       "class": "sensor",
       "capabilities": [
         "is_enabled",
-        "text_schedule_next"
+        "text_schedule_next",
+        "text_schedule_date",
+        "text_schedule_time"
       ],
       "platforms": [
         "local"
@@ -1071,15 +1073,44 @@
       "setable": true,
       "insights": false
     },
+    "text_schedule_date": {
+      "type": "string",
+      "title": {
+        "en": "Scheduled date"
+      },
+      "hint": {
+        "en": "Next scheduled date"
+      },
+      "icon": "./assets/clock-enable.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": false
+    },
     "text_schedule_next": {
       "type": "string",
       "title": {
         "en": "Schedule Next"
       },
       "hint": {
+        "en": "Next scheduled date and time"
+      },
+      "icon": "./assets/clock-enable.svg",
+      "uiComponent": null,
+      "getable": true,
+      "setable": false,
+      "insights": false
+    },
+    "text_schedule_time": {
+      "type": "string",
+      "title": {
+        "en": "Scheduled time"
+      },
+      "hint": {
         "en": "Next scheduled time"
       },
-      "uiComponent": null,
+      "icon": "./assets/clock-enable.svg",
+      "uiComponent": "sensor",
       "getable": true,
       "setable": false,
       "insights": false

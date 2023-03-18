@@ -10,7 +10,7 @@ module.exports = class SchedulerDevice extends Device {
   async onInit() {
     this.log(`${this.getName()} - onInit`);
 
-    await checkCapabilities(this);
+    checkCapabilities(this);
     await this.initCapabilityListeners();
 
     const settings = this.getSettings();
@@ -229,11 +229,26 @@ module.exports = class SchedulerDevice extends Device {
   getNextScheduledTime() {
     const { runonce } = this.getSettings();
     if (runonce || !this.getCapabilityValue('is_enabled')) {
-      this.setCapabilityValue('text_schedule_next', this.homey.__('message.not_scheduled'));
+      this.setCapabilityValue('text_schedule_next', null);
+      this.setCapabilityValue('text_schedule_time', null);
+      this.setCapabilityValue('text_schedule_date', null);
+
       return this.homey.__('message.not_scheduled');
     }
     const nextRun = this.cronJob.nextDates(1);
+
+    const nextTime = new Date(nextRun).toLocaleString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+    });
+
+    const yyyy = new Date(nextRun).toLocaleString('en-US', { year: 'numeric', timeZone: this.homey.clock.getTimezone() });
+    const mm = new Date(nextRun).toLocaleString('en-US', { month: '2-digit', timeZone: this.homey.clock.getTimezone() });
+    const dd = new Date(nextRun).toLocaleString('en-US', { day: '2-digit', timeZone: this.homey.clock.getTimezone() });
+    const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
+
     this.setCapabilityValue('text_schedule_next', String(nextRun));
+    this.setCapabilityValue('text_schedule_time', String(nextTime));
+    this.setCapabilityValue('text_schedule_date', nextDateFormatted);
 
     return String(nextRun);
   }
