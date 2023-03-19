@@ -154,7 +154,8 @@ module.exports = class SchedulerDevice extends Device {
       cronTime,
       onTick: () => {
         this.log(`${this.getName()} - cronJob - tick at ${new Date().toISOString()}`);
-        this.cronJobRunTriggers();
+        this.cronJobRunTriggers(runOnce);
+        this.updateScheduleCapabilityValues();
       },
       start: false,
       timeZone,
@@ -189,7 +190,7 @@ module.exports = class SchedulerDevice extends Device {
     }
 
     const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
-    const timeNext = this.initCronJob(cronTime, timeZone, runOnce);
+    const timeNext = await this.initCronJob(cronTime, timeZone, runOnce);
 
     this.homey.flow.getDeviceTriggerCard('device_schedule_updated')
       .trigger(this, {
@@ -207,9 +208,9 @@ module.exports = class SchedulerDevice extends Device {
    */
   async schedulerEnable() {
     this.log(`${this.getName()} - schedulerEnable`);
-    this.setCapabilityValue('is_enabled', true);
     this.cronJob.start();
-    return this.getNextScheduledTime();
+    await this.setCapabilityValue('is_enabled', true);
+    this.updateScheduleCapabilityValues();
   }
 
   /**
@@ -217,9 +218,9 @@ module.exports = class SchedulerDevice extends Device {
    */
   async schedulerDisable() {
     this.log(`${this.getName()} - schedulerDisable`);
-    this.setCapabilityValue('is_enabled', false);
     this.cronJob.stop();
-    return this.getNextScheduledTime();
+    await this.setCapabilityValue('is_enabled', false);
+    this.updateScheduleCapabilityValues();
   }
 
   /**
@@ -227,50 +228,57 @@ module.exports = class SchedulerDevice extends Device {
    * @returns {String} next scheduled time
    */
   getNextScheduledTime() {
-    const { runonce } = this.getSettings();
-    if (runonce || !this.getCapabilityValue('is_enabled')) {
+    if (!this.getCapabilityValue('is_enabled')) return null;
+    return String(this.cronJob.nextDates(1));
+  }
+
+  /**
+   * @description Update schedule capability values
+   */
+  async updateScheduleCapabilityValues() {
+    const nextRun = this.getNextScheduledTime();
+
+    this.log(`${this.getName()} - updateScheduleCapabilityValues - nextRun: ${typeof nextRun} = ${nextRun}`);
+    if (!nextRun) {
       this.setCapabilityValue('text_schedule_next', null);
       this.setCapabilityValue('text_schedule_time', null);
       this.setCapabilityValue('text_schedule_date', null);
+    } else {
+      const nextTime = new Date(nextRun).toLocaleString('en-US', {
+        hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+      });
 
-      return this.homey.__('message.not_scheduled');
+      const yyyy = new Date(nextRun).toLocaleString('en-US', { year: 'numeric', timeZone: this.homey.clock.getTimezone() });
+      const mm = new Date(nextRun).toLocaleString('en-US', { month: '2-digit', timeZone: this.homey.clock.getTimezone() });
+      const dd = new Date(nextRun).toLocaleString('en-US', { day: '2-digit', timeZone: this.homey.clock.getTimezone() });
+      const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
+
+      this.setCapabilityValue('text_schedule_next', String(nextRun));
+      this.setCapabilityValue('text_schedule_time', String(nextTime));
+      this.setCapabilityValue('text_schedule_date', nextDateFormatted);
     }
-    const nextRun = this.cronJob.nextDates(1);
-
-    const nextTime = new Date(nextRun).toLocaleString('en-US', {
-      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
-    });
-
-    const yyyy = new Date(nextRun).toLocaleString('en-US', { year: 'numeric', timeZone: this.homey.clock.getTimezone() });
-    const mm = new Date(nextRun).toLocaleString('en-US', { month: '2-digit', timeZone: this.homey.clock.getTimezone() });
-    const dd = new Date(nextRun).toLocaleString('en-US', { day: '2-digit', timeZone: this.homey.clock.getTimezone() });
-    const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
-
-    this.setCapabilityValue('text_schedule_next', String(nextRun));
-    this.setCapabilityValue('text_schedule_time', String(nextTime));
-    this.setCapabilityValue('text_schedule_date', nextDateFormatted);
-
-    return String(nextRun);
   }
 
   /**
    * @description Trigger flow cards for cronjob
    */
-  async cronJobRunTriggers() {
+  async cronJobRunTriggers(runOnce = false) {
     this.log(`${this.getName()} - cronJobRunTriggers`);
 
     const timeNow = new Date().toLocaleString('en-US', {
       hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
     });
 
+    let timeNext = this.getNextScheduledTime();
+    if (runOnce) timeNext = String(null);
     this.homey.flow.getDeviceTriggerCard('device_schedule_triggered')
       .trigger(this, {
         name: this.getName(),
         time: timeNow,
-        next: this.getNextScheduledTime(),
+        next: timeNext,
       })
       .catch(this.error)
-      .then(this.log(`${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${this.getNextScheduledTime()}`));
+      .then(this.log(`${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`));
 
     this.log(`${this.getName()} - cronJobRunTriggers - done`);
   }
