@@ -46,5 +46,8 @@
   },
   "1.9.1": {
     "en": "ADD: Date and Time values as sensors for next scheduled trigger"
+  },
+  "1.9.2": {
+    "en": "FIX: runOnce devices' capability update after run"
   }
 }
