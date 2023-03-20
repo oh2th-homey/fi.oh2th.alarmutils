@@ -49,5 +49,8 @@
   },
   "1.9.2": {
     "en": "FIX: runOnce devices' capability update after run"
+  },
+  "1.9.3": {
+    "en": "ADD: Insights/History for is_enabled capability"
   }
 }
