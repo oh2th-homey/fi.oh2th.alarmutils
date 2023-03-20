@@ -11,5 +11,13 @@
   "uiQuickAction": true,
   "getable": true,
   "setable": true,
-  "insights": false
+  "insights": true,
+  "capabilitiesOptions": {
+    "insightsTitleTrue": {
+      "en": "Schedule was enabled"
+    },
+    "insightsTitleFalse": {
+      "en": "Schedule was disabled"
+    }
+  }
 }
