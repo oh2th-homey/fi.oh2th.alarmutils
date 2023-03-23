@@ -52,5 +52,8 @@
   },
   "1.9.3": {
     "en": "ADD: Insights/History for is_enabled capability"
+  },
+  "1.9.4": {
+    "en": "Homey-API to 1.10.20 and Cron node-module to 2.3.0, which should increase stability."
   }
 }
