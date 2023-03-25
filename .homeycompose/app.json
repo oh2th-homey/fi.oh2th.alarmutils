@@ -1,6 +1,6 @@
 {
   "id": "fi.oh2th.alarmutils",
-  "version": "1.9.5",
+  "version": "2.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
@@ -15,8 +15,7 @@
   "category": [
     "tools"
   ],
-  "permissions": [
-  ],
+  "permissions": [],
   "images": {
     "small": "/assets/images/small.png",
     "large": "/assets/images/large.png",
