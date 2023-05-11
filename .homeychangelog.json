@@ -61,5 +61,8 @@
   },
   "2.0.0": {
     "en": "BREAK: Removed Homey Alarm API access and the need to manage everything on your Homey."
+  },
+  "2.0.1": {
+    "en": "Swap nextDates() function to nextDate() to prevent some unexpected crashes from cron library."
   }
 }
