@@ -229,7 +229,7 @@ module.exports = class SchedulerDevice extends Device {
    */
   getNextScheduledTime() {
     if (!this.getCapabilityValue('is_enabled')) return null;
-    return String(this.cronJob.nextDates(1));
+    return String(this.cronJob.nextDate());
   }
 
   /**
