@@ -64,5 +64,8 @@
   },
   "2.0.1": {
     "en": "Swap nextDates() function to nextDate() to prevent some unexpected crashes from cron library."
+  },
+  "2.0.2": {
+    "en": "First release for 2.0 - Removes Homey-API and management of Homey Alarms"
   }
 }
