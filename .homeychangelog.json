@@ -67,5 +67,8 @@
   },
   "2.0.2": {
     "en": "First release for 2.0 - Removes Homey-API and management of Homey Alarms"
+  },
+  "2.0.3": {
+    "en": "FIX: Catch promise rejects from createNotification."
   }
 }
