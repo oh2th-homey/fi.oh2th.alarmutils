@@ -90,11 +90,11 @@ class AlarmUtils extends Homey.App {
 
     await this.homey.notifications.createNotification({
       excerpt: ntfy_deprecation_01,
-    });
+    }).catch(this.error);
 
     await this.homey.notifications.createNotification({
       excerpt: ntfy_deprecation_02,
-    });
+    }).catch(this.error);
   }
 
 }
