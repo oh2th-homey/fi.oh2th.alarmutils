@@ -18,7 +18,6 @@ class AlarmUtils extends Homey.App {
     await flowConditions.init(this);
     await flowTriggers.init(this);
 
-    this.sendNotifications();
     this.initAppCronJob();
 
     this.log(`${this.myAppIdVersion} - onInit - started.`);
@@ -82,19 +81,6 @@ class AlarmUtils extends Homey.App {
         }
       }
     });
-  }
-
-  async sendNotifications() {
-    const ntfy_deprecation_01 = '[Action Scheduler] (1/2) - Support for the Homey Alarms API is now removed.';
-    const ntfy_deprecation_02 = '[Action Scheduler] (2/2) - Please migrate your flows to use the included Scheduler device.';
-
-    await this.homey.notifications.createNotification({
-      excerpt: ntfy_deprecation_01,
-    }).catch(this.error);
-
-    await this.homey.notifications.createNotification({
-      excerpt: ntfy_deprecation_02,
-    }).catch(this.error);
   }
 
 }
