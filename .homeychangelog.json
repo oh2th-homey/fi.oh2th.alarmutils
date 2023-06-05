@@ -70,5 +70,8 @@
   },
   "2.0.3": {
     "en": "FIX: Catch promise rejects from createNotification."
+  },
+  "2.0.4": {
+    "en": "More error handling in getNextScheduledTime() to handle https://github.com/kelektiv/node-cron/issues/467 related issues."
   }
 }
