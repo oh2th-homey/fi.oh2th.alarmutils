@@ -73,5 +73,8 @@
   },
   "2.0.4": {
     "en": "More error handling in getNextScheduledTime() to handle https://github.com/kelektiv/node-cron/issues/467 related issues."
+  },
+  "2.0.5": {
+    "en": "Try to catch errors from cron library related to https://github.com/kelektiv/node-cron/issues/467"
   }
 }
