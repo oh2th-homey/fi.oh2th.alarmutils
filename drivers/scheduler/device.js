@@ -208,8 +208,13 @@ module.exports = class SchedulerDevice extends Device {
    */
   async schedulerEnable() {
     this.log(`${this.getName()} - schedulerEnable`);
-    this.cronJob.start();
-    await this.setCapabilityValue('is_enabled', true);
+    try {
+      this.cronJob.start();
+      await this.setCapabilityValue('is_enabled', true);
+    } catch (error) {
+      await this.setCapabilityValue('is_enabled', false);
+      this.error(`${this.getName()} - schedulerEnable - error: ${error}`);
+    }
     this.updateScheduleCapabilityValues();
   }
 
