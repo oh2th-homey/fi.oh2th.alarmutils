@@ -3,7 +3,9 @@
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob, CronTime } = require('cron');
-const { strToMins, minsToStr, checkCapabilities } = require('../../lib/helpers');
+const {
+  strToMins, minsToStr, checkCapabilities, isTimeValidCron,
+} = require('../../lib/helpers');
 
 module.exports = class SchedulerDevice extends Device {
 
@@ -22,7 +24,8 @@ module.exports = class SchedulerDevice extends Device {
     // */2:*/70
     //
     // If this is updated, also update the regex in the pair/scheduler.html file
-    this.timePattern = new RegExp(/^(\b([0-9]|[01][0-9]|2[0-3])\b|(\*)((\/)(\b([2-9]|1[0-9]|2[0-4])\b))?):(\b([0-9]|[0-5][0-9])\b|(\*)((\/)(\b([2-9]|[1-5][0-9]|60)\b))?)$/);
+    // eslint-disable-next-line max-len, no-useless-escape
+    this.timePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
 
     checkCapabilities(this);
     await this.initCapabilityListeners();
@@ -315,7 +318,7 @@ module.exports = class SchedulerDevice extends Device {
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME '${time}'`);
 
     if (!this.timePattern.test(time)) {
-      this.error(`${this.getName()} - onSettings - Invalid time string format: ${time}`);
+      this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - Invalid time string format: ${time}`);
       return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
     }
 

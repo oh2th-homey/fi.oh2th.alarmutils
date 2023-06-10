@@ -2,6 +2,8 @@
   // Set default timezone
   document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
   validZones = Intl.supportedValuesOf('timeZone');
+  // Regex to validate time input
+  const timePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
 
   $(function () {
     $('#function_add').click(function () {
@@ -22,7 +24,7 @@
         document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
-      if (!document.getElementById('time').checkValidity()) {
+      if (!timePattern.test(document.getElementById('time').value)) {
         Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${document.getElementById('time').value}`);
         document.getElementById('function_add').classList.remove('is-loading');
         return;
@@ -72,7 +74,7 @@
 
     <div class="homey-form-group">
       <label class="homey-form-label" for="time" data-i18n="settings.time"><!--settings.time--></label>
-      <input class="homey-form-input" id="time" type="text" pattern="^(\b([0-9]|[01][0-9]|2[0-3])\b|(\*)((\/)(\b([2-9]|1[0-9]|2[0-4])\b))?):(\b([0-9]|[0-5][0-9])\b|(\*)((\/)(\b([2-9]|[1-5][0-9]|60)\b))?)$" value="13:00" />
+      <input class="homey-form-input" id="time" type="text" value="13:00" />
       <p class="homey-form-label" data-i18n="settings.time_help"><!--settings.time_help--></p>
     </div>
 
