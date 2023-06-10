@@ -76,5 +76,8 @@
   },
   "2.0.5": {
     "en": "Try to catch errors from cron library related to https://github.com/kelektiv/node-cron/issues/467"
+  },
+  "2.1.0": {
+    "en": "ADD: Extended cron syntax for hours and minutes to support ranges."
   }
 }
