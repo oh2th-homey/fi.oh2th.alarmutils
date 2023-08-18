@@ -84,6 +84,6 @@
     "en": "ADD: Sentry logging for uncaughtRejections"
   },
   "2.1.2": {
-    "en": "FIX: Update crom to 2.4.1 hopefully fixing kelektiv/node-cron#467"
+    "en": "FIX: Update cron to 2.4.1 hopefully fixing kelektiv/node-cron#467"
   }
 }
