@@ -13,7 +13,7 @@
     "eslint-config-athom": "^0.0.5"
   },
   "dependencies": {
-    "cron": "^2.4.0",
+    "cron": "^2.4.1",
     "homey-log": "^2.1.0"
   }
 }
