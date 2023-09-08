@@ -138,6 +138,7 @@ module.exports = class SchedulerDevice extends Device {
 			return { cronTime, timeZone, runOnce };
 		} catch (error) {
 			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
+			return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
 		}
 	}
 
