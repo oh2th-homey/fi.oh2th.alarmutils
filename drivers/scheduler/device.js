@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 'use strict';
 
 const { Device } = require('homey');
@@ -121,13 +120,7 @@ module.exports = class SchedulerDevice extends Device {
 			settings.repeat_saturday ? '6' : null,
 		].filter((element) => element).join(',');
 
-		if (weekdays === '') {
-			weekdays = '*';
-			this.setCapabilityValue('is_enabled', false);
-		} else if (weekdays === '0,1,2,3,4,5,6') {
-			weekdays = '*';
-			this.setCapabilityValue('is_enabled', true);
-		}
+		if (weekdays === '' || weekdays === '0,1,2,3,4,5,6') weekdays = '*';
 
 		const cronTime = `0 ${minutes} ${hours} * * ${weekdays}`;
 		const timeZone = settings.timezone;
@@ -135,6 +128,7 @@ module.exports = class SchedulerDevice extends Device {
 		try {
 			// eslint-disable-next-line no-new
 			new CronTime(cronTime, timeZone);
+			this.log(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}]`);
 			return { cronTime, timeZone, runOnce };
 		} catch (error) {
 			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
@@ -225,8 +219,10 @@ module.exports = class SchedulerDevice extends Device {
 	 * @description Disable cronjob
 	 */
 	async schedulerDisable() {
-		this.log(`${this.getName()} - schedulerDisable`);
-		this.cronJob.stop();
+		if (typeof this.cronJob !== 'undefined') {
+			this.log(`${this.getName()} - schedulerDisable`);
+			this.cronJob.stop();
+		}
 		await this.setCapabilityValue('is_enabled', false);
 		this.updateScheduleCapabilityValues();
 	}
