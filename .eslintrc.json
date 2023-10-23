@@ -30,7 +30,8 @@
         "func-names": "off",
 	      "quote-props": ["error", "consistent-as-needed", { "keywords": true }],
         "dot-notation": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "no-useless-escape": "off"
       }
     }
   ]
