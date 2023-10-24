@@ -4,6 +4,9 @@ const Homey = require('homey');
 const { Log } = require('homey-log');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob } = require('cron');
+// Cron matcher from https://github.com/datasert/cronjs
+const cronMatcher = require('@datasert/cronjs-matcher');
+// App specific modules.
 const flowActions = require('./lib/flows/actions');
 const flowConditions = require('./lib/flows/conditions');
 const flowTriggers = require('./lib/flows/triggers');
@@ -75,7 +78,7 @@ class AlarmUtils extends Homey.App {
 					minutesToNext: state.minutes,
 				};
 
-				// If next trigger in in the future trigger the device_schedule_trigger_in flow card.
+				// If next trigger is in the future trigger the device_schedule_trigger_in flow card.
 				if (dateTimeNext > dateTimeNow) {
 					this.homey.flow.getDeviceTriggerCard('device_schedule_trigger_in')
 						.trigger(schedulerDevice, tokens, state)
