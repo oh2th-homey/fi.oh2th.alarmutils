@@ -241,6 +241,25 @@
     "conditions": [
       {
         "title": {
+          "en": "Current date !{{matches|doesn't match}} cron expression."
+        },
+        "titleFormatted": {
+          "en": "Current date !{{matches|doesn't match}} [[cronExpr]] expression."
+        },
+        "hint": {
+          "en": "Test if the current date matches a cron expression."
+        },
+        "args": [
+          {
+            "name": "cronExpr",
+            "type": "text",
+            "placeholder": "0/5 0 1 * 1-3,10-12"
+          }
+        ],
+        "id": "is_crontime_match"
+      },
+      {
+        "title": {
           "en": "!{{Is|Isn't}} enabled"
         },
         "hint": {

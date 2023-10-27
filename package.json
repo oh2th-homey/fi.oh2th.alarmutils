@@ -15,6 +15,7 @@
   "dependencies": {
     "@datasert/cronjs-matcher": "^1.2.0",
     "cron": "^2.4.1",
+    "cron-parser": "^4.9.0",
     "homey-log": "^2.1.0"
   }
 }
