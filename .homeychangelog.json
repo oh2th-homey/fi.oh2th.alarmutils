@@ -88,5 +88,8 @@
   },
   "2.1.3": {
     "en": "FIX: Some common crash reports on restartCronjob."
+  },
+  "2.2.0": {
+    "en": "New condiion card - Current date [matches|doesn't match] cron expression."
   }
 }
