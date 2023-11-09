@@ -12,21 +12,7 @@ module.exports = class mainDevice extends Device {
 	async onInit() {
 		this.log(`${this.getName()} - onInit`);
 
-		// For validating time string input from action cards and settings
-		// Test against valid time string formats:
-		// 13:00
-		// *:*
-		// 00:*
-		// 01:*/5
-		// Test against invalid time string formats:
-		// 24:00
-		// 12:60
-		// */2:*/70
-		//
-		// If this is updated, also update the regex in the pair/scheduler.html file
-		// eslint-disable-next-line max-len, no-useless-escape
-		this.timePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
-
+		this.setTimePattern(this);
 		checkCapabilities(this);
 		await this.initCapabilityListeners();
 
@@ -92,6 +78,23 @@ module.exports = class mainDevice extends Device {
 			this.cronJob = undefined;
 		}
 		this.log(`${this.getName()} - onDeleted - done`);
+	}
+
+	setTimePattern() {
+		// For validating time string input from action cards and settings
+		// Test against valid time string formats:
+		// 13:00
+		// *:*
+		// 00:*
+		// 01:*/5
+		// Test against invalid time string formats:
+		// 24:00
+		// 12:60
+		// */2:*/70
+		//
+		// If this is updated, also update the regex in the pair/configure.html file
+		// eslint-disable-next-line max-len, no-useless-escape
+		this.timePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
 	}
 
 	/**
