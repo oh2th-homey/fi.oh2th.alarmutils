@@ -1,0 +1,23 @@
+{
+  "class": "sensor",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "capabilities": [
+    "is_enabled",
+    "text_schedule_next",
+    "text_schedule_date",
+    "text_schedule_time"
+  ],
+  "pair": [
+    {
+      "id": "configure"
+    }
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  }
+}

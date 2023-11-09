@@ -702,30 +702,31 @@
   },
   "drivers": [
     {
-      "name": {
-        "en": "Scheduler"
-      },
       "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
       "capabilities": [
         "is_enabled",
         "text_schedule_next",
         "text_schedule_date",
         "text_schedule_time"
       ],
-      "platforms": [
-        "local"
+      "pair": [
+        {
+          "id": "configure"
+        }
       ],
-      "connectivity": [],
       "images": {
         "small": "/drivers/scheduler/assets/images/small.png",
         "large": "/drivers/scheduler/assets/images/large.png",
         "xlarge": "/drivers/scheduler/assets/images/xlarge.png"
       },
-      "pair": [
-        {
-          "id": "scheduler"
-        }
-      ],
+      "name": {
+        "en": "Scheduler"
+      },
+      "id": "scheduler",
       "settings": [
         {
           "type": "group",
@@ -843,8 +844,7 @@
             }
           ]
         }
-      ],
-      "id": "scheduler"
+      ]
     }
   ],
   "capabilities": {
