@@ -1,0 +1,109 @@
+<script type="application/javascript">
+  // Set default timezone
+  document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
+  validZones = Intl.supportedValuesOf('timeZone');
+
+  // Regex to validate time input
+  const timePattern = new RegExp(/^((@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,6}))$/);
+
+  function randomUUID () {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const uuidLength = 8;
+    const timestamp = new Date().getTime().toString();
+    let uuid = '';
+    const seed = timestamp + characters;
+
+    for (let i = 0; i < uuidLength; i++) {
+      const randomIndex = Math.floor(Math.random() * seed.length);
+      uuid += seed.charAt(randomIndex);
+    }
+
+    return uuid;
+  };
+
+  // Call the validateAndAddDevice function when the 'Add' button is clicked
+  $(function () {
+    $('#function_add').click(function () {
+      document.getElementById('function_add').classList.add('is-loading');
+
+      // Validate input - Device name
+      const name = document.getElementById('name').value;
+      if (name === undefined || name === null || name === '' || !name) {
+        Homey.alert(Homey.__('settings.error.name_required'));
+        document.getElementById('function_add').classList.remove('is-loading');
+        return;
+      }
+
+      // Validate input - Timezone
+      const timezone = document.getElementById('timezone').value;
+      if (!validZones.includes(timezone)) {
+        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${timezone}`);
+        document.getElementById('function_add').classList.remove('is-loading');
+        return;
+      }
+
+      // Validate input - Crontime
+      const crontime = document.getElementById('crontime').value;
+      if (!timePattern.test(crontime)) {
+        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${crontime}`);
+        document.getElementById('function_add').classList.remove('is-loading');
+        return;
+      }
+
+      console.log('Adding device');
+      Homey.createDevice({
+        name,
+        data: {
+          id: randomUUID(),
+        },
+        store: {},
+        settings: {
+          crontime,
+          timezone,
+          runonce: document.getElementsByName('runonce')[0].checked,
+        },
+      }).catch(Homey.alert(Homey.__('settings.error.add_device')));
+      console.log('Device added, closing session');
+      Homey.done();
+    });
+  });
+</script>
+
+<header class="homey-header">
+  <h1 class="homey-title" data-i18n="settings.title"><!--settings.title--></h1>
+</header>
+
+<form class="homey-form">
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend" data-i18n="settings.configuration"><!--settings.configuration--></legend>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
+      <input class="homey-form-input" id="name" type="text" value="Cronjob" />
+    </div>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="crontime" data-i18n="settings.crontime"><!--settings.crontime--></label>
+      <input class="homey-form-input" id="crontime" type="text" value="0 13 * * *" />
+      <p class="homey-form-label" data-i18n="settings.crontime_help"><!--settings.crontime_help--></p>
+    </div>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="timezone" data-i18n="settings.timezone"><!--settings.timezone--></label>
+      <input class="homey-form-input" id="timezone" type="text" value='' />
+    </div>
+  </fieldset>
+
+  <fieldset class="homey-form-checkbox-set">
+    <label class="homey-form-checkbox">
+      <input class="homey-form-checkbox-input" type="checkbox" name="runonce" />
+      <span class="homey-form-checkbox-checkmark"></span>
+      <span class="homey-form-checkbox-text" data-i18n="settings.runonce"><!--settings.runonce--></span>
+    </label>
+  </fieldset>
+
+  <div class="homey-form-group buttons">
+    <button class="homey-button-primary-full" id="function_add"
+      data-i18n="settings.function_add"><!--settings.function_add--></button>
+  </div>
+</form>

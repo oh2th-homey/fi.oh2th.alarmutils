@@ -1,0 +1,35 @@
+[
+  {
+    "id": "crontime",
+    "type": "text",
+    "label": {
+      "en": "Crontab pattern"
+    },
+    "hint": {
+      "en": "Crontab pattern for scheduling actions. See https://crontab.guru/ for help."
+    },
+    "value": "5 4 * * *"
+  },
+  {
+    "id": "timezone",
+    "type": "text",
+    "label": {
+      "en": "Timezone"
+    },
+    "hint": {
+      "en": "Timezone name from TZ database."
+    },
+    "value": "Europe/Helsinki"
+  },
+  {
+    "id": "runonce",
+    "type": "checkbox",
+    "label": {
+      "en": "Run Once"
+    },
+    "hint": {
+      "en": "Stop the scheduler after first execution."
+    },
+    "value": false
+  }
+]

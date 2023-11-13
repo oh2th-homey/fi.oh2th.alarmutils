@@ -719,6 +719,68 @@
         }
       ],
       "images": {
+        "small": "/drivers/crontab/assets/images/small.png",
+        "large": "/drivers/crontab/assets/images/large.png",
+        "xlarge": "/drivers/crontab/assets/images/xlarge.png"
+      },
+      "name": {
+        "en": "Crontab"
+      },
+      "id": "crontab",
+      "settings": [
+        {
+          "id": "crontime",
+          "type": "text",
+          "label": {
+            "en": "Crontab pattern for scheduling actions"
+          },
+          "hint": {
+            "en": "Crontab pattern for scheduling actions. See https://crontab.guru/ for help."
+          },
+          "value": "5 4 * * *"
+        },
+        {
+          "id": "timezone",
+          "type": "text",
+          "label": {
+            "en": "Timezone"
+          },
+          "hint": {
+            "en": "Timezone name from TZ database."
+          },
+          "value": "Europe/Helsinki"
+        },
+        {
+          "id": "runonce",
+          "type": "checkbox",
+          "label": {
+            "en": "Run Once"
+          },
+          "hint": {
+            "en": "Stop the scheduler after first execution."
+          },
+          "value": false
+        }
+      ]
+    },
+    {
+      "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "capabilities": [
+        "is_enabled",
+        "text_schedule_next",
+        "text_schedule_date",
+        "text_schedule_time"
+      ],
+      "pair": [
+        {
+          "id": "configure"
+        }
+      ],
+      "images": {
         "small": "/drivers/scheduler/assets/images/small.png",
         "large": "/drivers/scheduler/assets/images/large.png",
         "xlarge": "/drivers/scheduler/assets/images/xlarge.png"
