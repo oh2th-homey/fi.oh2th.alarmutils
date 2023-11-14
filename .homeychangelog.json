@@ -91,5 +91,8 @@
   },
   "2.2.0": {
     "en": "New condition card - Current date [matches|doesn't match] cron expression."
+  },
+  "2.3.0": {
+    "en": "NEW: Scheduler with crontab style configuration"
   }
 }
