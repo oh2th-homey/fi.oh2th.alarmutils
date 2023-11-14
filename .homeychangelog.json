@@ -94,5 +94,8 @@
   },
   "2.3.0": {
     "en": "NEW: Scheduler with crontab style configuration"
+  },
+  "2.3.1": {
+    "en": "NEW: Scheduler with crontab style configuration"
   }
 }
