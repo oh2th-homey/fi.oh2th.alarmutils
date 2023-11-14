@@ -12,7 +12,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler,crontab"
+      "filter": "driver_id=scheduler|crontab"
     }
   ]
 }
