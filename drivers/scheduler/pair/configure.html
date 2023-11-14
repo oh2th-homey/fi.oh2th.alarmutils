@@ -22,38 +22,44 @@
     return uuid;
   };
 
-
   $(function () {
     $('#function_add').click(function () {
       document.getElementById('function_add').classList.add('is-loading');
 
-      // Validate input
-      if (!document.getElementById('name').value) {
+      // Validate input - Device name
+      const name = document.getElementById('name').value;
+      if (name === undefined || name === null || name === '' || !name) {
         Homey.alert(Homey.__('settings.error.name_required'));
         document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
-      if (!timePattern.test(document.getElementById('time').value)) {
-        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${document.getElementById('time').value}`);
+
+      // Validate input - Timezone
+      const timezone = document.getElementById('timezone').value;
+      if (!validZones.includes(timezone)) {
+        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${timezone}`);
         document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
-      if (!validZones.includes(document.getElementById('timezone').value)) {
-        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${document.getElementById('timezone').value}`);
+
+      // Validate input - Crontime
+      const time = document.getElementById('time').value;
+      if (!timePattern.test(time)) {
+        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${time}`);
         document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Create device
       Homey.createDevice({
-        name: document.getElementById('name').value,
+        name,
         data: {
           id: randomUUID(),
         },
         store: {},
         settings: {
-          time: document.getElementById('time').value,
-          timezone: document.getElementById('timezone').value,
+          time,
+          timezone,
           runonce: document.getElementsByName('runonce')[0].checked,
           repeat_monday: document.getElementsByName('repeat_monday')[0].checked,
           repeat_tuesday: document.getElementsByName('repeat_tuesday')[0].checked,

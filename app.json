@@ -74,7 +74,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           },
           {
             "type": "number",
@@ -142,7 +142,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "tokens": [
@@ -190,7 +190,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "tokens": [
@@ -269,7 +269,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_enabled"
@@ -468,7 +468,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_scheduled_in"
@@ -487,7 +487,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_scheduled_next_week"
@@ -506,7 +506,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_scheduled_this_week"
@@ -525,7 +525,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_scheduled_today"
@@ -544,7 +544,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "is_scheduled_tomorrow"
@@ -569,7 +569,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler"
+            "filter": "driver_id=scheduler,crontab"
           }
         ],
         "id": "device_is_enabled"
@@ -716,6 +716,10 @@
       "pair": [
         {
           "id": "configure"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
         }
       ],
       "images": {
@@ -729,10 +733,10 @@
       "id": "crontab",
       "settings": [
         {
-          "id": "crontime",
+          "id": "time",
           "type": "text",
           "label": {
-            "en": "Crontab pattern for scheduling actions"
+            "en": "Crontab pattern"
           },
           "hint": {
             "en": "Crontab pattern for scheduling actions. See https://crontab.guru/ for help."
@@ -778,6 +782,10 @@
       "pair": [
         {
           "id": "configure"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
         }
       ],
       "images": {

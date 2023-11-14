@@ -1,6 +1,6 @@
 [
   {
-    "id": "crontime",
+    "id": "time",
     "type": "text",
     "label": {
       "en": "Crontab pattern"

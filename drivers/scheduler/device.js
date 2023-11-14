@@ -7,6 +7,33 @@ const { CronTime } = require('cron');
 
 module.exports = class SchedulerDevice extends mainDevice {
 
+	async onSettings({ oldSettings, newSettings, changedKeys }) {
+		this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
+
+		// Check input from newSettings for time string format
+		if (changedKeys.includes('time')) {
+			if (!this.cronTimePattern.test(newSettings.time)) {
+				this.error(`${this.getName()} - onSettings - Invalid time string format: ${newSettings.time}`);
+				return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
+			}
+		}
+
+		// Check input from newSettings for timezones
+		if (changedKeys.includes('timezone')) {
+			const dt = new Date();
+			try {
+				dt.toLocaleString('en-US', { timeZone: newSettings.timezone });
+			} catch (error) {
+				this.error(`${this.getName()} - onSettings - Invalid timezone: ${newSettings.timezone}`);
+				return Promise.reject(new Error(this.homey.__('settings.error.timezone_invalid')));
+			}
+		}
+
+		this.restartCronJob(newSettings);
+
+		this.log(`${this.getName()} - onSettings - done`);
+	}
+
 	/**
 	 * @description set the crontime pattern
 	 */

@@ -6,7 +6,8 @@
   // Regex to validate time input
   const timePattern = new RegExp(/^((@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,6}))$/);
 
-  function randomUUID () {
+    // randomUUID function
+    function randomUUID () {
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const uuidLength = 8;
     const timestamp = new Date().getTime().toString();
@@ -43,14 +44,14 @@
       }
 
       // Validate input - Crontime
-      const crontime = document.getElementById('crontime').value;
-      if (!timePattern.test(crontime)) {
-        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${crontime}`);
+      const time = document.getElementById('crontime').value;
+      if (!timePattern.test(time)) {
+        Homey.alert(`${Homey.__('settings.error.crontime_invalid')}: ${time}`);
         document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
-      console.log('Adding device');
+      // Create device
       Homey.createDevice({
         name,
         data: {
@@ -58,12 +59,16 @@
         },
         store: {},
         settings: {
-          crontime,
+          time,
           timezone,
           runonce: document.getElementsByName('runonce')[0].checked,
         },
-      }).catch(Homey.alert(Homey.__('settings.error.add_device')));
-      console.log('Device added, closing session');
+      }).then(result => {
+        console.log('configure - Device created');
+      }).catch(error => {
+        Homey.alert(error);
+        document.getElementById('function_add').classList.remove('is-loading');
+      });
       Homey.done();
     });
   });

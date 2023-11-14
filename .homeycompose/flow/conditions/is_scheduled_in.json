@@ -47,7 +47,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler"
+      "filter": "driver_id=scheduler,crontab"
     }
   ]
 }
