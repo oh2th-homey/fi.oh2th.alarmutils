@@ -12,7 +12,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler|crontab"
+      "filter": "driver_id=scheduler|crontime"
     },
     {
       "type": "number",
@@ -34,6 +34,16 @@
       },
       "example": {
         "en": "Schedule's name"
+      }
+    },
+    {
+      "type": "string",
+      "name": "date",
+      "title": {
+        "en": "Schedule Date"
+      },
+      "example": {
+        "en": "2023-11-18"
       }
     },
     {

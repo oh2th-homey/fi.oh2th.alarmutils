@@ -74,7 +74,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler|crontab"
+            "filter": "driver_id=scheduler|crontime"
           },
           {
             "type": "number",
@@ -96,6 +96,16 @@
             },
             "example": {
               "en": "Schedule's name"
+            }
+          },
+          {
+            "type": "string",
+            "name": "date",
+            "title": {
+              "en": "Schedule Date"
+            },
+            "example": {
+              "en": "2023-11-18"
             }
           },
           {
@@ -142,7 +152,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler|crontab"
+            "filter": "driver_id=scheduler|crontime"
           }
         ],
         "tokens": [
@@ -158,9 +168,19 @@
           },
           {
             "type": "string",
+            "name": "date",
+            "title": {
+              "en": "Triggered Date"
+            },
+            "example": {
+              "en": "2023-11-18"
+            }
+          },
+          {
+            "type": "string",
             "name": "time",
             "title": {
-              "en": "Schedule Time"
+              "en": "Triggered Time"
             },
             "example": {
               "en": "18:07"
@@ -190,7 +210,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler|crontab"
+            "filter": "driver_id=scheduler|crontime"
           }
         ],
         "tokens": [
@@ -212,6 +232,16 @@
             },
             "example": {
               "en": "true"
+            }
+          },
+          {
+            "type": "string",
+            "name": "date",
+            "title": {
+              "en": "Schedule Date"
+            },
+            "example": {
+              "en": "2023-11-18"
             }
           },
           {
@@ -569,7 +599,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=scheduler|crontab"
+            "filter": "driver_id=scheduler|crontime"
           }
         ],
         "id": "device_is_enabled"
@@ -671,6 +701,35 @@
       },
       {
         "title": {
+          "en": "Crontime"
+        },
+        "titleFormatted": {
+          "en": "Set cron time to [[time]]"
+        },
+        "hint": {
+          "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "time",
+            "title": {
+              "en": "Cron time"
+            },
+            "placeholder": {
+              "en": "5 4 * * *"
+            }
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=crontime"
+          }
+        ],
+        "id": "device_schedule_crontime"
+      },
+      {
+        "title": {
           "en": "Scheduler time"
         },
         "titleFormatted": {
@@ -723,23 +782,23 @@
         }
       ],
       "images": {
-        "small": "/drivers/crontab/assets/images/small.png",
-        "large": "/drivers/crontab/assets/images/large.png",
-        "xlarge": "/drivers/crontab/assets/images/xlarge.png"
+        "small": "/drivers/crontime/assets/images/small.png",
+        "large": "/drivers/crontime/assets/images/large.png",
+        "xlarge": "/drivers/crontime/assets/images/xlarge.png"
       },
       "name": {
-        "en": "Crontab"
+        "en": "Cron Time"
       },
-      "id": "crontab",
+      "id": "crontime",
       "settings": [
         {
           "id": "time",
           "type": "text",
           "label": {
-            "en": "Crontab pattern"
+            "en": "Cron time pattern"
           },
           "hint": {
-            "en": "Crontab pattern for scheduling actions. See https://crontab.guru/ for help."
+            "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
           },
           "value": "5 4 * * *"
         },

@@ -3,8 +3,6 @@
 const Homey = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob } = require('cron');
-// Cron matcher from https://github.com/datasert/cronjs
-const cronMatcher = require('@datasert/cronjs-matcher');
 // App specific modules.
 const flowActions = require('./lib/flows/actions');
 const flowConditions = require('./lib/flows/conditions');
@@ -28,8 +26,8 @@ class AlarmUtils extends Homey.App {
 
 	async onUninit() {
 		this.log(`${this.myAppIdVersion} - onUninit - stopping...`);
-		this.cronJob.stop();
-		this.cronJob = undefined;
+		this.appCronJob.stop();
+		this.appCronJob = undefined;
 		this.log(`${this.myAppIdVersion} - onUninit - stopped.`);
 	}
 
@@ -54,23 +52,33 @@ class AlarmUtils extends Homey.App {
 		// Get all configured scheduler devices.
 		const schedulerDriver = this.homey.drivers.getDriver('scheduler');
 		const schedulerDevices = schedulerDriver.getDevices();
+		const crontimeDriver = this.homey.drivers.getDriver('crontime');
+		const crontimeDevices = crontimeDriver.getDevices();
 
+		const devices = [...schedulerDevices, ...crontimeDevices];
 		// Iterate over all active scheduler devices.
-		schedulerDevices.forEach((schedulerDevice) => {
-			if (schedulerDevice.getCapabilityValue('is_enabled') === true) {
+		devices.forEach((device) => {
+			if (device.getCapabilityValue('is_enabled') === true) {
 				const dateTimeNow = new Date();
+				const tz = this.homey.clock.getTimezone();
 
-				const nextScheduledTime = schedulerDevice.getNextScheduledTime();
+				const nextScheduledTime = device.getNextScheduledTime();
 				const dateTimeNext = new Date(nextScheduledTime);
 
 				const scheduledTime = dateTimeNext.toLocaleString('en-US', {
-					hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+					hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz,
 				});
+
+				const yyyy = dateTimeNext.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+				const mm = dateTimeNext.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+				const dd = dateTimeNext.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+				const scheduledDate = `${yyyy}-${mm}-${dd}`;
 
 				const state = { minutes: Math.abs(Math.floor((dateTimeNext - dateTimeNow) / 60000)) + 1 };
 
 				const tokens = {
-					name: schedulerDevice.getName(),
+					name: device.getName(),
+					date: scheduledDate,
 					time: scheduledTime,
 					next: nextScheduledTime,
 					minutesToNext: state.minutes,
@@ -79,7 +87,7 @@ class AlarmUtils extends Homey.App {
 				// If next trigger is in the future trigger the device_schedule_trigger_in flow card.
 				if (dateTimeNext > dateTimeNow) {
 					this.homey.flow.getDeviceTriggerCard('device_schedule_trigger_in')
-						.trigger(schedulerDevice, tokens, state)
+						.trigger(device, tokens, state)
 						.catch(this.error);
 				}
 			}

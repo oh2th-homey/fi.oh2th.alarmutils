@@ -3,10 +3,10 @@
     "id": "time",
     "type": "text",
     "label": {
-      "en": "Crontab pattern"
+      "en": "Cron time pattern"
     },
     "hint": {
-      "en": "Crontab pattern for scheduling actions. See https://crontab.guru/ for help."
+      "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
     },
     "value": "5 4 * * *"
   },

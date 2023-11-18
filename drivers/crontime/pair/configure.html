@@ -51,11 +51,12 @@
         return;
       }
 
+      const uuid = randomUUID();
       // Create device
       Homey.createDevice({
-        name,
+        name: name + ' ' + uuid,
         data: {
-          id: randomUUID(),
+          id: uuid,
         },
         store: {},
         settings: {
@@ -84,7 +85,7 @@
 
     <div class="homey-form-group">
       <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
-      <input class="homey-form-input" id="name" type="text" value="Cronjob" />
+      <input class="homey-form-input" id="name" type="text" value="Crontime" />
     </div>
 
     <div class="homey-form-group">

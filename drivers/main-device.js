@@ -2,10 +2,8 @@
 
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
-const { CronJob, CronTime } = require('cron');
-const {
-	strToMins, minsToStr, checkCapabilities, isTimeValidCron,
-} = require('../lib/helpers');
+const { CronJob } = require('cron');
+const { strToMins, minsToStr, checkCapabilities } = require('../lib/helpers');
 
 module.exports = class mainDevice extends Device {
 
@@ -123,17 +121,29 @@ module.exports = class mainDevice extends Device {
 		}
 
 		const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
-		const timeNext = await this.initCronJob(cronTime, timeZone, runOnce);
+		const nextRun = await this.initCronJob(cronTime, timeZone, runOnce);
+		const tz = this.homey.clock.getTimezone();
+
+		const nextTime = new Date(nextRun).toLocaleString('en-US', {
+			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz,
+		});
+
+		const nextDate = new Date(nextRun);
+		const yyyy = nextDate.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+		const mm = nextDate.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+		const dd = nextDate.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+		const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
 		this.homey.flow.getDeviceTriggerCard('device_schedule_updated')
 			.trigger(this, {
 				name: this.getName(),
 				enabled: this.getCapabilityValue('is_enabled'),
-				time: settings.time,
-				next: String(timeNext),
+				date: nextDateFormatted,
+				time: nextTime,
+				next: String(nextRun),
 			})
 			.catch(this.error)
-			.then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(timeNext)}`));
+			.then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(nextRun)}`));
 	}
 
 	/**
@@ -210,15 +220,24 @@ module.exports = class mainDevice extends Device {
 	async cronJobRunTriggers(runOnce = false) {
 		this.log(`${this.getName()} - cronJobRunTriggers`);
 
-		const timeNow = new Date().toLocaleString('en-US', {
-			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+		const now = new Date();
+		const tz = this.homey.clock.getTimezone();
+
+		const timeNow = now.toLocaleString('en-US', {
+			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz,
 		});
+
+		const yyyy = now.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+		const mm = now.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+		const dd = now.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+		const dateNow = `${yyyy}-${mm}-${dd}`;
 
 		let timeNext = this.getNextScheduledTime();
 		if (runOnce) timeNext = String(null);
 		this.homey.flow.getDeviceTriggerCard('device_schedule_triggered')
 			.trigger(this, {
 				name: this.getName(),
+				date: dateNow,
 				time: timeNow,
 				next: timeNext,
 			})
@@ -259,6 +278,21 @@ module.exports = class mainDevice extends Device {
 		});
 		this.restartCronJob(this.getSettings());
 		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - done`);
+	}
+
+	async onAction_DEVICE_SCHEDULE_CRONTIME(crontime) {
+		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME '${crontime}'`);
+
+		if (!this.cronTimePattern.test(crontime)) {
+			this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - Invalid time string format: ${crontime}`);
+			return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
+		}
+
+		await this.setSettings({
+			time: crontime,
+		});
+		this.restartCronJob(this.getSettings());
+		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - done`);
 	}
 
 	async onAction_DEVICE_SCHEDULE_AHEAD_TIME(args) {
