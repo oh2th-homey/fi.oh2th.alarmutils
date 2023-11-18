@@ -5,6 +5,8 @@
     "name": "Scheduler name:",
     "time": "Time",
     "time_help": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute",
+    "crontime": "Cron time:",
+    "crontime_help": "The cron time to execute the scheduler. See <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> for more information.",
     "timezone": "Timezone",
     "runonce": "Run once",
     "runonce_help": "Stop the scheduler after first execution.",
@@ -17,13 +19,16 @@
     "friday": "Friday",
     "saturday": "Saturday",
     "sunday": "Sunday",
-    "function_add": "Add scheduler",
+    "function_add": "Add Scheduler",
     "error": {
       "name_required": "Name is required",
       "time_required": "Time is required",
       "time_invalid": "Enter time as [HH]:[mm], [*]:[mm], [HH]:[*] or [*]:[*]",
+      "crontime_required": "Cron time pattern is required",
+      "crontime_invalid": "Enter a valid cron time pattern. See http://crontab.guru/ for more information.",
       "timezone_required": "Timezone is required",
-      "timezone_invalid": "Enter Timezone as Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc."
+      "timezone_invalid": "Enter Timezone as Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
+      "add_device": "Error adding device"
     }
   },
   "message": {

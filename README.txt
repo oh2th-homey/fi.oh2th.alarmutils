@@ -1,1 +1,1 @@
-Dynamic flow scheduling with a Scheduler device configurable from device settings and flows.
+Dynamic scheduling with a device configurable from settings and by flows.

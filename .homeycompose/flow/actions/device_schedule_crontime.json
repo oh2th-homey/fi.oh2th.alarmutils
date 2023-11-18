@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Cron time"
+  },
+  "titleFormatted": {
+    "en": "Set cron time to [[time]]"
+  },
+  "hint": {
+    "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "time",
+      "title": {
+        "en": "Cron time"
+      },
+      "placeholder": {
+        "en": "5 4 * * *"
+      }
+    },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=crontime"
+    }
+  ]
+}

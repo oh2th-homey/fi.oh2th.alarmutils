@@ -1,0 +1,6 @@
+{
+  "name": {
+    "en": "Cron Time"
+  },
+  "$extends": [ "device" ]
+}

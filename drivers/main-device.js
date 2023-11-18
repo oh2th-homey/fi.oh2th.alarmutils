@@ -2,17 +2,15 @@
 
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
-const { CronJob, CronTime } = require('cron');
-const {
-	strToMins, minsToStr, checkCapabilities, isTimeValidCron,
-} = require('../lib/helpers');
+const { CronJob } = require('cron');
+const { strToMins, minsToStr, checkCapabilities } = require('../lib/helpers');
 
 module.exports = class mainDevice extends Device {
 
 	async onInit() {
 		this.log(`${this.getName()} - onInit`);
 
-		this.setTimePattern(this);
+		this.setCronTimePattern(this);
 		checkCapabilities(this);
 		await this.initCapabilityListeners();
 
@@ -41,29 +39,7 @@ module.exports = class mainDevice extends Device {
 
 	async onSettings({ oldSettings, newSettings, changedKeys }) {
 		this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
-
-		// Check input from newSettings for time string format
-		if (changedKeys.includes('time')) {
-			if (!this.timePattern.test(newSettings.time)) {
-				this.error(`${this.getName()} - onSettings - Invalid time string format: ${newSettings.time}`);
-				return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
-			}
-		}
-
-		// Check input from newSettings for timezones
-		if (changedKeys.includes('timezone')) {
-			const dt = new Date();
-			try {
-				dt.toLocaleString('en-US', { timeZone: newSettings.timezone });
-			} catch (error) {
-				this.error(`${this.getName()} - onSettings - Invalid timezone: ${newSettings.timezone}`);
-				return Promise.reject(new Error(this.homey.__('settings.error.timezone_invalid')));
-			}
-		}
-
-		this.restartCronJob(newSettings);
-
-		this.log(`${this.getName()} - onSettings - done`);
+		this.error(`${this.getName()} - onSettings - not implemented!`);
 	}
 
 	async onRenamed(name) {
@@ -80,63 +56,18 @@ module.exports = class mainDevice extends Device {
 		this.log(`${this.getName()} - onDeleted - done`);
 	}
 
-	setTimePattern() {
-		// For validating time string input from action cards and settings
-		// Test against valid time string formats:
-		// 13:00
-		// *:*
-		// 00:*
-		// 01:*/5
-		// Test against invalid time string formats:
-		// 24:00
-		// 12:60
-		// */2:*/70
-		//
-		// If this is updated, also update the regex in the pair/configure.html file
-		// eslint-disable-next-line max-len, no-useless-escape
-		this.timePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
+	/**
+	 * @description Set the cronTime pattern, override this in the device driver
+	 */
+	setCronTimePattern() {
+		this.error(`${this.getName()} - setCronTimePattern - not implemented!`);
 	}
 
 	/**
-	 * @description Get the cronTime string from the settings
-	 *
-	 * @param {Object} settings The settings object
-	 * @returns {Object} cronTime, timeZone, runOnce
-	 * @example
-	 * const { cronTime, timeZone, runOnce } = await this.getSettingsCronTime();
-	 * this.initCronJob(cronTime, timeZone, runOnce);
-	 * // cronTime: '0 0 12 * * 1-5'
-	 * // timeZone: 'Europe/Helsinki'
-	 * // runOnce: false (or true)
+	 * @description Get the cronTime string from the settings, override this in the device driver
 	 */
 	getSettingsCronTime(settings) {
-		const hours = settings.time.split(':')[0];
-		const minutes = settings.time.split(':')[1];
-		const runOnce = settings.runonce;
-		let weekdays = [
-			settings.repeat_sunday ? '0' : null,
-			settings.repeat_monday ? '1' : null,
-			settings.repeat_tuesday ? '2' : null,
-			settings.repeat_wednesday ? '3' : null,
-			settings.repeat_thursday ? '4' : null,
-			settings.repeat_friday ? '5' : null,
-			settings.repeat_saturday ? '6' : null,
-		].filter((element) => element).join(',');
-
-		if (weekdays === '' || weekdays === '0,1,2,3,4,5,6') weekdays = '*';
-
-		const cronTime = `0 ${minutes} ${hours} * * ${weekdays}`;
-		const timeZone = settings.timezone;
-
-		try {
-			// eslint-disable-next-line no-new
-			new CronTime(cronTime, timeZone);
-			this.log(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}]`);
-			return { cronTime, timeZone, runOnce };
-		} catch (error) {
-			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
-			return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
-		}
+		this.error(`${this.getName()} - getSettingsCronTime - not implemented!`);
 	}
 
 	/**
@@ -190,17 +121,29 @@ module.exports = class mainDevice extends Device {
 		}
 
 		const { cronTime, timeZone, runOnce } = this.getSettingsCronTime(settings);
-		const timeNext = await this.initCronJob(cronTime, timeZone, runOnce);
+		const nextRun = await this.initCronJob(cronTime, timeZone, runOnce);
+		const tz = this.homey.clock.getTimezone();
+
+		const nextTime = new Date(nextRun).toLocaleString('en-US', {
+			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz,
+		});
+
+		const nextDate = new Date(nextRun);
+		const yyyy = nextDate.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+		const mm = nextDate.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+		const dd = nextDate.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+		const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
 		this.homey.flow.getDeviceTriggerCard('device_schedule_updated')
 			.trigger(this, {
 				name: this.getName(),
 				enabled: this.getCapabilityValue('is_enabled'),
-				time: settings.time,
-				next: String(timeNext),
+				date: nextDateFormatted,
+				time: nextTime,
+				next: String(nextRun),
 			})
 			.catch(this.error)
-			.then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(timeNext)}`));
+			.then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(nextRun)}`));
 	}
 
 	/**
@@ -277,15 +220,24 @@ module.exports = class mainDevice extends Device {
 	async cronJobRunTriggers(runOnce = false) {
 		this.log(`${this.getName()} - cronJobRunTriggers`);
 
-		const timeNow = new Date().toLocaleString('en-US', {
-			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: this.homey.clock.getTimezone(),
+		const now = new Date();
+		const tz = this.homey.clock.getTimezone();
+
+		const timeNow = now.toLocaleString('en-US', {
+			hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz,
 		});
+
+		const yyyy = now.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+		const mm = now.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+		const dd = now.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+		const dateNow = `${yyyy}-${mm}-${dd}`;
 
 		let timeNext = this.getNextScheduledTime();
 		if (runOnce) timeNext = String(null);
 		this.homey.flow.getDeviceTriggerCard('device_schedule_triggered')
 			.trigger(this, {
 				name: this.getName(),
+				date: dateNow,
 				time: timeNow,
 				next: timeNext,
 			})
@@ -316,7 +268,7 @@ module.exports = class mainDevice extends Device {
 	async onAction_DEVICE_SCHEDULE_TIME(time) {
 		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME '${time}'`);
 
-		if (!this.timePattern.test(time)) {
+		if (!this.cronTimePattern.test(time)) {
 			this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - Invalid time string format: ${time}`);
 			return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
 		}
@@ -326,6 +278,21 @@ module.exports = class mainDevice extends Device {
 		});
 		this.restartCronJob(this.getSettings());
 		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - done`);
+	}
+
+	async onAction_DEVICE_SCHEDULE_CRONTIME(crontime) {
+		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME '${crontime}'`);
+
+		if (!this.cronTimePattern.test(crontime)) {
+			this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - Invalid time string format: ${crontime}`);
+			return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
+		}
+
+		await this.setSettings({
+			time: crontime,
+		});
+		this.restartCronJob(this.getSettings());
+		this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - done`);
 	}
 
 	async onAction_DEVICE_SCHEDULE_AHEAD_TIME(args) {

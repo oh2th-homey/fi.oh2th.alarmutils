@@ -4,8 +4,7 @@ const mainDevice = require('../main-device');
 // CronTime from https://github.com/kelektiv/node-cron
 const { CronTime } = require('cron');
 
-
-module.exports = class SchedulerDevice extends mainDevice {
+module.exports = class CrontabDevice extends mainDevice {
 
 	async onSettings({ oldSettings, newSettings, changedKeys }) {
 		this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
@@ -13,8 +12,8 @@ module.exports = class SchedulerDevice extends mainDevice {
 		// Check input from newSettings for time string format
 		if (changedKeys.includes('time')) {
 			if (!this.cronTimePattern.test(newSettings.time)) {
-				this.error(`${this.getName()} - onSettings - Invalid time string format: ${newSettings.time}`);
-				return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
+				this.error(`${this.getName()} - onSettings - Invalid crontime string format: ${newSettings.time}`);
+				return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
 			}
 		}
 
@@ -39,19 +38,32 @@ module.exports = class SchedulerDevice extends mainDevice {
 	 */
 	// For validating crontime string input from action cards and settings
 	// Test against valid time string formats:
-	// 13:00
-	// *:*
-	// 00:*
-	// 01:*/5
-	// Test against invalid time string formats:
-	// 24:00
-	// 12:60
-	// */2:*/70
+	// # cron
+	// 0 0 0 1 1 * 1
+	// 0 0 0 1 1 * 1,2
+	// 0 0 0 1 1 * 1,2,3
+	// 0 0 0 1 * * 1/4
+	// 0 0 0 * * 0 1-4
+	// 0 0 0 * * * 2/4
+	// 0 0 * * * *
+	//
+	// # predefined
+	// @annually
+	// @yearly
+	// @monthly
+	// @weekly
+	// @daily
+	// @hourly
+	// @reboot
+	//
+	// # every
+	// @every 5s
+	// @every 20h30m
 	//
 	// If this is updated, also update the regex in the pair/configure.html file
 	setCronTimePattern() {
 		// eslint-disable-next-line max-len, no-useless-escape
-		this.cronTimePattern = new RegExp(/^(\*|(?:\*|(?:\*|(?:0?[0-9]|1[0-9]|2[0-3])))\/(?:0?[0-9]|1[0-9]|2[0-3])|(?:0?[0-9]|1[0-9]|2[0-3])(?:(?:\-(?:0?[0-9]|1[0-9]|2[0-3]))?|(?:\,(?:0?[0-9]|1[0-9]|2[0-3]))*)):(\*|(?:\*|(?:[0-9]|(?:[0-5][0-9])))\/(?:[0-9]|(?:[0-5][0-9]))|(?:[0-9]|(?:[0-5][0-9]))(?:(?:\-[0-9]|\-(?:[1-5][0-9]))?|(?:\,(?:[0-9]|(?:[0-5][0-9])))*))$/);
+		this.cronTimePattern = new RegExp(/^((@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,6}))$/);
 	}
 
 	/**
@@ -67,23 +79,9 @@ module.exports = class SchedulerDevice extends mainDevice {
 	 * // runOnce: false (or true)
 	 */
 	getSettingsCronTime(settings) {
-		const hours = settings.time.split(':')[0];
-		const minutes = settings.time.split(':')[1];
-		const runOnce = settings.runonce;
-		let weekdays = [
-			settings.repeat_sunday ? '0' : null,
-			settings.repeat_monday ? '1' : null,
-			settings.repeat_tuesday ? '2' : null,
-			settings.repeat_wednesday ? '3' : null,
-			settings.repeat_thursday ? '4' : null,
-			settings.repeat_friday ? '5' : null,
-			settings.repeat_saturday ? '6' : null,
-		].filter((element) => element).join(',');
-
-		if (weekdays === '' || weekdays === '0,1,2,3,4,5,6') weekdays = '*';
-
-		const cronTime = `0 ${minutes} ${hours} * * ${weekdays}`;
+		const cronTime = settings.time;
 		const timeZone = settings.timezone;
+		const runOnce = settings.runonce;
 
 		try {
 			// eslint-disable-next-line no-new
@@ -92,7 +90,7 @@ module.exports = class SchedulerDevice extends mainDevice {
 			return { cronTime, timeZone, runOnce };
 		} catch (error) {
 			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
-			return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
+			return new Error(this.homey.__('settings.error.time_invalid'));
 		}
 	}
 

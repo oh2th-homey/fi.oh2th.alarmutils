@@ -9,7 +9,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler"
+      "filter": "driver_id=scheduler|crontime"
     }
   ],
   "tokens": [
@@ -25,9 +25,19 @@
     },
     {
       "type": "string",
+      "name": "date",
+      "title": {
+        "en": "Triggered Date"
+      },
+      "example": {
+        "en": "2023-11-18"
+      }
+    },
+    {
+      "type": "string",
       "name": "time",
       "title": {
-        "en": "Schedule Time"
+        "en": "Triggered Time"
       },
       "example": {
         "en": "18:07"
