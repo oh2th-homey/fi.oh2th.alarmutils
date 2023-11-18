@@ -1,7 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-const { Log } = require('homey-log');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob } = require('cron');
 // Cron matcher from https://github.com/datasert/cronjs
@@ -15,7 +14,6 @@ class AlarmUtils extends Homey.App {
 
 	async onInit() {
 		this.myAppIdVersion = `${this.homey.manifest.id}/${this.homey.manifest.version}`;
-		this.homeyLog = new Log({ homey: this.homey });
 		this.log(`${this.myAppIdVersion} - onInit - starting...`);
 
 		// Init device flow cards.
