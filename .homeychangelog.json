@@ -100,5 +100,8 @@
   },
   "2.3.2": {
     "en": "NEW: Scheduler with crontab style configuration"
+  },
+  "2.3.3": {
+    "en": "FIX: initCronJob errors"
   }
 }
