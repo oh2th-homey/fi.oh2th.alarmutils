@@ -22,19 +22,7 @@ module.exports = class mainDevice extends Device {
 	}
 
 	async onAdded() {
-		this.log(`${this.getName()} - onAdded`);
-
-		const {
-			repeat_monday, repeat_tuesday, repeat_wednesday, repeat_thursday,
-			repeat_friday, repeat_saturday, repeat_sunday,
-		} = this.getSettings();
-		if (!repeat_monday && !repeat_tuesday && !repeat_wednesday && !repeat_thursday && !repeat_friday && !repeat_saturday && !repeat_sunday) {
-			this.schedulerDisable();
-		} else {
-			this.schedulerEnable();
-		}
-
-		this.log(`${this.getName()} - onAdded - done`);
+		this.error(`${this.getName()} - onAdded - not implemented.`);
 	}
 
 	async onSettings({ oldSettings, newSettings, changedKeys }) {
@@ -43,7 +31,7 @@ module.exports = class mainDevice extends Device {
 	}
 
 	async onRenamed(name) {
-		this.log(`${this.getName()} - onRenamed`);
+		this.error(`${this.getName()} - onRenamed - not implemented`);
 	}
 
 	async onDeleted() {
@@ -81,16 +69,21 @@ module.exports = class mainDevice extends Device {
 		this.log(`${this.getName()} - initCronjob - cronTime: ${cronTime}, timeZone: ${timeZone}, runOnce: ${runOnce}`);
 
 		// create cronjob with cronTime and timeZone, do not start yet
-		this.cronJob = new CronJob({
-			cronTime,
-			onTick: () => {
-				this.log(`${this.getName()} - cronJob - tick at ${new Date().toISOString()}`);
-				this.cronJobRunTriggers(runOnce);
-				this.updateScheduleCapabilityValues();
-			},
-			start: false,
-			timeZone,
-		});
+		try {
+			this.cronJob = new CronJob({
+				cronTime,
+				onTick: () => {
+					this.log(`${this.getName()} - cronJob - tick at ${new Date().toISOString()}`);
+					this.cronJobRunTriggers(runOnce);
+					this.updateScheduleCapabilityValues();
+				},
+				start: false,
+				timeZone,
+			});
+		} catch (error) {
+			this.error(`${this.getName()} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
+			return new Error(this.homey.__('message.init_cronjob_error'));
+		}
 
 		// add callback to cronjob to enable/disable cronjob on runOnce
 		this.cronJob.addCallback(() => {

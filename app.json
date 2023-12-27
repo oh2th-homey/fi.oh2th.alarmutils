@@ -701,7 +701,7 @@
       },
       {
         "title": {
-          "en": "Crontime"
+          "en": "Cron time"
         },
         "titleFormatted": {
           "en": "Set cron time to [[time]]"

@@ -6,6 +6,14 @@ const { CronTime } = require('cron');
 
 module.exports = class CrontabDevice extends mainDevice {
 
+	async onAdded() {
+		this.log(`${this.getName()} - onAdded`);
+
+		await this.schedulerDisable();
+
+		this.log(`${this.getName()} - onAdded - done`);
+	}
+
 	async onSettings({ oldSettings, newSettings, changedKeys }) {
 		this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
 
@@ -90,7 +98,7 @@ module.exports = class CrontabDevice extends mainDevice {
 			return { cronTime, timeZone, runOnce };
 		} catch (error) {
 			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
-			return new Error(this.homey.__('settings.error.time_invalid'));
+			return new Error(this.homey.__('settings.error.crontime_invalid'));
 		}
 	}
 

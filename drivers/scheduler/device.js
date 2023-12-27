@@ -7,6 +7,22 @@ const { CronTime } = require('cron');
 
 module.exports = class SchedulerDevice extends mainDevice {
 
+	async onAdded() {
+		this.log(`${this.getName()} - onAdded`);
+
+		const {
+			repeat_monday, repeat_tuesday, repeat_wednesday, repeat_thursday,
+			repeat_friday, repeat_saturday, repeat_sunday,
+		} = this.getSettings();
+		if (!repeat_monday && !repeat_tuesday && !repeat_wednesday && !repeat_thursday && !repeat_friday && !repeat_saturday && !repeat_sunday) {
+			this.schedulerDisable();
+		} else {
+			this.schedulerEnable();
+		}
+
+		this.log(`${this.getName()} - onAdded - done`);
+	}
+
 	async onSettings({ oldSettings, newSettings, changedKeys }) {
 		this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
 
@@ -92,7 +108,7 @@ module.exports = class SchedulerDevice extends mainDevice {
 			return { cronTime, timeZone, runOnce };
 		} catch (error) {
 			this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
-			return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
+			return new Error(this.homey.__('settings.error.time_invalid'));
 		}
 	}
 

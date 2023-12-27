@@ -26,12 +26,13 @@
       "time_invalid": "Enter time as [HH]:[mm], [*]:[mm], [HH]:[*] or [*]:[*]",
       "crontime_required": "Cron time pattern is required",
       "crontime_invalid": "Enter a valid cron time pattern. See http://crontab.guru/ for more information.",
-      "timezone_required": "Timezone is required",
+      "timezone_required": "Timezone is required.",
       "timezone_invalid": "Enter Timezone as Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
-      "add_device": "Error adding device"
+      "add_device": "Error adding device."
     }
   },
   "message": {
-    "not_scheduled": "Not Scheduled"
+    "not_scheduled": "Not Scheduled",
+		"init_cronjob_error": "Error initializing cronjob, check settings."
   }
 }
