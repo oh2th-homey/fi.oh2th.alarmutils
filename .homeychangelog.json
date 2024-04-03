@@ -103,5 +103,8 @@
   },
   "2.3.3": {
     "en": "FIX: initCronJob errors"
+  },
+  "2.3.4": {
+    "en": "FIX: Tune the regex crontime verification"
   }
 }
