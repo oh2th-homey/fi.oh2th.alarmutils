@@ -71,7 +71,7 @@ module.exports = class CrontabDevice extends mainDevice {
 	// If this is updated, also update the regex in the pair/configure.html file
 	setCronTimePattern() {
 		// eslint-disable-next-line max-len, no-useless-escape
-		this.cronTimePattern = new RegExp(/^((@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,6}))$/);
+		this.cronTimePattern = new RegExp(/^((@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|(((\*|[0-5]?\d)(\-[0-5]?\d)?(\/\d+)?|(\*|[0-5]?\d)(\/\d+)?)(\s+((\*|[0-5]?\d)(\-[0-5]?\d)?(\/\d+)?|(\*|[0-5]?\d)(\/\d+)?)){4}))$/);
 	}
 
 	/**
