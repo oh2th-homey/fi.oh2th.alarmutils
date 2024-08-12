@@ -13,9 +13,7 @@
     "eslint-config-athom": "^0.0.5"
   },
   "dependencies": {
-    "@datasert/cronjs-matcher": "^1.2.0",
-    "cron": "^2.4.1",
-    "cron-parser": "^4.9.0",
-    "homey-log": "^2.1.0"
+    "cron": "^3.1.7",
+    "cron-parser": "^4.9.0"
   }
 }

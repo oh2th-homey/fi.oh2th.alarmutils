@@ -3,6 +3,9 @@
 const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
 const { CronJob } = require('cron');
+// Cron Parser from https://github.com/harrisiirak/cron-parser
+const cronParser = require('cron-parser');
+
 const { strToMins, minsToStr, checkCapabilities } = require('../lib/helpers');
 
 module.exports = class mainDevice extends Device {
@@ -45,6 +48,18 @@ module.exports = class mainDevice extends Device {
 	}
 
 	/**
+	 * @description Test given cronTime pattern if it is valid or not using cron-parser
+	 */
+	testCronTimePattern(cronTime) {
+		try {
+			cronParser.parseExpression(cronTime);
+			return true;
+		} catch (error) {
+			this.error(`${this.getName()} - testCronTimePattern - error: ${error}`);
+			return false;
+		}
+	}
+	/**
 	 * @description Set the cronTime pattern, override this in the device driver
 	 */
 	setCronTimePattern() {
@@ -70,16 +85,17 @@ module.exports = class mainDevice extends Device {
 
 		// create cronjob with cronTime and timeZone, do not start yet
 		try {
-			this.cronJob = new CronJob({
-				cronTime,
-				onTick: () => {
+			this.cronJob = new CronJob(
+				cronTime, // cronTime
+				function () {
 					this.log(`${this.getName()} - cronJob - tick at ${new Date().toISOString()}`);
 					this.cronJobRunTriggers(runOnce);
 					this.updateScheduleCapabilityValues();
-				},
-				start: false,
-				timeZone,
-			});
+				}, // onTick
+				false, //onComplete
+				false, // start
+				timeZone, // timeZone
+			);
 		} catch (error) {
 			this.error(`${this.getName()} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
 			return new Error(this.homey.__('message.init_cronjob_error'));
