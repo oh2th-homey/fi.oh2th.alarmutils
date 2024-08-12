@@ -63,7 +63,7 @@ module.exports = class mainDevice extends Device {
 	 * @description Set the cronTime pattern, override this in the device driver
 	 */
 	setCronTimePattern() {
-		this.error(`${this.getName()} - setCronTimePattern - not implemented!`);
+		this.log(`${this.getName()} - setCronTimePattern - not used in this driver!`);
 	}
 
 	/**
