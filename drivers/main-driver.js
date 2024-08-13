@@ -27,10 +27,10 @@ module.exports = class mainDriver extends Driver {
 			try {
 				cronParser.parseExpression(cronTime);
 				this.log(`onPair - testCronTime - pass: ${cronTime}`);
-				return { success: true };
+				return Promise.resolve(cronTime);
 			} catch (err) {
 				this.error(`onPair - testCronTime - error: ${err.message}`);
-				return { success: false, error: err.message };
+				return Promise.reject(new Error(err.message));
 			}
 		});
 	}

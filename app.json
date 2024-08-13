@@ -775,10 +775,6 @@
       "pair": [
         {
           "id": "configure"
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
         }
       ],
       "images": {
@@ -841,10 +837,6 @@
       "pair": [
         {
           "id": "configure"
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
         }
       ],
       "images": {
