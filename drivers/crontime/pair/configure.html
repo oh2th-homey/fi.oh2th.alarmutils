@@ -19,6 +19,14 @@
         return uuid;
     }
 
+    const uuid = randomUUID();
+
+    // Set predefined value for the name input
+    $(document).ready(function () {
+        const nameField = document.getElementById('name');
+        nameField.value = 'Crontime ' + uuid;
+    });
+
     // Call the validateAndAddDevice function when the 'Add' button is clicked
     $(async function () {
         $('#function_add').click(async function () {
@@ -51,10 +59,9 @@
             try {
                 await Homey.emit('testCronTime', time);
                 console.log('Crontime is valid:', time);
-                const uuid = randomUUID();
                 // Create device
                 Homey.createDevice({
-                    name: name + ' ' + uuid,
+                    name: name,
                     data: {
                         id: uuid
                     },
@@ -87,7 +94,7 @@
 
         <div class="homey-form-group">
             <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
-            <input class="homey-form-input" id="name" type="text" value="Crontime" />
+            <input class="homey-form-input" id="name" type="text" value="" />
         </div>
 
         <div class="homey-form-group">
