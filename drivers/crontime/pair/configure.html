@@ -62,12 +62,21 @@
 
       // Test for crontime validity and create device and close session if valid
       try {
+        console.log("Testing crontime:", time);
         const response = await Homey.emit("testCronTime", time);
+
+        // Check if response is valid
+        if (response === undefined || response === null) {
+          throw new Error("Unexpected error - response was undefined or null");
+        }
         console.log("Response:", response);
+
+        // Check if testCronTime was successful
         if (!response.success) {
           throw Error(response.error);
         }
         console.log("Crontime is valid:", response.time);
+
         // Create device
         await Homey.createDevice({
           name: name,
@@ -81,6 +90,7 @@
             runonce: document.getElementsByName("runonce")[0].checked,
           },
         });
+
         // Close the session
         Homey.done();
       } catch (error) {
