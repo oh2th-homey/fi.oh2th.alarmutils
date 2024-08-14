@@ -73,7 +73,7 @@
 
         // Check if testCronTime was successful
         if (!response.success) {
-          throw Error(response.error);
+          throw Error(response.message);
         }
         console.log("Crontime is valid:", response.time);
 
@@ -96,7 +96,7 @@
       } catch (error) {
         console.log("Error received:", error);
         Homey.alert(
-          `${Homey.__("settings.error.crontime_invalid")} ${time}: ${error}`
+          `${Homey.__("settings.error.crontime_invalid")} - "${time}" - ${error}`
         );
         document.getElementById("function_add").classList.remove("is-loading");
         return;
@@ -163,6 +163,7 @@
 
   <div class="homey-form-group buttons">
     <button
+      type="button"
       class="homey-button-primary-full"
       id="function_add"
       data-i18n="settings.function_add"

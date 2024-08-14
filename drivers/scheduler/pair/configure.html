@@ -27,7 +27,15 @@
     return uuid;
   }
 
+    const uuid = randomUUID();
+
   $(function () {
+        // Set predefined value for the name input
+    const nameField = document.getElementById("name");
+    nameField.value = "Scheduler " + uuid;
+
+        // Called when the user clicks the 'Add' button
+
     $("#function_add").click(function () {
       document.getElementById("function_add").classList.add("is-loading");
 
@@ -61,7 +69,7 @@
       Homey.createDevice({
         name,
         data: {
-          id: randomUUID(),
+          id: uuid,
         },
         store: {},
         settings: {
@@ -99,7 +107,7 @@
       <label class="homey-form-label" for="name" data-i18n="settings.name"
         ><!--settings.name--></label
       >
-      <input class="homey-form-input" id="name" type="text" value="Scheduler" />
+      <input class="homey-form-input" id="name" type="text" value="" />
     </div>
 
     <div class="homey-form-group">
@@ -225,6 +233,7 @@
   </fieldset>
   <div class="homey-form-group buttons">
     <button
+      type="button"
       class="homey-button-primary-full"
       id="function_add"
       data-i18n="settings.function_add"
