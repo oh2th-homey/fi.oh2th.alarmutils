@@ -57,10 +57,14 @@
             }
             // Test for crontime validity and create device and close session if valid
             try {
-                await Homey.emit('testCronTime', time);
-                console.log('Crontime is valid:', time);
+                const response = await Homey.emit('testCronTime', time);
+                console.log('Response:', response);
+                if (! response.success) {
+                    throw Error(response.error);
+                }
+                console.log('Crontime is valid:', response.time);
                 // Create device
-                Homey.createDevice({
+                await Homey.createDevice({
                     name: name,
                     data: {
                         id: uuid
