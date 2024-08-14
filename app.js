@@ -34,19 +34,17 @@ class AlarmUtils extends Homey.App {
     this.log(`${this.myAppIdVersion} - initAppCronjob`);
 
     // create cronjob with cronTime and timeZone, do not start yet
-    this.appCronJob = new CronJob({
-      cronTime: "0 * * * * *",
-      onTick: () => {
-        this.onAppInterval();
-      },
-      start: false,
+    this.appCronJob = new CronJob(
+      "0 * * * * *", // cronTime: every minute
+      () => this.onAppInterval(), // onTick
+      false, // onComplete
+      true // start
       // timeZone: 'Europe/Amsterdam',
-    });
-    this.appCronJob.start();
+    );
   }
 
   async onAppInterval() {
-    // this.log(`${this.myAppIdVersion} - onAppInterval`);
+    this.log(`${this.myAppIdVersion} - onAppInterval`);
 
     // Get all configured scheduler devices.
     const schedulerDriver = this.homey.drivers.getDriver("scheduler");

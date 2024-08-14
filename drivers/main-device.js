@@ -82,17 +82,18 @@ module.exports = class mainDevice extends Device {
    * @param {Boolean} runOnce If true, the cronjob will be disabled after the first run
    */
   async initCronJob(cronTime, timeZone, runOnce) {
+    const deviceName = this.getName();
     this.log(
-      `${this.getName()} - initCronjob - cronTime: ${cronTime}, timeZone: ${timeZone}, runOnce: ${runOnce}`
+      `${deviceName} - initCronjob - cronTime: ${cronTime}, timeZone: ${timeZone}, runOnce: ${runOnce}`
     );
 
     // create cronjob with cronTime and timeZone, do not start yet
     try {
       this.cronJob = new CronJob(
         cronTime, // cronTime
-        function () {
+        () => {
           this.log(
-            `${this.getName()} - cronJob - tick at ${new Date().toISOString()}`
+            `${deviceName} - cronJob - tick at ${new Date().toISOString()}`
           );
           this.cronJobRunTriggers(runOnce);
           this.updateScheduleCapabilityValues();
@@ -103,17 +104,17 @@ module.exports = class mainDevice extends Device {
       );
     } catch (error) {
       this.error(
-        `${this.getName()} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`
+        `${deviceName} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`
       );
       return new Error(this.homey.__("message.init_cronjob_error"));
     }
 
     // add callback to cronjob to enable/disable cronjob on runOnce
     this.cronJob.addCallback(() => {
-      this.log(`${this.getName()} - cronJob - callback`);
+      this.log(`${deviceName} - cronJob - callback`);
       if (runOnce) {
         this.schedulerDisable();
-        this.log(`${this.getName()} - cronJob - runOnce - not running again`);
+        this.log(`${deviceName} - cronJob - runOnce - not running again`);
       }
     });
 
