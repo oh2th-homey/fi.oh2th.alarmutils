@@ -112,5 +112,8 @@
   },
   "2.4.1": {
     "en": "FIX: new CronJob syntax changed due to updating to v3 cron"
+  },
+  "2.4.2": {
+    "en": "Restore prettier formating"
   }
 }
