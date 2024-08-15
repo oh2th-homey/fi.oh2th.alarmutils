@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-const { Device } = require("homey");
+const { Device } = require('homey');
 // CronJob from https://github.com/kelektiv/node-cron
-const { CronJob } = require("cron");
+const { CronJob } = require('cron');
 // Cron Parser from https://github.com/harrisiirak/cron-parser
-const cronParser = require("cron-parser");
+const cronParser = require('cron-parser');
 
-const { strToMins, minsToStr, checkCapabilities } = require("../lib/helpers");
+const { strToMins, minsToStr, checkCapabilities } = require('../lib/helpers');
 
 module.exports = class mainDevice extends Device {
   async onInit() {
@@ -38,7 +38,7 @@ module.exports = class mainDevice extends Device {
 
   async onDeleted() {
     this.log(`${this.getName()} - onDeleted`);
-    if (typeof this.cronJob !== "undefined") {
+    if (typeof this.cronJob !== 'undefined') {
       this.log(`${this.getName()} - onDeleted - stopping cronjob`);
       this.cronJob.stop();
       this.cronJob = undefined;
@@ -62,9 +62,7 @@ module.exports = class mainDevice extends Device {
    * @description Set the cronTime pattern, override this in the device driver
    */
   setCronTimePattern() {
-    this.log(
-      `${this.getName()} - setCronTimePattern - not used in this driver!`
-    );
+    this.log(`${this.getName()} - setCronTimePattern - not used in this driver!`);
   }
 
   /**
@@ -83,18 +81,14 @@ module.exports = class mainDevice extends Device {
    */
   async initCronJob(cronTime, timeZone, runOnce) {
     const deviceName = this.getName();
-    this.log(
-      `${deviceName} - initCronjob - cronTime: ${cronTime}, timeZone: ${timeZone}, runOnce: ${runOnce}`
-    );
+    this.log(`${deviceName} - initCronjob - cronTime: ${cronTime}, timeZone: ${timeZone}, runOnce: ${runOnce}`);
 
     // create cronjob with cronTime and timeZone, do not start yet
     try {
       this.cronJob = new CronJob(
         cronTime, // cronTime
         () => {
-          this.log(
-            `${deviceName} - cronJob - tick at ${new Date().toISOString()}`
-          );
+          this.log(`${deviceName} - cronJob - tick at ${new Date().toISOString()}`);
           this.cronJobRunTriggers(runOnce);
           this.updateScheduleCapabilityValues();
         }, // onTick
@@ -103,10 +97,8 @@ module.exports = class mainDevice extends Device {
         timeZone // timeZone
       );
     } catch (error) {
-      this.error(
-        `${deviceName} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`
-      );
-      return new Error(this.homey.__("message.init_cronjob_error"));
+      this.error(`${deviceName} - initCronJob - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
+      return new Error(this.homey.__('message.init_cronjob_error'));
     }
 
     // add callback to cronjob to enable/disable cronjob on runOnce
@@ -119,7 +111,7 @@ module.exports = class mainDevice extends Device {
     });
 
     // start cronjob if enabled
-    if (this.getCapabilityValue("is_enabled")) {
+    if (this.getCapabilityValue('is_enabled')) {
       this.schedulerEnable();
     }
     return this.getNextScheduledTime();
@@ -131,7 +123,7 @@ module.exports = class mainDevice extends Device {
    * @param {Object} settings settings object
    */
   async restartCronJob(settings) {
-    if (typeof this.cronJob !== "undefined") {
+    if (typeof this.cronJob !== 'undefined') {
       this.log(`${this.getName()} - restartCronJob - stopping cronjob`);
       this.cronJob.stop();
       this.cronJob = undefined;
@@ -141,45 +133,39 @@ module.exports = class mainDevice extends Device {
     const nextRun = await this.initCronJob(cronTime, timeZone, runOnce);
     const tz = this.homey.clock.getTimezone();
 
-    const nextTime = new Date(nextRun).toLocaleString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
+    const nextTime = new Date(nextRun).toLocaleString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
       hour12: false,
       timeZone: tz,
     });
 
     const nextDate = new Date(nextRun);
-    const yyyy = nextDate.toLocaleString("en-US", {
-      year: "numeric",
+    const yyyy = nextDate.toLocaleString('en-US', {
+      year: 'numeric',
       timeZone: tz,
     });
-    const mm = nextDate.toLocaleString("en-US", {
-      month: "2-digit",
+    const mm = nextDate.toLocaleString('en-US', {
+      month: '2-digit',
       timeZone: tz,
     });
-    const dd = nextDate.toLocaleString("en-US", {
-      day: "2-digit",
+    const dd = nextDate.toLocaleString('en-US', {
+      day: '2-digit',
       timeZone: tz,
     });
     const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
     this.homey.flow
-      .getDeviceTriggerCard("device_schedule_updated")
+      .getDeviceTriggerCard('device_schedule_updated')
       .trigger(this, {
         name: this.getName(),
-        enabled: this.getCapabilityValue("is_enabled"),
+        enabled: this.getCapabilityValue('is_enabled'),
         date: nextDateFormatted,
         time: nextTime,
         next: String(nextRun),
       })
       .catch(this.error)
-      .then(
-        this.log(
-          `${this.getName()} - restartCronJob - device_schedule_updated at ${String(
-            nextRun
-          )}`
-        )
-      );
+      .then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(nextRun)}`));
   }
 
   /**
@@ -189,9 +175,9 @@ module.exports = class mainDevice extends Device {
     this.log(`${this.getName()} - schedulerEnable`);
     try {
       this.cronJob.start();
-      await this.setCapabilityValue("is_enabled", true);
+      await this.setCapabilityValue('is_enabled', true);
     } catch (error) {
-      await this.setCapabilityValue("is_enabled", false);
+      await this.setCapabilityValue('is_enabled', false);
       this.error(`${this.getName()} - schedulerEnable - error: ${error}`);
     }
     this.updateScheduleCapabilityValues();
@@ -201,11 +187,11 @@ module.exports = class mainDevice extends Device {
    * @description Disable cronjob
    */
   async schedulerDisable() {
-    if (typeof this.cronJob !== "undefined") {
+    if (typeof this.cronJob !== 'undefined') {
       this.log(`${this.getName()} - schedulerDisable`);
       this.cronJob.stop();
     }
-    await this.setCapabilityValue("is_enabled", false);
+    await this.setCapabilityValue('is_enabled', false);
     this.updateScheduleCapabilityValues();
   }
 
@@ -214,7 +200,7 @@ module.exports = class mainDevice extends Device {
    * @returns {String} next scheduled time
    */
   getNextScheduledTime() {
-    if (!this.getCapabilityValue("is_enabled")) return null;
+    if (!this.getCapabilityValue('is_enabled')) return null;
     try {
       return String(this.cronJob.nextDate());
     } catch (error) {
@@ -229,38 +215,36 @@ module.exports = class mainDevice extends Device {
   async updateScheduleCapabilityValues() {
     const nextRun = this.getNextScheduledTime();
 
-    this.log(
-      `${this.getName()} - updateScheduleCapabilityValues - nextRun: ${typeof nextRun} = ${nextRun}`
-    );
+    this.log(`${this.getName()} - updateScheduleCapabilityValues - nextRun: ${typeof nextRun} = ${nextRun}`);
     if (!nextRun) {
-      this.setCapabilityValue("text_schedule_next", null);
-      this.setCapabilityValue("text_schedule_time", null);
-      this.setCapabilityValue("text_schedule_date", null);
+      this.setCapabilityValue('text_schedule_next', null);
+      this.setCapabilityValue('text_schedule_time', null);
+      this.setCapabilityValue('text_schedule_date', null);
     } else {
-      const nextTime = new Date(nextRun).toLocaleString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
+      const nextTime = new Date(nextRun).toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
         hour12: false,
         timeZone: this.homey.clock.getTimezone(),
       });
 
-      const yyyy = new Date(nextRun).toLocaleString("en-US", {
-        year: "numeric",
+      const yyyy = new Date(nextRun).toLocaleString('en-US', {
+        year: 'numeric',
         timeZone: this.homey.clock.getTimezone(),
       });
-      const mm = new Date(nextRun).toLocaleString("en-US", {
-        month: "2-digit",
+      const mm = new Date(nextRun).toLocaleString('en-US', {
+        month: '2-digit',
         timeZone: this.homey.clock.getTimezone(),
       });
-      const dd = new Date(nextRun).toLocaleString("en-US", {
-        day: "2-digit",
+      const dd = new Date(nextRun).toLocaleString('en-US', {
+        day: '2-digit',
         timeZone: this.homey.clock.getTimezone(),
       });
       const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
-      this.setCapabilityValue("text_schedule_next", String(nextRun));
-      this.setCapabilityValue("text_schedule_time", String(nextTime));
-      this.setCapabilityValue("text_schedule_date", nextDateFormatted);
+      this.setCapabilityValue('text_schedule_next', String(nextRun));
+      this.setCapabilityValue('text_schedule_time', String(nextTime));
+      this.setCapabilityValue('text_schedule_date', nextDateFormatted);
     }
   }
 
@@ -273,22 +257,22 @@ module.exports = class mainDevice extends Device {
     const now = new Date();
     const tz = this.homey.clock.getTimezone();
 
-    const timeNow = now.toLocaleString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
+    const timeNow = now.toLocaleString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
       hour12: false,
       timeZone: tz,
     });
 
-    const yyyy = now.toLocaleString("en-US", { year: "numeric", timeZone: tz });
-    const mm = now.toLocaleString("en-US", { month: "2-digit", timeZone: tz });
-    const dd = now.toLocaleString("en-US", { day: "2-digit", timeZone: tz });
+    const yyyy = now.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
+    const mm = now.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+    const dd = now.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
     const dateNow = `${yyyy}-${mm}-${dd}`;
 
     let timeNext = this.getNextScheduledTime();
     if (runOnce) timeNext = String(null);
     this.homey.flow
-      .getDeviceTriggerCard("device_schedule_triggered")
+      .getDeviceTriggerCard('device_schedule_triggered')
       .trigger(this, {
         name: this.getName(),
         date: dateNow,
@@ -296,11 +280,7 @@ module.exports = class mainDevice extends Device {
         next: timeNext,
       })
       .catch(this.error)
-      .then(
-        this.log(
-          `${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`
-        )
-      );
+      .then(this.log(`${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`));
 
     this.log(`${this.getName()} - cronJobRunTriggers - done`);
   }
@@ -310,10 +290,7 @@ module.exports = class mainDevice extends Device {
    */
   async initCapabilityListeners() {
     this.log(`${this.getName()} - initCapabilityListeners`);
-    this.registerCapabilityListener(
-      "is_enabled",
-      this.onCapability_IS_ENABLED.bind(this)
-    );
+    this.registerCapabilityListener('is_enabled', this.onCapability_IS_ENABLED.bind(this));
   }
 
   /**
@@ -330,12 +307,8 @@ module.exports = class mainDevice extends Device {
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME '${time}'`);
 
     if (!this.cronTimePattern.test(time)) {
-      this.error(
-        `${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - Invalid time string format: ${time}`
-      );
-      return Promise.reject(
-        new Error(this.homey.__("settings.error.time_invalid"))
-      );
+      this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - Invalid time string format: ${time}`);
+      return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
     }
 
     await this.setSettings({
@@ -346,17 +319,11 @@ module.exports = class mainDevice extends Device {
   }
 
   async onAction_DEVICE_SCHEDULE_CRONTIME(crontime) {
-    this.log(
-      `${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME '${crontime}'`
-    );
+    this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME '${crontime}'`);
 
     if (!this.cronTimePattern.test(crontime)) {
-      this.error(
-        `${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - Invalid time string format: ${crontime}`
-      );
-      return Promise.reject(
-        new Error(this.homey.__("settings.error.crontime_invalid"))
-      );
+      this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - Invalid time string format: ${crontime}`);
+      return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
     }
 
     await this.setSettings({
@@ -367,11 +334,7 @@ module.exports = class mainDevice extends Device {
   }
 
   async onAction_DEVICE_SCHEDULE_AHEAD_TIME(args) {
-    this.log(
-      `${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME '${
-        args.minutes
-      }' mins before '${args.time}'`
-    );
+    this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME '${args.minutes}' mins before '${args.time}'`);
 
     const time = strToMins(args.time) - args.minutes;
     let newSettings = {
@@ -398,11 +361,7 @@ module.exports = class mainDevice extends Device {
         repeat_sunday: args.monday,
       };
     }
-    this.log(
-      `${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - newSettings: ${JSON.stringify(
-        newSettings
-      )}`
-    );
+    this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - newSettings: ${JSON.stringify(newSettings)}`);
     await this.setSettings(newSettings);
     this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - done`);

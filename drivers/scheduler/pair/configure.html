@@ -1,9 +1,7 @@
 <script type="application/javascript">
   // Set default timezone
-  document
-    .getElementById("timezone")
-    .setAttribute("value", Intl.DateTimeFormat().resolvedOptions().timeZone);
-  validZones = Intl.supportedValuesOf("timeZone");
+  document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
+  validZones = Intl.supportedValuesOf('timeZone');
 
   // Regex to validate time input
   const timePattern = new RegExp(
@@ -12,11 +10,10 @@
 
   // randomUUID function
   function randomUUID() {
-    const characters =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const uuidLength = 8;
     const timestamp = new Date().getTime().toString();
-    let uuid = "";
+    let uuid = '';
     const seed = timestamp + characters;
 
     for (let i = 0; i < uuidLength; i++) {
@@ -27,41 +24,39 @@
     return uuid;
   }
 
-    const uuid = randomUUID();
+  const uuid = randomUUID();
 
   $(function () {
-        // Set predefined value for the name input
-    const nameField = document.getElementById("name");
-    nameField.value = "Scheduler " + uuid;
+    // Set predefined value for the name input
+    const nameField = document.getElementById('name');
+    nameField.value = 'Scheduler ' + uuid;
 
-        // Called when the user clicks the 'Add' button
+    // Called when the user clicks the 'Add' button
 
-    $("#function_add").click(function () {
-      document.getElementById("function_add").classList.add("is-loading");
+    $('#function_add').click(function () {
+      document.getElementById('function_add').classList.add('is-loading');
 
       // Validate input - Device name
-      const name = document.getElementById("name").value;
-      if (name === undefined || name === null || name === "" || !name) {
-        Homey.alert(Homey.__("settings.error.name_required"));
-        document.getElementById("function_add").classList.remove("is-loading");
+      const name = document.getElementById('name').value;
+      if (name === undefined || name === null || name === '' || !name) {
+        Homey.alert(Homey.__('settings.error.name_required'));
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Validate input - Timezone
-      const timezone = document.getElementById("timezone").value;
+      const timezone = document.getElementById('timezone').value;
       if (!validZones.includes(timezone)) {
-        Homey.alert(
-          `${Homey.__("settings.error.timezone_invalid")}: ${timezone}`
-        );
-        document.getElementById("function_add").classList.remove("is-loading");
+        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${timezone}`);
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Validate input - Crontime
-      const time = document.getElementById("time").value;
+      const time = document.getElementById('time').value;
       if (!timePattern.test(time)) {
-        Homey.alert(`${Homey.__("settings.error.time_invalid")}: ${time}`);
-        document.getElementById("function_add").classList.remove("is-loading");
+        Homey.alert(`${Homey.__('settings.error.time_invalid')}: ${time}`);
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
@@ -75,18 +70,14 @@
         settings: {
           time,
           timezone,
-          runonce: document.getElementsByName("runonce")[0].checked,
-          repeat_monday: document.getElementsByName("repeat_monday")[0].checked,
-          repeat_tuesday:
-            document.getElementsByName("repeat_tuesday")[0].checked,
-          repeat_wednesday:
-            document.getElementsByName("repeat_wednesday")[0].checked,
-          repeat_thursday:
-            document.getElementsByName("repeat_thursday")[0].checked,
-          repeat_friday: document.getElementsByName("repeat_friday")[0].checked,
-          repeat_saturday:
-            document.getElementsByName("repeat_saturday")[0].checked,
-          repeat_sunday: document.getElementsByName("repeat_sunday")[0].checked,
+          runonce: document.getElementsByName('runonce')[0].checked,
+          repeat_monday: document.getElementsByName('repeat_monday')[0].checked,
+          repeat_tuesday: document.getElementsByName('repeat_tuesday')[0].checked,
+          repeat_wednesday: document.getElementsByName('repeat_wednesday')[0].checked,
+          repeat_thursday: document.getElementsByName('repeat_thursday')[0].checked,
+          repeat_friday: document.getElementsByName('repeat_friday')[0].checked,
+          repeat_saturday: document.getElementsByName('repeat_saturday')[0].checked,
+          repeat_sunday: document.getElementsByName('repeat_sunday')[0].checked,
         },
       });
       Homey.done();
@@ -104,16 +95,12 @@
       <!--settings.configuration-->
     </legend>
     <div class="homey-form-group">
-      <label class="homey-form-label" for="name" data-i18n="settings.name"
-        ><!--settings.name--></label
-      >
+      <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
       <input class="homey-form-input" id="name" type="text" value="" />
     </div>
 
     <div class="homey-form-group">
-      <label class="homey-form-label" for="time" data-i18n="settings.time"
-        ><!--settings.time--></label
-      >
+      <label class="homey-form-label" for="time" data-i18n="settings.time"><!--settings.time--></label>
       <input class="homey-form-input" id="time" type="text" value="13:00" />
       <p class="homey-form-label" data-i18n="settings.time_help">
         <!--settings.time_help-->
@@ -121,12 +108,7 @@
     </div>
 
     <div class="homey-form-group">
-      <label
-        class="homey-form-label"
-        for="timezone"
-        data-i18n="settings.timezone"
-        ><!--settings.timezone--></label
-      >
+      <label class="homey-form-label" for="timezone" data-i18n="settings.timezone"><!--settings.timezone--></label>
       <input class="homey-form-input" id="timezone" type="text" value="" />
     </div>
   </fieldset>
@@ -134,9 +116,7 @@
     <label class="homey-form-checkbox">
       <input class="homey-form-checkbox-input" type="checkbox" name="runonce" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.runonce"
-        ><!--settings.runonce--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.runonce"><!--settings.runonce--></span>
     </label>
   </fieldset>
   <fieldset class="homey-form-checkbox-set">
@@ -148,96 +128,49 @@
     </p>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_monday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_monday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.monday"
-        ><!--settings.monday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.monday"><!--settings.monday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_tuesday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_tuesday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.tuesday"
-        ><!--settings.tuesday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.tuesday"><!--settings.tuesday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_wednesday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_wednesday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.wednesday"
-        ><!--settings.wednesday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.wednesday"><!--settings.wednesday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_thursday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_thursday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.thursday"
-        ><!--settings.thursday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.thursday"><!--settings.thursday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_friday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_friday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.friday"
-        ><!--settings.friday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.friday"><!--settings.friday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_saturday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_saturday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.saturday"
-        ><!--settings.saturday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.saturday"><!--settings.saturday--></span>
     </label>
 
     <label class="homey-form-checkbox">
-      <input
-        class="homey-form-checkbox-input"
-        type="checkbox"
-        name="repeat_sunday"
-      />
+      <input class="homey-form-checkbox-input" type="checkbox" name="repeat_sunday" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.sunday"
-        ><!--settings.sunday--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.sunday"><!--settings.sunday--></span>
     </label>
   </fieldset>
   <div class="homey-form-group buttons">
-    <button
-      type="button"
-      class="homey-button-primary-full"
-      id="function_add"
-      data-i18n="settings.function_add"
-    >
+    <button type="button" class="homey-button-primary-full" id="function_add" data-i18n="settings.function_add">
       <!--settings.function_add-->
     </button>
   </div>

@@ -1,17 +1,14 @@
 <script type="application/javascript">
   // Set default timezone
-  document
-    .getElementById("timezone")
-    .setAttribute("value", Intl.DateTimeFormat().resolvedOptions().timeZone);
-  validZones = Intl.supportedValuesOf("timeZone");
+  document.getElementById('timezone').setAttribute('value', Intl.DateTimeFormat().resolvedOptions().timeZone);
+  validZones = Intl.supportedValuesOf('timeZone');
 
   // randomUUID function
   function randomUUID() {
-    const characters =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const uuidLength = 8;
     const timestamp = new Date().getTime().toString();
-    let uuid = "";
+    let uuid = '';
     const seed = timestamp + characters;
 
     for (let i = 0; i < uuidLength; i++) {
@@ -27,46 +24,44 @@
   // run once the document is ready
   $(function () {
     // Set predefined value for the name input
-    const nameField = document.getElementById("name");
-    nameField.value = "Crontime " + uuid;
+    const nameField = document.getElementById('name');
+    nameField.value = 'Crontime ' + uuid;
 
     // Called when the user clicks the 'Add' button
-    $("#function_add").click(async function () {
-      document.getElementById("function_add").classList.add("is-loading");
+    $('#function_add').click(async function () {
+      document.getElementById('function_add').classList.add('is-loading');
 
       // Validate input - Device name
-      const name = document.getElementById("name").value;
-      if (name === undefined || name === null || name === "" || !name) {
-        Homey.alert(Homey.__("settings.error.name_required"));
-        document.getElementById("function_add").classList.remove("is-loading");
+      const name = document.getElementById('name').value;
+      if (name === undefined || name === null || name === '' || !name) {
+        Homey.alert(Homey.__('settings.error.name_required'));
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Validate input - Timezone
-      const timezone = document.getElementById("timezone").value;
+      const timezone = document.getElementById('timezone').value;
       if (!validZones.includes(timezone)) {
-        Homey.alert(
-          `${Homey.__("settings.error.timezone_invalid")}: ${timezone}`
-        );
-        document.getElementById("function_add").classList.remove("is-loading");
+        Homey.alert(`${Homey.__('settings.error.timezone_invalid')}: ${timezone}`);
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Validate input - Crontime
-      const time = document.getElementById("crontime").value;
-      if (time === undefined || time === null || time === "" || !time) {
-        Homey.alert(Homey.__("settings.error.crontime_invalid"));
-        document.getElementById("function_add").classList.remove("is-loading");
+      const time = document.getElementById('crontime').value;
+      if (time === undefined || time === null || time === '' || !time) {
+        Homey.alert(Homey.__('settings.error.crontime_invalid'));
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
 
       // Test for crontime validity and create device and close session if valid
       try {
-        const response = await Homey.emit("testCronTime", time);
+        const response = await Homey.emit('testCronTime', time);
 
         // Check if response is valid
         if (response === undefined || response === null) {
-          throw new Error("Unexpected error - response was undefined or null");
+          throw new Error('Unexpected error - response was undefined or null');
         }
 
         // Check if testCronTime was successful
@@ -84,18 +79,16 @@
           settings: {
             time,
             timezone,
-            runonce: document.getElementsByName("runonce")[0].checked,
+            runonce: document.getElementsByName('runonce')[0].checked,
           },
         });
 
         // Close the session
         Homey.done();
       } catch (error) {
-        console.log("Error received:", error);
-        Homey.alert(
-          `${Homey.__("settings.error.crontime_invalid")} - "${time}" - ${error}`
-        );
-        document.getElementById("function_add").classList.remove("is-loading");
+        console.log('Error received:', error);
+        Homey.alert(`${Homey.__('settings.error.crontime_invalid')} - "${time}" - ${error}`);
+        document.getElementById('function_add').classList.remove('is-loading');
         return;
       }
     });
@@ -113,37 +106,20 @@
     </legend>
 
     <div class="homey-form-group">
-      <label class="homey-form-label" for="name" data-i18n="settings.name"
-        ><!--settings.name--></label
-      >
+      <label class="homey-form-label" for="name" data-i18n="settings.name"><!--settings.name--></label>
       <input class="homey-form-input" id="name" type="text" value="" />
     </div>
 
     <div class="homey-form-group">
-      <label
-        class="homey-form-label"
-        for="crontime"
-        data-i18n="settings.crontime"
-        ><!--settings.crontime--></label
-      >
-      <input
-        class="homey-form-input"
-        id="crontime"
-        type="text"
-        value="0 13 * * *"
-      />
+      <label class="homey-form-label" for="crontime" data-i18n="settings.crontime"><!--settings.crontime--></label>
+      <input class="homey-form-input" id="crontime" type="text" value="0 13 * * *" />
       <p class="homey-form-label" data-i18n="settings.crontime_help">
         <!--settings.crontime_help-->
       </p>
     </div>
 
     <div class="homey-form-group">
-      <label
-        class="homey-form-label"
-        for="timezone"
-        data-i18n="settings.timezone"
-        ><!--settings.timezone--></label
-      >
+      <label class="homey-form-label" for="timezone" data-i18n="settings.timezone"><!--settings.timezone--></label>
       <input class="homey-form-input" id="timezone" type="text" value="" />
     </div>
   </fieldset>
@@ -152,19 +128,12 @@
     <label class="homey-form-checkbox">
       <input class="homey-form-checkbox-input" type="checkbox" name="runonce" />
       <span class="homey-form-checkbox-checkmark"></span>
-      <span class="homey-form-checkbox-text" data-i18n="settings.runonce"
-        ><!--settings.runonce--></span
-      >
+      <span class="homey-form-checkbox-text" data-i18n="settings.runonce"><!--settings.runonce--></span>
     </label>
   </fieldset>
 
   <div class="homey-form-group buttons">
-    <button
-      type="button"
-      class="homey-button-primary-full"
-      id="function_add"
-      data-i18n="settings.function_add"
-    >
+    <button type="button" class="homey-button-primary-full" id="function_add" data-i18n="settings.function_add">
       <!--settings.function_add-->
     </button>
   </div>

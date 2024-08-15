@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const mainDevice = require("../main-device");
+const mainDevice = require('../main-device');
 // CronTime from https://github.com/kelektiv/node-cron
-const { CronTime } = require("cron");
+const { CronTime } = require('cron');
 
 module.exports = class CrontabDevice extends mainDevice {
   async onAdded() {
@@ -17,33 +17,21 @@ module.exports = class CrontabDevice extends mainDevice {
     this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
 
     // Check input from newSettings for time string format to be valid cronTime using testCronTimePattern(crontTime) from main-device.js
-    if (changedKeys.includes("time")) {
+    if (changedKeys.includes('time')) {
       if (!this.testCronTimePattern(newSettings.time)) {
-        this.error(
-          `${this.getName()} - onSettings - Invalid crontime string format: ${
-            newSettings.time
-          }`
-        );
-        return Promise.reject(
-          new Error(this.homey.__("settings.error.crontime_invalid"))
-        );
+        this.error(`${this.getName()} - onSettings - Invalid crontime string format: ${newSettings.time}`);
+        return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
       }
     }
 
     // Check input from newSettings for timezones
-    if (changedKeys.includes("timezone")) {
+    if (changedKeys.includes('timezone')) {
       const dt = new Date();
       try {
-        dt.toLocaleString("en-US", { timeZone: newSettings.timezone });
+        dt.toLocaleString('en-US', { timeZone: newSettings.timezone });
       } catch (error) {
-        this.error(
-          `${this.getName()} - onSettings - Invalid timezone: ${
-            newSettings.timezone
-          }`
-        );
-        return Promise.reject(
-          new Error(this.homey.__("settings.error.timezone_invalid"))
-        );
+        this.error(`${this.getName()} - onSettings - Invalid timezone: ${newSettings.timezone}`);
+        return Promise.reject(new Error(this.homey.__('settings.error.timezone_invalid')));
       }
     }
 
@@ -72,15 +60,11 @@ module.exports = class CrontabDevice extends mainDevice {
     try {
       // eslint-disable-next-line no-new
       new CronTime(cronTime, timeZone);
-      this.log(
-        `${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}]`
-      );
+      this.log(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}]`);
       return { cronTime, timeZone, runOnce };
     } catch (error) {
-      this.error(
-        `${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`
-      );
-      return new Error(this.homey.__("settings.error.crontime_invalid"));
+      this.error(`${this.getName()} - getSettingsCronTime - Time = [${cronTime}], Timezone = [${timeZone}] error: ${error}`);
+      return new Error(this.homey.__('settings.error.crontime_invalid'));
     }
   }
 };
