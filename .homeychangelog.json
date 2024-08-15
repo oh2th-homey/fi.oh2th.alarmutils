@@ -103,5 +103,14 @@
   },
   "2.3.3": {
     "en": "FIX: initCronJob errors"
+  },
+  "2.3.4": {
+    "en": "FIX: Tune the regex crontime verification"
+  },
+  "2.4.0": {
+    "en": "Refactor the crontime verification in pairing and settings forms."
+  },
+  "2.4.1": {
+    "en": "FIX: new CronJob syntax changed due to updating to v3 cron"
   }
 }

@@ -1,7 +1,5 @@
-'use strict';
+"use strict";
 
-const mainDriver = require('../main-driver');
+const mainDriver = require("../main-driver");
 
-module.exports = class CrontabDriver extends mainDriver {
-
-};
+module.exports = class CrontabDriver extends mainDriver {};
