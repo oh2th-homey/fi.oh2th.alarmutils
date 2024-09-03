@@ -13,33 +13,6 @@ module.exports = class CrontabDevice extends mainDevice {
     this.log(`${this.getName()} - onAdded - done`);
   }
 
-  async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
-
-    // Check input from newSettings for time string format to be valid cronTime using testCronTimePattern(crontTime) from main-device.js
-    if (changedKeys.includes('time')) {
-      if (!this.testCronTimePattern(newSettings.time)) {
-        this.error(`${this.getName()} - onSettings - Invalid crontime string format: ${newSettings.time}`);
-        return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
-      }
-    }
-
-    // Check input from newSettings for timezones
-    if (changedKeys.includes('timezone')) {
-      const dt = new Date();
-      try {
-        dt.toLocaleString('en-US', { timeZone: newSettings.timezone });
-      } catch (error) {
-        this.error(`${this.getName()} - onSettings - Invalid timezone: ${newSettings.timezone}`);
-        return Promise.reject(new Error(this.homey.__('settings.error.timezone_invalid')));
-      }
-    }
-
-    this.restartCronJob(newSettings);
-
-    this.log(`${this.getName()} - onSettings - done`);
-  }
-
   /**
    * @description Get the cronTime string from the settings
    *

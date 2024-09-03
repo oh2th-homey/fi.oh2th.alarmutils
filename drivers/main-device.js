@@ -29,7 +29,29 @@ module.exports = class mainDevice extends Device {
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
     this.log(`${this.getName()} - onSettings - changedKeys: ${changedKeys}`);
-    this.error(`${this.getName()} - onSettings - not implemented!`);
+
+    // Check input from newSettings for time string format to be valid cronTime using testCronTimePattern(crontTime) from main-device.js
+    if (changedKeys.includes('time')) {
+      if (!this.testCronTimePattern(newSettings.time)) {
+        this.error(`${this.getName()} - onSettings - Invalid crontime string format: ${newSettings.time}`);
+        return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
+      }
+    }
+
+    // Check input from newSettings for timezones
+    if (changedKeys.includes('timezone')) {
+      const dt = new Date();
+      try {
+        dt.toLocaleString('en-US', { timeZone: newSettings.timezone });
+      } catch (error) {
+        this.error(`${this.getName()} - onSettings - Invalid timezone: ${newSettings.timezone}`);
+        return Promise.reject(new Error(this.homey.__('settings.error.timezone_invalid')));
+      }
+    }
+
+    this.restartCronJob(newSettings);
+
+    this.log(`${this.getName()} - onSettings - done`);
   }
 
   async onRenamed(name) {
@@ -50,12 +72,16 @@ module.exports = class mainDevice extends Device {
    * @description Test given cronTime pattern if it is valid or not using cron-parser
    */
   testCronTimePattern(cronTime) {
-    try {
-      cronParser.parseExpression(cronTime);
-      return true;
-    } catch (error) {
-      this.error(`${this.getName()} - testCronTimePattern - error: ${error}`);
-      return false;
+    if (this.cronTimePattern === undefined) {
+      try {
+        cronParser.parseExpression(cronTime);
+        return true;
+      } catch (error) {
+        this.error(`${this.getName()} - testCronTimePattern - error: ${error}`);
+        return false;
+      }
+    } else {
+      return this.cronTimePattern.test(cronTime);
     }
   }
   /**
@@ -306,7 +332,7 @@ module.exports = class mainDevice extends Device {
   async onAction_DEVICE_SCHEDULE_TIME(time) {
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME '${time}'`);
 
-    if (!this.cronTimePattern.test(time)) {
+    if (!this.testCronTimePattern(time)) {
       this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - Invalid time string format: ${time}`);
       return Promise.reject(new Error(this.homey.__('settings.error.time_invalid')));
     }
@@ -321,7 +347,7 @@ module.exports = class mainDevice extends Device {
   async onAction_DEVICE_SCHEDULE_CRONTIME(crontime) {
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME '${crontime}'`);
 
-    if (!this.cronTimePattern.test(crontime)) {
+    if (!this.testCronTimePattern(crontime)) {
       this.error(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - Invalid time string format: ${crontime}`);
       return Promise.reject(new Error(this.homey.__('settings.error.crontime_invalid')));
     }
