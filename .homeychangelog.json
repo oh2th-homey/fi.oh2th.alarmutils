@@ -115,5 +115,8 @@
   },
   "2.4.2": {
     "en": "Restore prettier formating"
+  },
+  "2.4.3": {
+    "en": "FIX: Setting cron time fails"
   }
 }
