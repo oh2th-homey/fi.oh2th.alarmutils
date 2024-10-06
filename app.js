@@ -46,11 +46,25 @@ class AlarmUtils extends Homey.App {
   async onAppInterval() {
     this.log(`${this.myAppIdVersion} - onAppInterval`);
 
-    // Get all configured scheduler devices.
-    const schedulerDriver = this.homey.drivers.getDriver('scheduler');
-    const schedulerDevices = schedulerDriver.getDevices();
-    const crontimeDriver = this.homey.drivers.getDriver('crontime');
-    const crontimeDevices = crontimeDriver.getDevices();
+    // Initialize the arrays to store the devices.
+    let schedulerDevices = [];
+    let crontimeDevices = [];
+
+    // Attempt to get the scheduler driver and its devices
+    try {
+      const schedulerDriver = this.homey.drivers.getDriver('scheduler');
+      schedulerDevices = schedulerDriver.getDevices();
+    } catch (err) {
+      this.log('Warning: Failed to get scheduler driver:', err.message);
+    }
+
+    // Attempt to get the crontime driver and its devices
+    try {
+      const crontimeDriver = this.homey.drivers.getDriver('crontime');
+      crontimeDevices = crontimeDriver.getDevices();
+    } catch (err) {
+      this.log('Warning: Failed to get crontime driver:', err.message);
+    }
 
     const devices = [...schedulerDevices, ...crontimeDevices];
     // Iterate over all active scheduler devices.
