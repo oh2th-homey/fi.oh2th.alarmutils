@@ -118,5 +118,8 @@
   },
   "2.4.3": {
     "en": "FIX: Setting cron time fails"
+  },
+  "2.4.4": {
+    "en": "Catch a rare onAppInterval crash when driver is not initialized"
   }
 }
