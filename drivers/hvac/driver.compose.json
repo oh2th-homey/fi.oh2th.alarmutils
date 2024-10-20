@@ -1,0 +1,6 @@
+{
+  "name": {
+    "en": "HVAC Scheduler"
+  },
+  "$extends": ["device"]
+}

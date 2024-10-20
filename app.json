@@ -840,6 +840,34 @@
         }
       ],
       "images": {
+        "small": "/drivers/hvac/assets/images/small.png",
+        "large": "/drivers/hvac/assets/images/large.png",
+        "xlarge": "/drivers/hvac/assets/images/xlarge.png"
+      },
+      "name": {
+        "en": "HVAC Scheduler"
+      },
+      "id": "hvac",
+      "settings": []
+    },
+    {
+      "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "capabilities": [
+        "is_enabled",
+        "text_schedule_next",
+        "text_schedule_date",
+        "text_schedule_time"
+      ],
+      "pair": [
+        {
+          "id": "configure"
+        }
+      ],
+      "images": {
         "small": "/drivers/scheduler/assets/images/small.png",
         "large": "/drivers/scheduler/assets/images/large.png",
         "xlarge": "/drivers/scheduler/assets/images/xlarge.png"

@@ -31,6 +31,22 @@
       "add_device": "Error adding device."
     }
   },
+  "heating": {
+    "title": "HVAC Schedule",
+    "tab": {
+      "mode": "Mode Schedule",
+      "temperatures": "Temperatures"
+    },
+    "table": {
+      "time": "Time",
+      "mode": "Mode",
+      "heat": "Heat",
+      "heat_eco": "Heat Eco",
+      "cool": "Cool",
+      "cool_eco": "Cool Eco"
+    },
+    "save": "Save Settings"
+  },
   "message": {
     "not_scheduled": "Not Scheduled",
 		"init_cronjob_error": "Error initializing cronjob, check settings."

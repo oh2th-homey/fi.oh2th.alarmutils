@@ -1,0 +1,334 @@
+<script type="application/javascript">
+  // Set debug mode
+  const debug = true; // Set to true for debugging, false for production
+  const modeTemperatures = ['Heat', 'Heat Eco', 'Cool', 'Cool Eco']; // Combined heating and cooling modes
+  const modeOptions = ['Off', ...modeTemperatures]; // All modes including Off
+
+  // randomUUID function
+  function randomUUID() {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const uuidLength = 8;
+    const timestamp = new Date().getTime().toString();
+    let uuid = '';
+    const seed = timestamp + characters;
+
+    for (let i = 0; i < uuidLength; i++) {
+      const randomIndex = Math.floor(Math.random() * seed.length);
+      uuid += seed.charAt(randomIndex);
+    }
+
+    return uuid;
+  }
+
+  const uuid = randomUUID();
+
+  // Global variable to hold the current settings
+  let currentSettings = {
+    heating: {},
+    cooling: {},
+    modeSchedule: {},
+  };
+
+  // Mock data for debugging purposes
+  const mockData = {
+    hourlyTemperatures: Array.from({ length: 24 }, (_, i) => ({
+      Heat: (20 + i).toFixed(1),
+      'Heat Eco': (18 + i).toFixed(1),
+      Cool: (22 + i).toFixed(1),
+      'Cool Eco': (21 + i).toFixed(1),
+    })),
+    hourlyModes: Array(24).fill('Off'), // Default to 'Off'
+  };
+
+  // Fetch current settings from the backend or use mock data if in debug mode
+  async function fetchSettings() {
+    if (debug) {
+      // Use mock data for debugging
+      initializeForm(mockData.hourlyTemperatures, mockData.hourlyModes);
+      console.log('Using mock data for debugging:', mockData);
+    } else {
+      try {
+        const response = await fetch('/api/getSettings'); // Replace with your actual API endpoint
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        initializeForm(data.hourlyTemperatures, data.hourlyModes);
+      } catch (error) {
+        console.error('Failed to fetch settings:', error);
+        // If fetch fails, assume default values for first use
+        initializeForm(null, Array(24).fill('Off'));
+      }
+    }
+  }
+
+  // Initialize the form with the current configuration or default values
+  function initializeForm(hourlyTemperatures, hourlyModes) {
+    // Populate Heating inputs
+    populateHeatingRows(hourlyTemperatures);
+
+    // Populate Mode Schedule
+    populateModeRows(hourlyModes);
+  }
+
+  // Populate the Heating table rows
+  function populateHeatingRows(hourlyTemperatures) {
+    const heatingRowsContainer = document.getElementById('heatingRows');
+    heatingRowsContainer.innerHTML = ''; // Clear existing rows
+    let lastHeatValue = ''; // Store last valid temperature for Heat mode
+    let lastHeatEcoValue = ''; // Store last valid temperature for Heat Eco mode
+    let lastCoolValue = ''; // Store last valid temperature for Cool mode
+    let lastCoolEcoValue = ''; // Store last valid temperature for Cool Eco mode
+
+    for (let i = 0; i < 24; i++) {
+      const row = document.createElement('tr');
+      const hour = i.toString().padStart(2, '0');
+      const timeCell = document.createElement('td');
+      timeCell.textContent = `${hour}:00`;
+      row.appendChild(timeCell);
+
+      modeTemperatures.forEach((mode) => {
+        const inputCell = document.createElement('td');
+        const tempInput = document.createElement('input');
+        tempInput.type = 'number';
+        tempInput.step = '0.5';
+        tempInput.min = '-100';
+        tempInput.max = '100';
+        tempInput.name = `temp_${i}_${mode}`;
+        tempInput.placeholder = 'Temp';
+
+        // Set the temperature input value if available
+        if (hourlyTemperatures && hourlyTemperatures[i]) {
+          const temperature = hourlyTemperatures[i][mode] || '';
+          tempInput.value = temperature;
+          // Update the last valid value
+          if (mode === 'Heat') lastHeatValue = temperature;
+          if (mode === 'Heat Eco') lastHeatEcoValue = temperature;
+          if (mode === 'Cool') lastCoolValue = temperature;
+          if (mode === 'Cool Eco') lastCoolEcoValue = temperature;
+        }
+
+        // Add an event listener to handle empty values and autopopulate
+        tempInput.addEventListener('blur', function () {
+          // Check if input is empty
+          if (this.value === '') {
+            if (mode === 'Heat' && lastHeatValue !== '') {
+              this.value = lastHeatValue; // Use the last valid value
+            } else if (mode === 'Heat Eco' && lastHeatEcoValue !== '') {
+              this.value = lastHeatEcoValue; // Use the last valid value
+            } else if (mode === 'Cool' && lastCoolValue !== '') {
+              this.value = lastCoolValue; // Use the last valid value
+            } else if (mode === 'Cool Eco' && lastCoolEcoValue !== '') {
+              this.value = lastCoolEcoValue; // Use the last valid value
+            }
+          } else {
+            // Update the last valid value
+            if (mode === 'Heat') lastHeatValue = this.value;
+            if (mode === 'Heat Eco') lastHeatEcoValue = this.value;
+            if (mode === 'Cool') lastCoolValue = this.value;
+            if (mode === 'Cool Eco') lastCoolEcoValue = this.value;
+          }
+        });
+
+        inputCell.appendChild(tempInput);
+        row.appendChild(inputCell);
+      });
+
+      heatingRowsContainer.appendChild(row);
+    }
+  }
+
+  // Populate the Mode Schedule table rows
+  function populateModeRows(hourlyModes) {
+    const modeRowsContainer = document.getElementById('modeRows');
+    modeRowsContainer.innerHTML = ''; // Clear existing rows
+
+    for (let i = 0; i < 24; i++) {
+      const row = document.createElement('tr');
+      const hour = i.toString().padStart(2, '0');
+      const timeCell = document.createElement('td');
+      timeCell.textContent = `${hour}:00`;
+      row.appendChild(timeCell);
+
+      const modeCell = document.createElement('td');
+      const modeSelect = document.createElement('select');
+      modeSelect.name = `mode_${i}`;
+
+      // Populate the mode options
+      modeOptions.forEach((mode) => {
+        const option = document.createElement('option');
+        option.value = mode;
+        option.textContent = mode;
+        modeSelect.appendChild(option);
+      });
+
+      // Set the mode select value if available
+      if (hourlyModes && hourlyModes[i]) {
+        modeSelect.value = hourlyModes[i];
+      }
+
+      modeCell.appendChild(modeSelect);
+      row.appendChild(modeCell);
+      modeRowsContainer.appendChild(row);
+    }
+  }
+
+  // Save the settings
+  function saveSettings() {
+    const output = document.getElementById('output');
+
+    // Retrieve hourly modes and temperatures from the inputs
+    const hourlyModes = Array.from({ length: 24 }, (_, i) => document.querySelector(`select[name="mode_${i}"]`).value);
+    const hourlyTemperatures = Array.from({ length: 24 }, (_, i) => {
+      return {
+        heat: parseFloat(document.querySelector(`input[name="temp_${i}_Heat"]`).value),
+        heat_eco: parseFloat(document.querySelector(`input[name="temp_${i}_Heat Eco"]`).value),
+        cool: parseFloat(document.querySelector(`input[name="temp_${i}_Cool"]`).value),
+        cool_eco: parseFloat(document.querySelector(`input[name="temp_${i}_Cool Eco"]`).value),
+      };
+    });
+
+    // Display hourly modes and temperatures as JSON
+    output.textContent = JSON.stringify({ hourlyModes, hourlyTemperatures }, null, 2);
+
+    // Here you would send the settings to your backend
+    console.log('Settings saved:', { hourlyModes, hourlyTemperatures });
+  }
+
+  // Function to open the selected tab
+  function openTab(evt, tabName) {
+    console.log('Opening tab:', tabName);
+    // Get all elements with class="tabcontent" and hide them
+    const tabcontents = document.getElementsByClassName('tabcontent');
+    for (let i = 0; i < tabcontents.length; i++) {
+      tabcontents[i].classList.remove('active');
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    const tablinks = document.getElementsByClassName('tablinks');
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove('homey-button-primary-small');
+      tablinks[i].classList.add('homey-button-secondary-small');
+    }
+
+    // Show the current tab and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).classList.add('active');
+    evt.currentTarget.classList.remove('homey-button-secondary-small');
+    evt.currentTarget.classList.add('homey-button-primary-small');
+  }
+
+  // run once the document is ready
+  $(function () {
+    // Fetch settings on page load
+    fetchSettings();
+  });
+</script>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 100%;
+    margin: 1px;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 0px solid #aeaeb2;
+    background-color: #419cff;
+    padding: 3px;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 2px;
+    border: 1px solid #aeaeb2;
+    border-top: none;
+    background-color: #e5e5ea;
+  }
+
+  .tabcontent.active {
+    display: block;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th {
+    border: none;
+    padding: 0; /* Remove padding */
+    text-align: center;
+    font-size: 80%;
+  }
+
+  td {
+    border: none;
+    padding: 0; /* Remove padding */
+    text-align: center;
+  }
+
+  input[type='number'] {
+    width: 100%; /* Set the width of input elements */
+    text-align: center;
+    padding: 0px;
+  }
+
+  select {
+    width: 100%; /* Set the width of select elements */
+    text-align: center;
+  }
+
+  #output {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    white-space: pre-wrap; /* Maintain formatting */
+  }
+</style>
+
+<header class="homey-header">
+  <h1 class="homey-title" data-i18n="heating.title"><!--HVAC Schedule--></h1>
+</header>
+
+<div class="tab">
+  <button class="tablinks homey-button-primary-small" onclick="openTab(event, 'ModeSchedule')" data-i18n="heating.tab.mode"><!--Mode Schedule--></button>
+  <button class="tablinks homey-button-secondary-small" onclick="openTab(event, 'Heating')" data-i18n="heating.tab.temperatures"><!--Temperatures--></button>
+</div>
+
+<div id="ModeSchedule" class="tabcontent active">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50px" data-i18n="heating.table.time"><!--Time--></th>
+        <th style="width: 200px" data-i18n="heating.table.mode"><!--Mode--></th>
+      </tr>
+    </thead>
+    <tbody id="modeRows">
+      <!-- Mode rows will be populated here -->
+    </tbody>
+  </table>
+</div>
+
+<div id="Heating" class="tabcontent">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50px" data-i18n="heating.table.time"><!--Time--></th>
+        <th style="width: 80px" data-i18n="heating.table.heat"><!--Heat--></th>
+        <th style="width: 80px" data-i18n="heating.table.heat_eco"><!--Heat Eco--></th>
+        <th style="width: 80px" data-i18n="heating.table.cool"><!--Cool--></th>
+        <th style="width: 80px" data-i18n="heating.table.cool_eco"><!--Cool Eco--></th>
+      </tr>
+    </thead>
+    <tbody id="heatingRows">
+      <!-- Heating rows will be populated here -->
+    </tbody>
+  </table>
+</div>
+
+<h3>Collected Data</h3>
+<pre id="output"></pre>
+
+<button type="button" class="homey-button-primary-small" onclick="saveSettings()" data-i18n="heating.save">
+  <!--Save Settings-->
+</button>
