@@ -124,5 +124,8 @@
   },
   "2.4.5": {
     "en": "FIX: Day of week matching in condition cards."
+  },
+  "2.4.6": {
+    "en": "FIX: Schedule changed to trigger only when it actually changed."
   }
 }
