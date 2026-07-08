@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "새로운 스케줄러",
+    "configuration": "설정",
+    "name": "스케줄러 이름:",
+    "time": "시간",
+    "time_help": "HH='*'는 모든 시간, mm='*'는 모든 분으로 스케줄러를 실행할 시간 (HH:mm)을 입력하세요.",
+    "crontime": "크론 시간:",
+    "crontime_help": "스케줄러를 실행할 크론 시간을 입력하세요. 더 많은 정보는 <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a>를 참조하세요.",
+    "timezone": "시간대",
+    "runonce": "한 번 실행",
+    "runonce_help": "첫 실행 후 스케줄러를 중지합니다.",
+    "repetition": "반복 주기",
+    "repetition_help": "스케줄러를 반복할 요일을 선택하세요. 요일이 선택되지 않으면 스케줄러가 비활성화됩니다.",
+    "monday": "월요일",
+    "tuesday": "화요일",
+    "wednesday": "수요일",
+    "thursday": "목요일",
+    "friday": "금요일",
+    "saturday": "토요일",
+    "sunday": "일요일",
+    "function_add": "스케줄러 추가",
+    "error": {
+      "name_required": "이름은 필수입니다",
+      "time_required": "시간은 필수입니다",
+      "time_invalid": "시간을 [HH]:[mm], [*]:[mm], [HH]:[*] 또는 [*]:[*] 형식으로 입력하세요",
+      "crontime_required": "크론 시간 패턴은 필수입니다",
+      "crontime_invalid": "유효한 크론 시간 패턴을 입력하세요. http://crontab.guru/를 참조하세요.",
+      "timezone_required": "시간대는 필수입니다.",
+      "timezone_invalid": "시간대를 Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3처럼 입력하세요.",
+      "add_device": "장치 추가 오류."
+    }
+  },
+  "message": {
+    "not_scheduled": "일정 없음",
+    "init_cronjob_error": "크론잡 초기화 오류, 설정을 확인하세요."
+  }
+}

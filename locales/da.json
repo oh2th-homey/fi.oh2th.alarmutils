@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Ny Planlægger",
+    "configuration": "Konfiguration",
+    "name": "Planlægger navn:",
+    "time": "Tid",
+    "time_help": "Tiden (TT:mm) til at udføre planlæggeren. TT='*' enhver time, mm='*' ethvert minut",
+    "crontime": "Cron tid:",
+    "crontime_help": "Cron tiden til at udføre planlæggeren. Se <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> for mere information.",
+    "timezone": "Tidszone",
+    "runonce": "Kør én gang",
+    "runonce_help": "Stop planlæggeren efter første kørsel.",
+    "repetition": "Gentag hver",
+    "repetition_help": "Dagene i ugen til at gentage planlæggeren. Hvis ingen dage er valgt, er planlæggeren deaktiveret.",
+    "monday": "Mandag",
+    "tuesday": "Tirsdag",
+    "wednesday": "Onsdag",
+    "thursday": "Torsdag",
+    "friday": "Fredag",
+    "saturday": "Lørdag",
+    "sunday": "Søndag",
+    "function_add": "Tilføj Planlægger",
+    "error": {
+      "name_required": "Navn er påkrævet",
+      "time_required": "Tid er påkrævet",
+      "time_invalid": "Indtast tid som [TT]:[mm], [*]:[mm], [TT]:[*] eller [*]:[*]",
+      "crontime_required": "Cron tid mønster er påkrævet",
+      "crontime_invalid": "Indtast et gyldigt cron tid mønster. Se http://crontab.guru/ for mere information.",
+      "timezone_required": "Tidszone er påkrævet.",
+      "timezone_invalid": "Indtast Tidszone som Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, osv.",
+      "add_device": "Fejl ved tilføjelse af enhed."
+    }
+  },
+  "message": {
+    "not_scheduled": "Ikke Planlagt",
+    "init_cronjob_error": "Fejl ved initialisering af cronjob, tjek indstillinger."
+  }
+}

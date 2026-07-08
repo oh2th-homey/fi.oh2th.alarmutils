@@ -1,0 +1,1 @@
+Dynamisk planlegging med en enhet som kan konfigureres fra innstillinger og via flyter.

@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Nowy Harmonogram",
+    "configuration": "Konfiguracja",
+    "name": "Nazwa harmonogramu:",
+    "time": "Czas",
+    "time_help": "Czas (HH:mm) wykonania harmonogramu. HH='*' dowolna godzina, mm='*' dowolna minuta",
+    "crontime": "Czas cron:",
+    "crontime_help": "Czas cron do wykonania harmonogramu. Zobacz <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> po więcej informacji.",
+    "timezone": "Strefa czasowa",
+    "runonce": "Uruchom raz",
+    "runonce_help": "Zatrzymaj harmonogram po pierwszym wykonaniu.",
+    "repetition": "Powtarzaj co",
+    "repetition_help": "Dni tygodnia, w których harmonogram ma się powtarzać. Jeśli żaden dzień nie jest wybrany, harmonogram jest wyłączony.",
+    "monday": "Poniedziałek",
+    "tuesday": "Wtorek",
+    "wednesday": "Środa",
+    "thursday": "Czwartek",
+    "friday": "Piątek",
+    "saturday": "Sobota",
+    "sunday": "Niedziela",
+    "function_add": "Dodaj harmonogram",
+    "error": {
+      "name_required": "Nazwa jest wymagana",
+      "time_required": "Czas jest wymagany",
+      "time_invalid": "Wprowadź czas w formacie [HH]:[mm], [*]:[mm], [HH]:[*] lub [*]:[*]",
+      "crontime_required": "Wzorzec czasu cron jest wymagany",
+      "crontime_invalid": "Wprowadź prawidłowy wzorzec czasu cron. Zobacz http://crontab.guru/ po więcej informacji.",
+      "timezone_required": "Strefa czasowa jest wymagana.",
+      "timezone_invalid": "Wprowadź strefę czasową jako Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, itp.",
+      "add_device": "Błąd dodawania urządzenia."
+    }
+  },
+  "message": {
+    "not_scheduled": "Nie zaplanowano",
+    "init_cronjob_error": "Błąd inicjowania zadania cron, sprawdź ustawienia."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Neuer Scheduler",
+    "configuration": "Konfiguration",
+    "name": "Scheduler Name:",
+    "time": "Zeit",
+    "time_help": "Die Zeit (HH:mm), um den Scheduler auszuführen. HH='*' jede Stunde, mm='*' jede Minute",
+    "crontime": "Cron-Zeit:",
+    "crontime_help": "Die Cron-Zeit, um den Scheduler auszuführen. Siehe <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> für mehr Informationen.",
+    "timezone": "Zeitzone",
+    "runonce": "Einmal ausführen",
+    "runonce_help": "Stoppt den Scheduler nach der ersten Ausführung.",
+    "repetition": "Wiederhole alle",
+    "repetition_help": "Die Wochentage, an denen der Scheduler wiederholt wird. Wenn keine Tage ausgewählt sind, ist der Scheduler deaktiviert.",
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag",
+    "function_add": "Scheduler hinzufügen",
+    "error": {
+      "name_required": "Name ist erforderlich",
+      "time_required": "Zeit ist erforderlich",
+      "time_invalid": "Geben Sie die Zeit als [HH]:[mm], [*]:[mm], [HH]:[*] oder [*]:[*] ein",
+      "crontime_required": "Cron-Zeitmuster ist erforderlich",
+      "crontime_invalid": "Geben Sie ein gültiges Cron-Zeitmuster ein. Siehe http://crontab.guru/ für mehr Informationen.",
+      "timezone_required": "Zeitzone ist erforderlich.",
+      "timezone_invalid": "Geben Sie die Zeitzone als Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc. ein.",
+      "add_device": "Fehler beim Hinzufügen des Geräts."
+    }
+  },
+  "message": {
+    "not_scheduled": "Nicht geplant",
+    "init_cronjob_error": "Fehler beim Initialisieren des Cronjobs, überprüfen Sie die Einstellungen."
+  }
+}

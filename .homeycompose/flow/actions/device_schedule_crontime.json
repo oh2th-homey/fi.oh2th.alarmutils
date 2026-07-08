@@ -1,22 +1,82 @@
 {
   "title": {
-    "en": "Cron time"
+    "en": "Cron time",
+    "nl": "Cron-tijd",
+    "da": "Cron-tidspunkt",
+    "de": "Cron-Zeit",
+    "es": "Hora cron",
+    "fr": "Heure Cron",
+    "it": "Tempo cron",
+    "no": "Cron-tidspunkt",
+    "sv": "Cron-tid",
+    "pl": "Czas Cron",
+    "ru": "Время Cron",
+    "ko": "크론 시간",
+    "ar": "وقت كرون"
   },
   "titleFormatted": {
-    "en": "Set cron time to [[time]]"
+    "en": "Set cron time to [[time]]",
+    "nl": "Stel cron-tijd in op [[time]]",
+    "da": "Indstil cron-tid til [[time]]",
+    "de": "Cron-Zeit auf [[time]] einstellen",
+    "es": "Establecer hora cron a [[time]]",
+    "fr": "Définir l'heure cron à [[time]]",
+    "it": "Imposta l'ora cron su [[time]]",
+    "no": "Sett cron-tid til [[time]]",
+    "sv": "Ställ in cron-tid till [[time]]",
+    "pl": "Ustaw czas cron na [[time]]",
+    "ru": "Установить время cron на [[time]]",
+    "ko": "크론 시간을 [[time]]로 설정하세요.",
+    "ar": "اضبط وقت الكرون على [[time]]"
   },
   "hint": {
-    "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
+    "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help.",
+    "nl": "Cron-tijdpatroon voor het plannen van acties. Zie https://crontab.guru/ voor hulp.",
+    "da": "Cron-tidsmønster til planlægning af handlinger. Se https://crontab.guru/ for hjælp.",
+    "de": "Cron-Zeitmuster für die Planung von Aktionen. Siehe https://crontab.guru/ für Hilfe.",
+    "es": "Patrón de tiempo Cron para programar acciones. Consulta https://crontab.guru/ para obtener ayuda.",
+    "fr": "Modèle de temps Cron pour planifier des actions. Consultez https://crontab.guru/ pour obtenir de l'aide.",
+    "it": "Modello di tempo Cron per programmare azioni. Consulta https://crontab.guru/ per assistenza.",
+    "no": "Cron-tidmønster for å planlegge handlinger. Se https://crontab.guru/ for hjelp.",
+    "sv": "Cron-tidmönster för att schemalägga åtgärder. Se https://crontab.guru/ för hjälp.",
+    "pl": "Wzorzec czasu Cron do planowania działań. Zobacz https://crontab.guru/ aby uzyskać pomoc.",
+    "ru": "Шаблон времени Cron для планирования действий. Посетите https://crontab.guru/ для получения помощи.",
+    "ko": "작업 예약을 위한 크론 시간 패턴입니다. 도움말은 https://crontab.guru/를 참조하세요.",
+    "ar": "نمط وقت كرون لجدولة الإجراءات. انظر https://crontab.guru/ للمساعدة."
   },
   "args": [
     {
       "type": "text",
       "name": "time",
       "title": {
-        "en": "Cron time"
+        "en": "Cron time",
+        "nl": "Cron-tijd",
+        "da": "Cron-tidspunkt",
+        "de": "Cron-Zeit",
+        "es": "Hora cron",
+        "fr": "Heure Cron",
+        "it": "Tempo cron",
+        "no": "Cron-tidspunkt",
+        "sv": "Cron-tid",
+        "pl": "Czas cron",
+        "ru": "Время Cron",
+        "ko": "크론 시간",
+        "ar": "وقت كرون"
       },
       "placeholder": {
-        "en": "5 4 * * *"
+        "en": "5 4 * * *",
+        "nl": "5 4 * * *",
+        "da": "5 4 * * *",
+        "de": "5 4 * * *",
+        "es": "5 4 * * *",
+        "fr": "5 4 * * *",
+        "it": "5 4 * * *",
+        "no": "5 4 * * *",
+        "sv": "5 4 * * *",
+        "pl": "5 4 * * *",
+        "ru": "5 4 * * *",
+        "ko": "5 4 * * *",
+        "ar": "٥ ٤ * * *"
       }
     },
     {

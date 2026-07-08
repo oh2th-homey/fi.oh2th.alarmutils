@@ -1,10 +1,34 @@
 {
   "type": "boolean",
   "title": {
-    "en": "Schedule Enabled"
+    "en": "Schedule Enabled",
+    "nl": "Schema ingeschakeld",
+    "da": "Planlægning aktiveret",
+    "de": "Zeitplan aktiviert",
+    "es": "Programación activada",
+    "fr": "Planification activée",
+    "it": "Pianificazione abilitata",
+    "no": "Planlegging aktivert",
+    "sv": "Schemaläggning aktiverad",
+    "pl": "Harmonogram włączony",
+    "ru": "Расписание включено",
+    "ko": "일정 활성화됨",
+    "ar": "الجدولة مفعّلة"
   },
   "hint": {
-    "en": "Schedule is enabled"
+    "en": "Schedule is enabled",
+    "nl": "Schema is ingeschakeld",
+    "da": "Tidsplanen er aktiveret",
+    "de": "Zeitplan ist aktiviert",
+    "es": "El horario está activado",
+    "fr": "La planification est activée",
+    "it": "La pianificazione è attivata",
+    "no": "Tidsplanen er aktivert",
+    "sv": "Schemat är aktiverat",
+    "pl": "Harmonogram jest włączony",
+    "ru": "Расписание включено",
+    "ko": "일정이 활성화되었습니다.",
+    "ar": "الجدول الزمني مفعل"
   },
   "icon": "./assets/clock-enable.svg",
   "uiComponent": "toggle",
@@ -14,10 +38,34 @@
   "insights": true,
   "capabilitiesOptions": {
     "insightsTitleTrue": {
-      "en": "Schedule was enabled"
+      "en": "Schedule was enabled",
+      "nl": "Schema was ingeschakeld",
+      "da": "Planlægning blev aktiveret",
+      "de": "Zeitplan wurde aktiviert",
+      "es": "La programación fue activada",
+      "fr": "La planification a été activée",
+      "it": "La pianificazione è stata attivata",
+      "no": "Planlegging ble aktivert",
+      "sv": "Schemaläggning aktiverades",
+      "pl": "Harmonogram został włączony",
+      "ru": "Расписание было включено",
+      "ko": "일정이 활성화되었습니다.",
+      "ar": "تم تفعيل الجدول الزمني"
     },
     "insightsTitleFalse": {
-      "en": "Schedule was disabled"
+      "en": "Schedule was disabled",
+      "nl": "Schema was uitgeschakeld",
+      "da": "Planlægning blev deaktiveret",
+      "de": "Zeitplan wurde deaktiviert",
+      "es": "La programación fue desactivada",
+      "fr": "La planification a été désactivée",
+      "it": "La pianificazione è stata disabilitata.",
+      "no": "Planlegging ble deaktivert",
+      "sv": "Schemaläggning inaktiverades",
+      "pl": "Harmonogram został wyłączony",
+      "ru": "Расписание было отключено",
+      "ko": "일정이 비활성화되었습니다.",
+      "ar": "تم تعطيل الجدول الزمني"
     }
   }
 }

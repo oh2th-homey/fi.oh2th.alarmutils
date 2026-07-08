@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Новый Планировщик",
+    "configuration": "Конфигурация",
+    "name": "Имя планировщика:",
+    "time": "Время",
+    "time_help": "Время (HH:mm) для выполнения планировщика. HH='*' любой час, mm='*' любая минута",
+    "crontime": "Cron время:",
+    "crontime_help": "Время cron для выполнения планировщика. Смотрите <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> для получения дополнительной информации.",
+    "timezone": "Часовой пояс",
+    "runonce": "Запустить один раз",
+    "runonce_help": "Остановить планировщик после первого выполнения.",
+    "repetition": "Повторять каждый",
+    "repetition_help": "Дни недели для повтора планировщика. Если дни не выбраны, планировщик отключен.",
+    "monday": "Понедельник",
+    "tuesday": "Вторник",
+    "wednesday": "Среда",
+    "thursday": "Четверг",
+    "friday": "Пятница",
+    "saturday": "Суббота",
+    "sunday": "Воскресенье",
+    "function_add": "Добавить Планировщик",
+    "error": {
+      "name_required": "Имя необходимо",
+      "time_required": "Время необходимо",
+      "time_invalid": "Введите время в формате [HH]:[mm], [*]:[mm], [HH]:[*] или [*]:[*]",
+      "crontime_required": "Шаблон времени cron необходим",
+      "crontime_invalid": "Введите действительный шаблон времени cron. Смотрите http://crontab.guru/ для получения дополнительной информации.",
+      "timezone_required": "Часовой пояс необходим.",
+      "timezone_invalid": "Введите Часовой пояс как Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, и т.д.",
+      "add_device": "Ошибка добавления устройства."
+    }
+  },
+  "message": {
+    "not_scheduled": "Не запланировано",
+    "init_cronjob_error": "Ошибка инициализации cron задачи, проверьте настройки."
+  }
+}

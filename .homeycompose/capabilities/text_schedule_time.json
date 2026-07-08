@@ -1,10 +1,34 @@
 {
   "type": "string",
   "title": {
-    "en": "Scheduled time"
+    "en": "Scheduled time",
+    "nl": "Geplande tijd",
+    "da": "Planlagt tid",
+    "de": "Geplante Zeit",
+    "es": "Hora programada",
+    "fr": "Heure programmée",
+    "it": "Orario programmato",
+    "no": "Planlagt tid",
+    "sv": "Schemalagd tid",
+    "pl": "Zaplanowany czas",
+    "ru": "Запланированное время",
+    "ko": "예약된 시간",
+    "ar": "الوقت المجدول"
   },
   "hint": {
-    "en": "Next scheduled time"
+    "en": "Next scheduled time",
+    "nl": "Volgende geplande tijdstip",
+    "da": "Næste planlagte tidspunkt",
+    "de": "Nächste geplante Zeit",
+    "es": "Próxima hora programada",
+    "fr": "Prochaine heure programmée",
+    "it": "Prossima ora programmata",
+    "no": "Neste planlagte tidspunkt",
+    "sv": "Nästa schemalagda tid",
+    "pl": "Następny zaplanowany czas",
+    "ru": "Следующее запланированное время",
+    "ko": "다음 예약 시간",
+    "ar": "الوقت المجدول التالي"
   },
   "icon": "./assets/clock-enable.svg",
   "uiComponent": "sensor",

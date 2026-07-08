@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "جدول زمني جديد",
+    "configuration": "الإعدادات",
+    "name": "اسم الجدول الزمني:",
+    "time": "الوقت",
+    "time_help": "الوقت (HH:mm) لتنفيذ الجدول الزمني. HH='*' أي ساعة، mm='*' أي دقيقة",
+    "crontime": "وقت الكرون:",
+    "crontime_help": "وقت الكرون لتنفيذ الجدول الزمني. انظر <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> للمزيد من المعلومات.",
+    "timezone": "المنطقة الزمنية",
+    "runonce": "تشغيل مرة واحدة",
+    "runonce_help": "إيقاف الجدول الزمني بعد أول تنفيذ.",
+    "repetition": "التكرار كل",
+    "repetition_help": "أيام الأسبوع لتكرار الجدول الزمني. إذا لم يتم تحديد أي أيام، سيتم تعطيل الجدول الزمني.",
+    "monday": "الاثنين",
+    "tuesday": "الثلاثاء",
+    "wednesday": "الأربعاء",
+    "thursday": "الخميس",
+    "friday": "الجمعة",
+    "saturday": "السبت",
+    "sunday": "الأحد",
+    "function_add": "إضافة جدول زمني",
+    "error": {
+      "name_required": "الاسم مطلوب",
+      "time_required": "الوقت مطلوب",
+      "time_invalid": "أدخل الوقت كـ [HH]:[mm]، [*]:[mm]، [HH]:[*] أو [*]:[*]",
+      "crontime_required": "نمط وقت الكرون مطلوب",
+      "crontime_invalid": "أدخل نمط وقت كرون صالح. انظر http://crontab.guru/ للمزيد من المعلومات.",
+      "timezone_required": "المنطقة الزمنية مطلوبة.",
+      "timezone_invalid": "أدخل المنطقة الزمنية كـ Europe/Helsinki، Pacific/Honolulu، UTC، EET، Etc/GMT+3، إلخ.",
+      "add_device": "خطأ في إضافة الجهاز."
+    }
+  },
+  "message": {
+    "not_scheduled": "غير مجدول",
+    "init_cronjob_error": "خطأ في تهيئة وظيفة الكرون، تحقق من الإعدادات."
+  }
+}

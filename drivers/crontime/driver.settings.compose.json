@@ -3,10 +3,34 @@
     "id": "time",
     "type": "text",
     "label": {
-      "en": "Cron time pattern"
+      "en": "Cron time pattern",
+      "nl": "Cron-tijdpatroon",
+      "da": "Cron-tidsmønster",
+      "de": "Cron-Zeitmuster",
+      "es": "Patrón de tiempo Cron",
+      "fr": "Modèle de temps Cron",
+      "it": "Modello di tempo Cron",
+      "no": "Cron-tidmønster",
+      "sv": "Cron-tidmönster",
+      "pl": "Wzorzec czasu Cron",
+      "ru": "Шаблон времени Cron",
+      "ko": "크론 시간 패턴",
+      "ar": "نمط وقت كرون"
     },
     "hint": {
-      "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help."
+      "en": "Cron time pattern for scheduling actions. See https://crontab.guru/ for help.",
+      "nl": "Cron-tijdpatroon voor het plannen van acties. Zie https://crontab.guru/ voor hulp.",
+      "da": "Cron-tidsmønster til planlægning af handlinger. Se https://crontab.guru/ for hjælp.",
+      "de": "Cron-Zeitmuster für die Planung von Aktionen. Siehe https://crontab.guru/ für Hilfe.",
+      "es": "Patrón de tiempo Cron para programar acciones. Consulta https://crontab.guru/ para obtener ayuda.",
+      "fr": "Modèle de temps Cron pour planifier des actions. Consultez https://crontab.guru/ pour obtenir de l'aide.",
+      "it": "Modello di tempo Cron per programmare azioni. Consulta https://crontab.guru/ per assistenza.",
+      "no": "Cron-tidmønster for å planlegge handlinger. Se https://crontab.guru/ for hjelp.",
+      "sv": "Cron-tidmönster för att schemalägga åtgärder. Se https://crontab.guru/ för hjälp.",
+      "pl": "Wzorzec czasu Cron do planowania działań. Zobacz https://crontab.guru/ aby uzyskać pomoc.",
+      "ru": "Шаблон времени Cron для планирования действий. Посетите https://crontab.guru/ для помощи.",
+      "ko": "작업 예약을 위한 크론 시간 패턴입니다. 도움말은 https://crontab.guru/를 참조하세요.",
+      "ar": "نمط وقت كرون لجدولة الإجراءات. انظر https://crontab.guru/ للمساعدة."
     },
     "value": "5 4 * * *"
   },
@@ -14,10 +38,34 @@
     "id": "timezone",
     "type": "text",
     "label": {
-      "en": "Timezone"
+      "en": "Timezone",
+      "nl": "Tijdzone",
+      "da": "Tidszone",
+      "de": "Zeitzone",
+      "es": "Zona horaria",
+      "fr": "Fuseau horaire",
+      "it": "Fuso orario",
+      "no": "Tidssone",
+      "sv": "Tidszon",
+      "pl": "Strefa czasowa",
+      "ru": "Часовой пояс",
+      "ko": "시간대",
+      "ar": "المنطقة الزمنية"
     },
     "hint": {
-      "en": "Timezone name from TZ database."
+      "en": "Timezone name from TZ database.",
+      "nl": "Tijdzone naam uit TZ-database.",
+      "da": "Tidszonenavn fra TZ-databasen.",
+      "de": "Zeitzonenname aus der TZ-Datenbank.",
+      "es": "Nombre de la zona horaria de la base de datos TZ.",
+      "fr": "Nom du fuseau horaire de la base de données TZ.",
+      "it": "Nome del fuso orario dal database TZ.",
+      "no": "Tidssonenavn fra TZ-databasen.",
+      "sv": "Tidszonsnamn från TZ-databasen.",
+      "pl": "Nazwa strefy czasowej z bazy danych TZ.",
+      "ru": "Название часового пояса из базы данных TZ.",
+      "ko": "TZ 데이터베이스의 시간대 이름.",
+      "ar": "اسم المنطقة الزمنية من قاعدة بيانات TZ."
     },
     "value": "Europe/Helsinki"
   },
@@ -25,10 +73,34 @@
     "id": "runonce",
     "type": "checkbox",
     "label": {
-      "en": "Run Once"
+      "en": "Run Once",
+      "nl": "Eenmalig uitvoeren",
+      "da": "Kør én gang",
+      "de": "Einmal ausführen",
+      "es": "Ejecutar una vez",
+      "fr": "Exécuter une fois",
+      "it": "Esegui una volta",
+      "no": "Kjør én gang",
+      "sv": "Kör en gång",
+      "pl": "Uruchom raz",
+      "ru": "Выполнить один раз",
+      "ko": "한 번 실행",
+      "ar": "تشغيل مرة واحدة"
     },
     "hint": {
-      "en": "Stop the scheduler after first execution."
+      "en": "Stop the scheduler after first execution.",
+      "nl": "Stop de planner na de eerste uitvoering.",
+      "da": "Stop planlæggeren efter første udførelse.",
+      "de": "Stoppe den Scheduler nach der ersten Ausführung.",
+      "es": "Detener el programador después de la primera ejecución.",
+      "fr": "Arrêter le planificateur après la première exécution.",
+      "it": "Ferma il programmatore dopo la prima esecuzione.",
+      "no": "Stopp planleggeren etter første kjøring.",
+      "sv": "Stoppa schemaläggaren efter första körningen.",
+      "pl": "Zatrzymaj harmonogram po pierwszym wykonaniu.",
+      "ru": "Остановить планировщик после первого выполнения.",
+      "ko": "첫 번째 실행 후 스케줄러 중지.",
+      "ar": "إيقاف المجدول بعد التنفيذ الأول."
     },
     "value": false
   }

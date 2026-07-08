@@ -1,0 +1,1 @@
+Dynamische Planung mit einem Gerät, das aus den Einstellungen und durch Flows konfigurierbar ist.

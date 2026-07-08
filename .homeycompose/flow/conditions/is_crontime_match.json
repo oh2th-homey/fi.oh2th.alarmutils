@@ -1,12 +1,48 @@
 {
   "title": {
-    "en": "Current date !{{matches|doesn't match}} cron expression."
+    "en": "Current date !{{matches|doesn't match}} cron expression.",
+    "nl": "Huidige datum !{{matches|doesn't match}} cron-expressie.",
+    "da": "Den aktuelle dato !{{matcher|matcher ikke}} cron-udtrykket.",
+    "de": "Aktuelles Datum !{{entspricht|entspricht nicht}} der Cron-Ausdruck.",
+    "es": "¡La fecha actual {{coincide|no coincide}} con la expresión cron!",
+    "fr": "La date actuelle !{{correspond|ne correspond pas}} à l'expression cron.",
+    "it": "La data attuale !{{corrisponde|non corrisponde}} all'espressione cron.",
+    "no": "Gjeldende dato !{{matches|doesn't match}} cron-uttrykk.",
+    "sv": "Det aktuella datumet !{{matches|doesn't match}} cron-uttrycket.",
+    "pl": "Bieżąca data !{{matches|doesn't match}} wyrażenie cron.",
+    "ru": "Текущая дата !{{соответствует|не соответствует}} cron-выражению.",
+    "ko": "현재 날짜가 cron 표현식과 {{일치합니다|일치하지 않습니다}}.",
+    "ar": "التاريخ الحالي !{{يتطابق|لا يتطابق}} مع تعبير كرون."
   },
   "titleFormatted": {
-    "en": "Current date !{{matches|doesn't match}} [[cronExpr]] expression."
+    "en": "Current date !{{matches|doesn't match}} [[cronExpr]] expression.",
+    "nl": "Huidige datum !{{komt overeen|komt niet overeen}} met [[cronExpr]]-uitdrukking.",
+    "da": "Den aktuelle dato !{{matcher|matcher ikke}} [[cronExpr]]-udtryk.",
+    "de": "Aktuelles Datum !{{entspricht|entspricht nicht}} dem [[cronExpr]]-Ausdruck.",
+    "es": "¡La fecha actual {{coincide|no coincide}} con la expresión [[cronExpr]]!",
+    "fr": "La date actuelle !{{correspond|ne correspond pas}} à l'expression [[cronExpr]].",
+    "it": "La data attuale {{corrisponde|non corrisponde}} all'espressione [[cronExpr]].",
+    "no": "Gjeldende dato !{{matcher|matcher ikke}} [[cronExpr]] uttrykk.",
+    "sv": "Aktuellt datum !{{matchar|matchar inte}} [[cronExpr]]-uttryck.",
+    "pl": "Bieżąca data !{{pasuje|nie pasuje}} do wyrażenia [[cronExpr]].",
+    "ru": "Текущая дата !{{соответствует|не соответствует}} выражению [[cronExpr]].",
+    "ko": "현재 날짜가 [[cronExpr]] 표현식과 !{{일치합니다|일치하지 않습니다}}.",
+    "ar": "التاريخ الحالي !{{يتطابق|لا يتطابق}} مع تعبير [[cronExpr]]."
   },
   "hint": {
-    "en": "Test if the current date matches a cron expression."
+    "en": "Test if the current date matches a cron expression.",
+    "nl": "Test of de huidige datum overeenkomt met een cron-expressie.",
+    "da": "Test, om den aktuelle dato matcher et cron-udtryk.",
+    "de": "Teste, ob das aktuelle Datum mit einem Cron-Ausdruck übereinstimmt.",
+    "es": "Prueba si la fecha actual coincide con una expresión cron.",
+    "fr": "Testez si la date actuelle correspond à une expression cron.",
+    "it": "Verifica se la data attuale corrisponde a un'espressione cron.",
+    "no": "Test om dagens dato samsvarer med et cron-uttrykk.",
+    "sv": "Testa om det aktuella datumet matchar ett cron-uttryck.",
+    "pl": "Sprawdź, czy bieżąca data pasuje do wyrażenia cron.",
+    "ru": "Проверьте, соответствует ли текущая дата cron-выражению.",
+    "ko": "현재 날짜가 크론 표현식과 일치하는지 테스트하세요.",
+    "ar": "اختبر ما إذا كان التاريخ الحالي يطابق تعبير كرون."
   },
   "args": [
     {

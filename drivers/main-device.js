@@ -118,7 +118,7 @@ module.exports = class mainDevice extends Device {
           this.cronJobRunTriggers(runOnce);
           this.updateScheduleCapabilityValues();
         }, // onTick
-        false, //onComplete
+        false, // onComplete
         false, // start
         timeZone // timeZone
       );
@@ -149,6 +149,14 @@ module.exports = class mainDevice extends Device {
    * @param {Object} settings settings object
    */
   async restartCronJob(settings) {
+    const previousSchedule = {
+      name: this.getName(),
+      enabled: this.getCapabilityValue('is_enabled'),
+      date: this.getCapabilityValue('text_schedule_date'),
+      time: this.getCapabilityValue('text_schedule_time'),
+      next: this.getCapabilityValue('text_schedule_next')
+    };
+
     if (typeof this.cronJob !== 'undefined') {
       this.log(`${this.getName()} - restartCronJob - stopping cronjob`);
       this.cronJob.stop();
@@ -163,33 +171,47 @@ module.exports = class mainDevice extends Device {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-      timeZone: tz,
+      timeZone: tz
     });
 
     const nextDate = new Date(nextRun);
     const yyyy = nextDate.toLocaleString('en-US', {
       year: 'numeric',
-      timeZone: tz,
+      timeZone: tz
     });
     const mm = nextDate.toLocaleString('en-US', {
       month: '2-digit',
-      timeZone: tz,
+      timeZone: tz
     });
     const dd = nextDate.toLocaleString('en-US', {
       day: '2-digit',
-      timeZone: tz,
+      timeZone: tz
     });
     const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
+    const updatedSchedule = {
+      name: this.getName(),
+      enabled: this.getCapabilityValue('is_enabled'),
+      date: nextDateFormatted,
+      time: nextTime,
+      next: String(nextRun)
+    };
+
+    const scheduleChanged =
+      previousSchedule.name !== updatedSchedule.name ||
+      previousSchedule.enabled !== updatedSchedule.enabled ||
+      previousSchedule.date !== updatedSchedule.date ||
+      previousSchedule.time !== updatedSchedule.time ||
+      previousSchedule.next !== updatedSchedule.next;
+
+    if (!scheduleChanged) {
+      this.log(`${this.getName()} - restartCronJob - schedule unchanged, skipping device_schedule_updated trigger`);
+      return;
+    }
+
     this.homey.flow
       .getDeviceTriggerCard('device_schedule_updated')
-      .trigger(this, {
-        name: this.getName(),
-        enabled: this.getCapabilityValue('is_enabled'),
-        date: nextDateFormatted,
-        time: nextTime,
-        next: String(nextRun),
-      })
+      .trigger(this, updatedSchedule)
       .catch(this.error)
       .then(this.log(`${this.getName()} - restartCronJob - device_schedule_updated at ${String(nextRun)}`));
   }
@@ -251,20 +273,20 @@ module.exports = class mainDevice extends Device {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
-        timeZone: this.homey.clock.getTimezone(),
+        timeZone: this.homey.clock.getTimezone()
       });
 
       const yyyy = new Date(nextRun).toLocaleString('en-US', {
         year: 'numeric',
-        timeZone: this.homey.clock.getTimezone(),
+        timeZone: this.homey.clock.getTimezone()
       });
       const mm = new Date(nextRun).toLocaleString('en-US', {
         month: '2-digit',
-        timeZone: this.homey.clock.getTimezone(),
+        timeZone: this.homey.clock.getTimezone()
       });
       const dd = new Date(nextRun).toLocaleString('en-US', {
         day: '2-digit',
-        timeZone: this.homey.clock.getTimezone(),
+        timeZone: this.homey.clock.getTimezone()
       });
       const nextDateFormatted = `${yyyy}-${mm}-${dd}`;
 
@@ -287,7 +309,7 @@ module.exports = class mainDevice extends Device {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-      timeZone: tz,
+      timeZone: tz
     });
 
     const yyyy = now.toLocaleString('en-US', { year: 'numeric', timeZone: tz });
@@ -303,7 +325,7 @@ module.exports = class mainDevice extends Device {
         name: this.getName(),
         date: dateNow,
         time: timeNow,
-        next: timeNext,
+        next: timeNext
       })
       .catch(this.error)
       .then(this.log(`${this.getName()} - cronJobRunTriggers - device_schedule_triggered at ${timeNow} next at ${timeNext}`));
@@ -338,7 +360,7 @@ module.exports = class mainDevice extends Device {
     }
 
     await this.setSettings({
-      time,
+      time
     });
     this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_TIME - done`);
@@ -353,7 +375,7 @@ module.exports = class mainDevice extends Device {
     }
 
     await this.setSettings({
-      time: crontime,
+      time: crontime
     });
     this.restartCronJob(this.getSettings());
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_CRONTIME - done`);
@@ -371,7 +393,7 @@ module.exports = class mainDevice extends Device {
       repeat_thursday: args.thursday,
       repeat_friday: args.friday,
       repeat_saturday: args.saturday,
-      repeat_sunday: args.sunday,
+      repeat_sunday: args.sunday
     };
 
     // Shift to previous day if time is negative
@@ -384,7 +406,7 @@ module.exports = class mainDevice extends Device {
         repeat_thursday: args.friday,
         repeat_friday: args.saturday,
         repeat_saturday: args.sunday,
-        repeat_sunday: args.monday,
+        repeat_sunday: args.monday
       };
     }
     this.log(`${this.getName()} - onAction_DEVICE_SCHEDULE_AHEAD_TIME - newSettings: ${JSON.stringify(newSettings)}`);

@@ -1,39 +1,135 @@
 {
   "title": {
-    "en": "Schedule ahead of time"
+    "en": "Schedule ahead of time",
+    "nl": "Plan van tevoren in",
+    "da": "Planlæg på forhånd",
+    "de": "Im Voraus planen",
+    "es": "Programa con anticipación",
+    "fr": "Planifier à l'avance",
+    "it": "Pianifica in anticipo",
+    "no": "Planlegg på forhånd",
+    "sv": "Schemalägg i förväg",
+    "pl": "Zaplanuj z wyprzedzeniem",
+    "ru": "Запланируйте заранее",
+    "ko": "미리 예약하세요.",
+    "ar": "جدول مسبقًا"
   },
   "titleFormatted": {
-    "en": "Schedule [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]]."
+    "en": "Schedule [[minutes]] minutes before [[time]] and repeat on Mondays [[monday]], Tuesdays [[tuesday]], Wednesdays [[wednesday]], Thursdays [[thursday]], Fridays [[friday]], Saturdays [[saturday]] and Sundays [[sunday]].",
+    "nl": "Plan [[minutes]] minuten voor [[time]] en herhaal op maandagen [[monday]], dinsdagen [[tuesday]], woensdagen [[wednesday]], donderdagen [[thursday]], vrijdagen [[friday]], zaterdagen [[saturday]] en zondagen [[sunday]].",
+    "da": "Planlæg [[minutes]] minutter før [[time]] og gentag om mandage [[monday]], tirsdage [[tuesday]], onsdage [[wednesday]], torsdage [[thursday]], fredage [[friday]], lørdage [[saturday]] og søndage [[sunday]].",
+    "de": "Plane [[minutes]] Minuten vor [[time]] und wiederhole es montags [[monday]], dienstags [[tuesday]], mittwochs [[wednesday]], donnerstags [[thursday]], freitags [[friday]], samstags [[saturday]] und sonntags [[sunday]].",
+    "es": "Programa [[minutes]] minutos antes de [[time]] y repite los lunes [[monday]], martes [[tuesday]], miércoles [[wednesday]], jueves [[thursday]], viernes [[friday]], sábados [[saturday]] y domingos [[sunday]].",
+    "fr": "Planifiez [[minutes]] minutes avant [[time]] et répétez les lundis [[monday]], mardis [[tuesday]], mercredis [[wednesday]], jeudis [[thursday]], vendredis [[friday]], samedis [[saturday]] et dimanches [[sunday]].",
+    "it": "Programma [[minutes]] minuti prima di [[time]] e ripeti il lunedì [[monday]], il martedì [[tuesday]], il mercoledì [[wednesday]], il giovedì [[thursday]], il venerdì [[friday]], il sabato [[saturday]] e la domenica [[sunday]].",
+    "no": "Planlegg [[minutes]] minutter før [[time]] og gjenta på mandager [[monday]], tirsdager [[tuesday]], onsdager [[wednesday]], torsdager [[thursday]], fredager [[friday]], lørdager [[saturday]] og søndager [[sunday]].",
+    "sv": "Schemalägg [[minutes]] minuter före [[time]] och upprepa på måndagar [[monday]], tisdagar [[tuesday]], onsdagar [[wednesday]], torsdagar [[thursday]], fredagar [[friday]], lördagar [[saturday]] och söndagar [[sunday]].",
+    "pl": "Zaplanuj [[minutes]] minut przed [[time]] i powtarzaj w poniedziałki [[monday]], wtorki [[tuesday]], środy [[wednesday]], czwartki [[thursday]], piątki [[friday]], soboty [[saturday]] i niedziele [[sunday]].",
+    "ru": "Запланируйте за [[minutes]] минут до [[time]] и повторяйте по понедельникам [[monday]], вторникам [[tuesday]], средам [[wednesday]], четвергам [[thursday]], пятницам [[friday]], субботам [[saturday]] и воскресеньям [[sunday]].",
+    "ko": "[[time]] [[minutes]]분 전에 예약하고 월요일 [[monday]], 화요일 [[tuesday]], 수요일 [[wednesday]], 목요일 [[thursday]], 금요일 [[friday]], 토요일 [[saturday]], 일요일 [[sunday]]에 반복합니다.",
+    "ar": "جدول [[minutes]] دقيقة قبل [[time]] وكرر في أيام الاثنين [[monday]]، والثلاثاء [[tuesday]]، والأربعاء [[wednesday]]، والخميس [[thursday]]، والجمعة [[friday]]، والسبت [[saturday]]، والأحد [[sunday]]."
   },
   "hint": {
-    "en": "Schedule given minutes before HH:mm time. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight."
+    "en": "Schedule given minutes before HH:mm time. If any weekday is selected, the alarm will be repeated on those weekdays. If no weekday is selected, the alarm will run once. Adjusts to previous day, if schedule will be before midnight.",
+    "nl": "Plan een aantal minuten voor de HH:mm tijd. Als er een doordeweekse dag is geselecteerd, wordt het alarm op die dagen herhaald. Als er geen doordeweekse dag is geselecteerd, gaat het alarm één keer af. Past zich aan naar de vorige dag als de planning voor middernacht is.",
+    "da": "Planlæg angivet antal minutter før HH:mm tid. Hvis en ugedag er valgt, vil alarmen blive gentaget på de valgte ugedage. Hvis ingen ugedag er valgt, vil alarmen køre én gang. Justerer til dagen før, hvis planen er før midnat.",
+    "de": "Plane die angegebenen Minuten vor der HH:mm-Zeit ein. Wenn ein Wochentag ausgewählt ist, wird der Alarm an diesen Wochentagen wiederholt. Wenn kein Wochentag ausgewählt ist, läuft der Alarm einmal. Passt sich an den vorherigen Tag an, wenn der Zeitplan vor Mitternacht liegt.",
+    "es": "Programa los minutos dados antes de la hora HH:mm. Si se selecciona algún día de la semana, la alarma se repetirá en esos días. Si no se selecciona ningún día de la semana, la alarma se ejecutará una vez. Se ajusta al día anterior si el horario es antes de la medianoche.",
+    "fr": "Planifiez un certain nombre de minutes avant l'heure HH:mm. Si un jour de la semaine est sélectionné, l'alarme se répétera ces jours-là. Si aucun jour de la semaine n'est sélectionné, l'alarme se déclenchera une seule fois. S'ajuste au jour précédent si l'horaire est avant minuit.",
+    "it": "Programma i minuti indicati prima dell'orario HH:mm. Se viene selezionato un giorno della settimana, l'allarme verrà ripetuto in quei giorni. Se non viene selezionato alcun giorno della settimana, l'allarme suonerà una sola volta. Si adatta al giorno precedente se l'orario programmato è prima della mezzanotte.",
+    "no": "Planlegg gitt antall minutter før HH:mm tid. Hvis noen ukedager er valgt, vil alarmen gjentas på de ukedagene. Hvis ingen ukedager er valgt, vil alarmen kjøre én gang. Justerer til forrige dag hvis planen blir før midnatt.",
+    "sv": "Schemalägg angivet antal minuter före HH:mm. Om någon veckodag är vald kommer alarmet att upprepas på dessa veckodagar. Om ingen veckodag är vald kommer alarmet att köras en gång. Justeras till föregående dag om schemat är före midnatt.",
+    "pl": "Zaplanuj na określoną liczbę minut przed godziną HH:mm. Jeśli zostanie wybrany jakikolwiek dzień tygodnia, alarm będzie powtarzany w te dni. Jeśli nie zostanie wybrany żaden dzień tygodnia, alarm uruchomi się raz. Dostosowuje się do poprzedniego dnia, jeśli harmonogram będzie przed północą.",
+    "ru": "Запланируйте за указанное количество минут до времени ЧЧ:мм. Если выбран какой-либо будний день, сигнализация будет повторяться в эти дни. Если ни один будний день не выбран, сигнализация сработает один раз. Настраивается на предыдущий день, если расписание будет до полуночи.",
+    "ko": "HH:mm 시간 전에 주어진 분만큼 예약합니다. 평일이 선택되면 알람은 선택된 평일에 반복됩니다. 평일이 선택되지 않으면 알람은 한 번만 실행됩니다. 예약 시간이 자정 이전일 경우, 전날로 조정됩니다.",
+    "ar": "جدول الدقائق المحددة قبل الوقت HH:mm. إذا تم اختيار أي يوم من أيام الأسبوع، سيتم تكرار التنبيه في تلك الأيام. إذا لم يتم اختيار أي يوم من أيام الأسبوع، سيعمل التنبيه مرة واحدة. يتم التعديل لليوم السابق إذا كان الجدول سيكون قبل منتصف الليل."
   },
   "args": [
     {
       "type": "number",
       "name": "minutes",
       "title": {
-        "en": "Minutes"
+        "en": "Minutes",
+        "nl": "Minuten",
+        "da": "Minutter",
+        "de": "Minuten",
+        "es": "Minutos",
+        "fr": "Minutes",
+        "it": "Minuti",
+        "no": "Minutter",
+        "sv": "Minuter",
+        "pl": "Minuty",
+        "ru": "Минуты",
+        "ko": "분",
+        "ar": "دقائق"
       },
       "placeholder": {
-        "en": "60"
+        "en": "60",
+        "nl": "60",
+        "da": "60",
+        "de": "60",
+        "es": "60",
+        "fr": "60",
+        "it": "60",
+        "no": "60",
+        "sv": "60",
+        "pl": "60",
+        "ru": "60",
+        "ko": "60",
+        "ar": "٦٠"
       }
     },
     {
       "type": "time",
       "name": "time",
       "title": {
-        "en": "Time"
+        "en": "Time",
+        "nl": "Tijd",
+        "da": "Tid",
+        "de": "Zeit",
+        "es": "Hora",
+        "fr": "Temps",
+        "it": "Tempo",
+        "no": "Tid",
+        "sv": "Tid",
+        "pl": "Czas",
+        "ru": "Время",
+        "ko": "시간",
+        "ar": "الوقت"
       },
       "placeholder": {
-        "en": "HH:mm"
+        "en": "HH:mm",
+        "nl": "UU:mm",
+        "da": "TT:mm",
+        "de": "HH:mm",
+        "es": "HH:mm",
+        "fr": "HH:mm",
+        "it": "HH:mm",
+        "no": "TT:mm",
+        "sv": "HH:mm",
+        "pl": "GG:mm",
+        "ru": "ЧЧ:мм",
+        "ko": "HH:mm",
+        "ar": "HH:mm"
       }
     },
     {
       "type": "checkbox",
       "name": "monday",
       "title": {
-        "en": "Monday"
+        "en": "Monday",
+        "nl": "Maandag",
+        "da": "Mandag",
+        "de": "Montag",
+        "es": "Lunes",
+        "fr": "Lundi",
+        "it": "Lunedì",
+        "no": "Mandag",
+        "sv": "Måndag",
+        "pl": "Poniedziałek",
+        "ru": "Понедельник",
+        "ko": "월요일",
+        "ar": "الاثنين"
       },
       "value": false
     },
@@ -41,7 +137,19 @@
       "type": "checkbox",
       "name": "tuesday",
       "title": {
-        "en": "Tuesday"
+        "en": "Tuesday",
+        "nl": "Dinsdag",
+        "da": "Tirsdag",
+        "de": "Dienstag",
+        "es": "Martes",
+        "fr": "Mardi",
+        "it": "Martedì",
+        "no": "Tirsdag",
+        "sv": "Tisdag",
+        "pl": "Wtorek",
+        "ru": "Вторник",
+        "ko": "화요일",
+        "ar": "الثلاثاء"
       },
       "value": false
     },
@@ -49,7 +157,19 @@
       "type": "checkbox",
       "name": "wednesday",
       "title": {
-        "en": "Wednesday"
+        "en": "Wednesday",
+        "nl": "Woensdag",
+        "da": "Onsdag",
+        "de": "Mittwoch",
+        "es": "Miércoles",
+        "fr": "Mercredi",
+        "it": "Mercoledì",
+        "no": "Onsdag",
+        "sv": "Onsdag",
+        "pl": "Środa",
+        "ru": "Среда",
+        "ko": "수요일",
+        "ar": "الأربعاء"
       },
       "value": false
     },
@@ -57,7 +177,19 @@
       "type": "checkbox",
       "name": "thursday",
       "title": {
-        "en": "Thursday"
+        "en": "Thursday",
+        "nl": "Donderdag",
+        "da": "Torsdag",
+        "de": "Donnerstag",
+        "es": "Jueves",
+        "fr": "Jeudi",
+        "it": "Giovedì",
+        "no": "Torsdag",
+        "sv": "Torsdag",
+        "pl": "Czwartek",
+        "ru": "Четверг",
+        "ko": "목요일",
+        "ar": "الخميس"
       },
       "value": false
     },
@@ -65,7 +197,19 @@
       "type": "checkbox",
       "name": "friday",
       "title": {
-        "en": "Friday"
+        "en": "Friday",
+        "nl": "Vrijdag",
+        "da": "Fredag",
+        "de": "Freitag",
+        "es": "Viernes",
+        "fr": "Vendredi",
+        "it": "Venerdì",
+        "no": "Fredag",
+        "sv": "Fredag",
+        "pl": "Piątek",
+        "ru": "Пятница",
+        "ko": "금요일",
+        "ar": "الجمعة"
       },
       "value": false
     },
@@ -73,7 +217,19 @@
       "type": "checkbox",
       "name": "saturday",
       "title": {
-        "en": "Saturday"
+        "en": "Saturday",
+        "nl": "Zaterdag",
+        "da": "Lørdag",
+        "de": "Samstag",
+        "es": "Sábado",
+        "fr": "Samedi",
+        "it": "Sabato",
+        "no": "Lørdag",
+        "sv": "Lördag",
+        "pl": "Sobota",
+        "ru": "Суббота",
+        "ko": "토요일",
+        "ar": "السبت"
       },
       "value": false
     },
@@ -81,7 +237,19 @@
       "type": "checkbox",
       "name": "sunday",
       "title": {
-        "en": "Sunday"
+        "en": "Sunday",
+        "nl": "Zondag",
+        "da": "Søndag",
+        "de": "Sonntag",
+        "es": "Domingo",
+        "fr": "Dimanche",
+        "it": "Domenica",
+        "no": "Søndag",
+        "sv": "Söndag",
+        "pl": "Niedziela",
+        "ru": "Воскресенье",
+        "ko": "일요일",
+        "ar": "الأحد"
       },
       "value": false
     },

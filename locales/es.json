@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Nuevo Programador",
+    "configuration": "Configuración",
+    "name": "Nombre del programador:",
+    "time": "Hora",
+    "time_help": "La hora (HH:mm) para ejecutar el programador. HH='*' cualquier hora, mm='*' cualquier minuto",
+    "crontime": "Hora cron:",
+    "crontime_help": "La hora cron para ejecutar el programador. Consulta <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> para más información.",
+    "timezone": "Zona horaria",
+    "runonce": "Ejecutar una vez",
+    "runonce_help": "Detener el programador después de la primera ejecución.",
+    "repetition": "Repetir cada",
+    "repetition_help": "Los días de la semana para repetir el programador. Si no se seleccionan días, el programador se desactiva.",
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "function_add": "Agregar Programador",
+    "error": {
+      "name_required": "Se requiere nombre",
+      "time_required": "Se requiere hora",
+      "time_invalid": "Ingrese la hora como [HH]:[mm], [*]:[mm], [HH]:[*] o [*]:[*]",
+      "crontime_required": "Se requiere un patrón de hora cron",
+      "crontime_invalid": "Ingrese un patrón de hora cron válido. Consulta http://crontab.guru/ para más información.",
+      "timezone_required": "Se requiere zona horaria.",
+      "timezone_invalid": "Ingrese la zona horaria como Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
+      "add_device": "Error al agregar el dispositivo."
+    }
+  },
+  "message": {
+    "not_scheduled": "No programado",
+    "init_cronjob_error": "Error al iniciar el cronjob, verifica la configuración."
+  }
+}

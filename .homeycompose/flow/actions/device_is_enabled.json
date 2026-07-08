@@ -1,12 +1,48 @@
 {
   "title": {
-    "en": "Enable scheduler"
+    "en": "Enable scheduler",
+    "nl": "Scheduler inschakelen",
+    "da": "Aktivér planlægger",
+    "de": "Scheduler aktivieren",
+    "es": "Habilitar programador",
+    "fr": "Activer le planificateur",
+    "it": "Abilita pianificatore",
+    "no": "Aktiver tidsplanlegger",
+    "sv": "Aktivera schemaläggare",
+    "pl": "Włącz harmonogram",
+    "ru": "Включить планировщик",
+    "ko": "스케줄러 활성화",
+    "ar": "تفعيل الجدولة"
   },
   "titleFormatted": {
-    "en": "Set scheduler enabled to [[enabled]]"
+    "en": "Set scheduler enabled to [[enabled]]",
+    "nl": "Stel planner in op [[enabled]]",
+    "da": "Indstil planlæggeren til [[enabled]]",
+    "de": "Planer auf [[enabled]] setzen",
+    "es": "Establecer programador habilitado a [[enabled]]",
+    "fr": "Définir le planificateur sur [[enabled]]",
+    "it": "Imposta l'attivazione del pianificatore su [[enabled]]",
+    "no": "Sett planlegger aktivert til [[enabled]]",
+    "sv": "Ställ in schemaläggaren till [[enabled]]",
+    "pl": "Ustaw harmonogram na [[enabled]]",
+    "ru": "Установить планировщик в состояние [[enabled]]",
+    "ko": "스케줄러를 [[enabled]]로 설정하세요.",
+    "ar": "تعيين تمكين المجدول إلى [[enabled]]"
   },
   "hint": {
-    "en": "Enable or disable scheduler"
+    "en": "Enable or disable scheduler",
+    "nl": "Scheduler inschakelen of uitschakelen",
+    "da": "Aktivér eller deaktiver planlægger",
+    "de": "Scheduler aktivieren oder deaktivieren",
+    "es": "Habilitar o deshabilitar el programador",
+    "fr": "Activer ou désactiver le planificateur",
+    "it": "Abilita o disabilita il pianificatore",
+    "no": "Aktiver eller deaktiver planlegger",
+    "sv": "Aktivera eller inaktivera schemaläggare",
+    "pl": "Włącz lub wyłącz harmonogram",
+    "ru": "Включить или отключить планировщик",
+    "ko": "스케줄러 활성화 또는 비활성화",
+    "ar": "تفعيل أو تعطيل المجدول"
   },
   "args": [
     {

@@ -1,10 +1,34 @@
 {
   "type": "string",
   "title": {
-    "en": "Scheduled date"
+    "en": "Scheduled date",
+    "nl": "Geplande datum",
+    "da": "Planlagt dato",
+    "de": "Geplantes Datum",
+    "es": "Fecha programada",
+    "fr": "Date programmée",
+    "it": "Data programmata",
+    "no": "Planlagt dato",
+    "sv": "Schemalagt datum",
+    "pl": "Zaplanowana data",
+    "ru": "Запланированная дата",
+    "ko": "예약된 날짜",
+    "ar": "التاريخ المجدول"
   },
   "hint": {
-    "en": "Next scheduled date"
+    "en": "Next scheduled date",
+    "nl": "Volgende geplande datum",
+    "da": "Næste planlagte dato",
+    "de": "Nächstes geplantes Datum",
+    "es": "Próxima fecha programada",
+    "fr": "Prochaine date programmée",
+    "it": "Prossima data programmata",
+    "no": "Neste planlagte dato",
+    "sv": "Nästa schemalagda datum",
+    "pl": "Następna zaplanowana data",
+    "ru": "Следующая запланированная дата",
+    "ko": "다음 예약 날짜",
+    "ar": "التاريخ المجدول التالي"
   },
   "icon": "./assets/clock-enable.svg",
   "uiComponent": "sensor",

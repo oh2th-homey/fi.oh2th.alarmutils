@@ -1,47 +1,576 @@
 {
   "title": {
-    "en": "!{{Is|Isn't}} scheduled in"
+    "en": "!{{Is|Isn't}} scheduled in",
+    "nl": "!{{Is|Isn't}} gepland in",
+    "da": "!{{Is|Isn't}} planlagt i",
+    "de": "!{{Ist|Ist nicht}} geplant in",
+    "es": "¡{{Is|Isn't}} programado en!",
+    "fr": "!{{Est|N'est pas}} programmé dans",
+    "it": "!{{È|Non è}} programmato in",
+    "no": "!{{Er|Er ikke}} planlagt i",
+    "sv": "!{{Är|Är inte}} schemalagd i",
+    "pl": "!{{Jest|Nie jest}} zaplanowane w",
+    "ru": "!{{Is|Isn't}} запланировано в",
+    "ko": "!{{Is|Isn't}} 일정에 포함됨",
+    "ar": "!{{Is|Isn't}} مجدول في"
   },
   "titleFormatted": {
-    "en": "Next run !{{is|isn't}} scheduled in [[minutes]]."
+    "en": "Next run !{{is|isn't}} scheduled in [[minutes]].",
+    "nl": "Volgende uitvoering {{is|isn't}} gepland over [[minutes]].",
+    "da": "Næste kørsel {{er|er ikke}} planlagt om [[minutes]].",
+    "de": "Nächster Lauf {{ist|ist nicht}} in [[minutes]] geplant.",
+    "es": "¡La próxima ejecución {{está|no está}} programada en [[minutes]].",
+    "fr": "La prochaine exécution {{est|n'est pas}} prévue dans [[minutes]].",
+    "it": "La prossima esecuzione {{è|non è}} programmata tra [[minutes]].",
+    "no": "Neste kjøring {{er|er ikke}} planlagt om [[minutes]].",
+    "sv": "Nästa körning !{{är|är inte}} schemalagd om [[minutes]].",
+    "pl": "Następne uruchomienie {{jest|nie jest}} zaplanowane za [[minutes]].",
+    "ru": "Следующий запуск {{запланирован|не запланирован}} через [[minutes]].",
+    "ko": "다음 실행은 [[minutes]]분 후로 예정되어 {{있습니다|있지 않습니다}}.",
+    "ar": "التشغيل التالي !{{مجدول|غير مجدول}} في [[minutes]]."
   },
   "hint": {
-    "en": "Next run is/isn't scheduled in selected time."
+    "en": "Next run is/isn't scheduled in selected time.",
+    "nl": "Volgende uitvoering is/is niet gepland binnen de geselecteerde tijd.",
+    "da": "Næste kørsel er/er ikke planlagt i den valgte tid.",
+    "de": "Der nächste Lauf ist/ist nicht innerhalb der ausgewählten Zeit geplant.",
+    "es": "La próxima ejecución está/no está programada en el tiempo seleccionado.",
+    "fr": "La prochaine exécution est/n'est pas programmée dans le créneau horaire sélectionné.",
+    "it": "La prossima esecuzione è/non è programmata nell'orario selezionato.",
+    "no": "Neste kjøring er/er ikke planlagt i valgt tidsrom.",
+    "sv": "Nästa körning är/är inte schemalagd inom vald tid.",
+    "pl": "Następne uruchomienie jest/nie jest zaplanowane w wybranym czasie.",
+    "ru": "Следующий запуск запланирован/не запланирован в выбранное время.",
+    "ko": "다음 실행은 선택한 시간에 예정되어 있습니다/예정되어 있지 않습니다.",
+    "ar": "التشغيل التالي مُجدول/غير مُجدول في الوقت المحدد."
   },
   "args": [
     {
       "name": "minutes",
       "type": "dropdown",
       "values": [
-        { "id": "1", "title": { "en": "1 minutes" } },
-        { "id": "5", "title": { "en": "5 minutes" } },
-        { "id": "10", "title": { "en": "10 minutes" } },
-        { "id": "15", "title": { "en": "15 minutes" } },
-        { "id": "30", "title": { "en": "30 minutes" } },
-        { "id": "60", "title": { "en": "1 hour" } },
-        { "id": "120", "title": { "en": "2 hours" } },
-        { "id": "180", "title": { "en": "3 hours" } },
-        { "id": "240", "title": { "en": "4 hours" } },
-        { "id": "300", "title": { "en": "5 hours" } },
-        { "id": "360", "title": { "en": "6 hours" } },
-        { "id": "420", "title": { "en": "7 hours" } },
-        { "id": "480", "title": { "en": "8 hours" } },
-        { "id": "540", "title": { "en": "9 hours" } },
-        { "id": "600", "title": { "en": "10 hours" } },
-        { "id": "660", "title": { "en": "11 hours" } },
-        { "id": "720", "title": { "en": "12 hours" } },
-        { "id": "780", "title": { "en": "13 hours" } },
-        { "id": "840", "title": { "en": "14 hours" } },
-        { "id": "900", "title": { "en": "15 hours" } },
-        { "id": "960", "title": { "en": "16 hours" } },
-        { "id": "1020", "title": { "en": "17 hours" } },
-        { "id": "1080", "title": { "en": "18 hours" } },
-        { "id": "1140", "title": { "en": "19 hours" } },
-        { "id": "1200", "title": { "en": "20 hours" } },
-        { "id": "1260", "title": { "en": "21 hours" } },
-        { "id": "1320", "title": { "en": "22 hours" } },
-        { "id": "1380", "title": { "en": "23 hours" } },
-        { "id": "1440", "title": { "en": "24 hours" } }
+        {
+          "id": "1",
+          "title": {
+            "en": "1 minutes",
+            "nl": "1 minuut",
+            "da": "1 minut",
+            "de": "1 Minute",
+            "es": "1 minuto",
+            "fr": "1 minute",
+            "it": "1 minuto",
+            "no": "1 minutt",
+            "sv": "1 minut",
+            "pl": "1 minuta",
+            "ru": "1 минута",
+            "ko": "1분",
+            "ar": "دقيقة واحدة"
+          }
+        },
+        {
+          "id": "5",
+          "title": {
+            "en": "5 minutes",
+            "nl": "5 minuten",
+            "da": "5 minutter",
+            "de": "5 Minuten",
+            "es": "5 minutos",
+            "fr": "5 minutes",
+            "it": "5 minuti",
+            "no": "5 minutter",
+            "sv": "5 minuter",
+            "pl": "5 minut",
+            "ru": "5 минут",
+            "ko": "5분",
+            "ar": "٥ دقائق"
+          }
+        },
+        {
+          "id": "10",
+          "title": {
+            "en": "10 minutes",
+            "nl": "10 minuten",
+            "da": "10 minutter",
+            "de": "10 Minuten",
+            "es": "10 minutos",
+            "fr": "10 minutes",
+            "it": "10 minuti",
+            "no": "10 minutter",
+            "sv": "10 minuter",
+            "pl": "10 minut",
+            "ru": "10 минут",
+            "ko": "10분",
+            "ar": "10 دقائق"
+          }
+        },
+        {
+          "id": "15",
+          "title": {
+            "en": "15 minutes",
+            "nl": "15 minuten",
+            "da": "15 minutter",
+            "de": "15 Minuten",
+            "es": "15 minutos",
+            "fr": "15 minutes",
+            "it": "15 minuti",
+            "no": "15 minutter",
+            "sv": "15 minuter",
+            "pl": "15 minut",
+            "ru": "15 минут",
+            "ko": "15분",
+            "ar": "15 دقيقة"
+          }
+        },
+        {
+          "id": "30",
+          "title": {
+            "en": "30 minutes",
+            "nl": "30 minuten",
+            "da": "30 minutter",
+            "de": "30 Minuten",
+            "es": "30 minutos",
+            "fr": "30 minutes",
+            "it": "30 minuti",
+            "no": "30 minutter",
+            "sv": "30 minuter",
+            "pl": "30 minut",
+            "ru": "30 минут",
+            "ko": "30분",
+            "ar": "٣٠ دقيقة"
+          }
+        },
+        {
+          "id": "60",
+          "title": {
+            "en": "1 hour",
+            "nl": "1 uur",
+            "da": "1 time",
+            "de": "1 Stunde",
+            "es": "1 hora",
+            "fr": "1 heure",
+            "it": "1 ora",
+            "no": "1 time",
+            "sv": "1 timme",
+            "pl": "1 godzina",
+            "ru": "1 час",
+            "ko": "1시간",
+            "ar": "ساعة واحدة"
+          }
+        },
+        {
+          "id": "120",
+          "title": {
+            "en": "2 hours",
+            "nl": "2 uur",
+            "da": "2 timer",
+            "de": "2 Stunden",
+            "es": "2 horas",
+            "fr": "2 heures",
+            "it": "2 ore",
+            "no": "2 timer",
+            "sv": "2 timmar",
+            "pl": "2 godziny",
+            "ru": "2 часа",
+            "ko": "2시간",
+            "ar": "ساعتين"
+          }
+        },
+        {
+          "id": "180",
+          "title": {
+            "en": "3 hours",
+            "nl": "3 uur",
+            "da": "3 timer",
+            "de": "3 Stunden",
+            "es": "3 horas",
+            "fr": "3 heures",
+            "it": "3 ore",
+            "no": "3 timer",
+            "sv": "3 timmar",
+            "pl": "3 godziny",
+            "ru": "3 часа",
+            "ko": "3시간",
+            "ar": "٣ ساعات"
+          }
+        },
+        {
+          "id": "240",
+          "title": {
+            "en": "4 hours",
+            "nl": "4 uur",
+            "da": "4 timer",
+            "de": "4 Stunden",
+            "es": "4 horas",
+            "fr": "4 heures",
+            "it": "4 ore",
+            "no": "4 timer",
+            "sv": "4 timmar",
+            "pl": "4 godziny",
+            "ru": "4 часа",
+            "ko": "4시간",
+            "ar": "٤ ساعات"
+          }
+        },
+        {
+          "id": "300",
+          "title": {
+            "en": "5 hours",
+            "nl": "5 uur",
+            "da": "5 timer",
+            "de": "5 Stunden",
+            "es": "5 horas",
+            "fr": "5 heures",
+            "it": "5 ore",
+            "no": "5 timer",
+            "sv": "5 timmar",
+            "pl": "5 godzin",
+            "ru": "5 часов",
+            "ko": "5시간",
+            "ar": "٥ ساعات"
+          }
+        },
+        {
+          "id": "360",
+          "title": {
+            "en": "6 hours",
+            "nl": "6 uur",
+            "da": "6 timer",
+            "de": "6 Stunden",
+            "es": "6 horas",
+            "fr": "6 heures",
+            "it": "6 ore",
+            "no": "6 timer",
+            "sv": "6 timmar",
+            "pl": "6 godzin",
+            "ru": "6 часов",
+            "ko": "6시간",
+            "ar": "٦ ساعات"
+          }
+        },
+        {
+          "id": "420",
+          "title": {
+            "en": "7 hours",
+            "nl": "7 uur",
+            "da": "7 timer",
+            "de": "7 Stunden",
+            "es": "7 horas",
+            "fr": "7 heures",
+            "it": "7 ore",
+            "no": "7 timer",
+            "sv": "7 timmar",
+            "pl": "7 godzin",
+            "ru": "7 часов",
+            "ko": "7시간",
+            "ar": "٧ ساعات"
+          }
+        },
+        {
+          "id": "480",
+          "title": {
+            "en": "8 hours",
+            "nl": "8 uur",
+            "da": "8 timer",
+            "de": "8 Stunden",
+            "es": "8 horas",
+            "fr": "8 heures",
+            "it": "8 ore",
+            "no": "8 timer",
+            "sv": "8 timmar",
+            "pl": "8 godzin",
+            "ru": "8 часов",
+            "ko": "8시간",
+            "ar": "٨ ساعات"
+          }
+        },
+        {
+          "id": "540",
+          "title": {
+            "en": "9 hours",
+            "nl": "9 uur",
+            "da": "9 timer",
+            "de": "9 Stunden",
+            "es": "9 horas",
+            "fr": "9 heures",
+            "it": "9 ore",
+            "no": "9 timer",
+            "sv": "9 timmar",
+            "pl": "9 godzin",
+            "ru": "9 часов",
+            "ko": "9시간",
+            "ar": "9 ساعات"
+          }
+        },
+        {
+          "id": "600",
+          "title": {
+            "en": "10 hours",
+            "nl": "10 uur",
+            "da": "10 timer",
+            "de": "10 Stunden",
+            "es": "10 horas",
+            "fr": "10 heures",
+            "it": "10 ore",
+            "no": "10 timer",
+            "sv": "10 timmar",
+            "pl": "10 godzin",
+            "ru": "10 часов",
+            "ko": "10시간",
+            "ar": "١٠ ساعات"
+          }
+        },
+        {
+          "id": "660",
+          "title": {
+            "en": "11 hours",
+            "nl": "11 uur",
+            "da": "11 timer",
+            "de": "11 Stunden",
+            "es": "11 horas",
+            "fr": "11 heures",
+            "it": "11 ore",
+            "no": "11 timer",
+            "sv": "11 timmar",
+            "pl": "11 godzin",
+            "ru": "11 часов",
+            "ko": "11시간",
+            "ar": "١١ ساعة"
+          }
+        },
+        {
+          "id": "720",
+          "title": {
+            "en": "12 hours",
+            "nl": "12 uur",
+            "da": "12 timer",
+            "de": "12 Stunden",
+            "es": "12 horas",
+            "fr": "12 heures",
+            "it": "12 ore",
+            "no": "12 timer",
+            "sv": "12 timmar",
+            "pl": "12 godzin",
+            "ru": "12 часов",
+            "ko": "12시간",
+            "ar": "١٢ ساعة"
+          }
+        },
+        {
+          "id": "780",
+          "title": {
+            "en": "13 hours",
+            "nl": "13 uur",
+            "da": "13 timer",
+            "de": "13 Stunden",
+            "es": "13 horas",
+            "fr": "13 heures",
+            "it": "13 ore",
+            "no": "13 timer",
+            "sv": "13 timmar",
+            "pl": "13 godzin",
+            "ru": "13 часов",
+            "ko": "13시간",
+            "ar": "١٣ ساعة"
+          }
+        },
+        {
+          "id": "840",
+          "title": {
+            "en": "14 hours",
+            "nl": "14 uur",
+            "da": "14 timer",
+            "de": "14 Stunden",
+            "es": "14 horas",
+            "fr": "14 heures",
+            "it": "14 ore",
+            "no": "14 timer",
+            "sv": "14 timmar",
+            "pl": "14 godzin",
+            "ru": "14 часов",
+            "ko": "14시간",
+            "ar": "١٤ ساعة"
+          }
+        },
+        {
+          "id": "900",
+          "title": {
+            "en": "15 hours",
+            "nl": "15 uur",
+            "da": "15 timer",
+            "de": "15 Stunden",
+            "es": "15 horas",
+            "fr": "15 heures",
+            "it": "15 ore",
+            "no": "15 timer",
+            "sv": "15 timmar",
+            "pl": "15 godzin",
+            "ru": "15 часов",
+            "ko": "15시간",
+            "ar": "١٥ ساعة"
+          }
+        },
+        {
+          "id": "960",
+          "title": {
+            "en": "16 hours",
+            "nl": "16 uur",
+            "da": "16 timer",
+            "de": "16 Stunden",
+            "es": "16 horas",
+            "fr": "16 heures",
+            "it": "16 ore",
+            "no": "16 timer",
+            "sv": "16 timmar",
+            "pl": "16 godzin",
+            "ru": "16 часов",
+            "ko": "16시간",
+            "ar": "١٦ ساعة"
+          }
+        },
+        {
+          "id": "1020",
+          "title": {
+            "en": "17 hours",
+            "nl": "17 uur",
+            "da": "17 timer",
+            "de": "17 Stunden",
+            "es": "17 horas",
+            "fr": "17 heures",
+            "it": "17 ore",
+            "no": "17 timer",
+            "sv": "17 timmar",
+            "pl": "17 godzin",
+            "ru": "17 часов",
+            "ko": "17시간",
+            "ar": "١٧ ساعة"
+          }
+        },
+        {
+          "id": "1080",
+          "title": {
+            "en": "18 hours",
+            "nl": "18 uur",
+            "da": "18 timer",
+            "de": "18 Stunden",
+            "es": "18 horas",
+            "fr": "18 heures",
+            "it": "18 ore",
+            "no": "18 timer",
+            "sv": "18 timmar",
+            "pl": "18 godzin",
+            "ru": "18 часов",
+            "ko": "18시간",
+            "ar": "١٨ ساعة"
+          }
+        },
+        {
+          "id": "1140",
+          "title": {
+            "en": "19 hours",
+            "nl": "19 uur",
+            "da": "19 timer",
+            "de": "19 Stunden",
+            "es": "19 horas",
+            "fr": "19 heures",
+            "it": "19 ore",
+            "no": "19 timer",
+            "sv": "19 timmar",
+            "pl": "19 godzin",
+            "ru": "19 часов",
+            "ko": "19시간",
+            "ar": "١٩ ساعة"
+          }
+        },
+        {
+          "id": "1200",
+          "title": {
+            "en": "20 hours",
+            "nl": "20 uur",
+            "da": "20 timer",
+            "de": "20 Stunden",
+            "es": "20 horas",
+            "fr": "20 heures",
+            "it": "20 ore",
+            "no": "20 timer",
+            "sv": "20 timmar",
+            "pl": "20 godzin",
+            "ru": "20 часов",
+            "ko": "20시간",
+            "ar": "٢٠ ساعة"
+          }
+        },
+        {
+          "id": "1260",
+          "title": {
+            "en": "21 hours",
+            "nl": "21 uur",
+            "da": "21 timer",
+            "de": "21 Stunden",
+            "es": "21 horas",
+            "fr": "21 heures",
+            "it": "21 ore",
+            "no": "21 timer",
+            "sv": "21 timmar",
+            "pl": "21 godzin",
+            "ru": "21 час",
+            "ko": "21시간",
+            "ar": "٢١ ساعة"
+          }
+        },
+        {
+          "id": "1320",
+          "title": {
+            "en": "22 hours",
+            "nl": "22 uur",
+            "da": "22 timer",
+            "de": "22 Stunden",
+            "es": "22 horas",
+            "fr": "22 heures",
+            "it": "22 ore",
+            "no": "22 timer",
+            "sv": "22 timmar",
+            "pl": "22 godziny",
+            "ru": "22 часа",
+            "ko": "22시간",
+            "ar": "٢٢ ساعة"
+          }
+        },
+        {
+          "id": "1380",
+          "title": {
+            "en": "23 hours",
+            "nl": "23 uur",
+            "da": "23 timer",
+            "de": "23 Stunden",
+            "es": "23 horas",
+            "fr": "23 heures",
+            "it": "23 ore",
+            "no": "23 timer",
+            "sv": "23 timmar",
+            "pl": "23 godziny",
+            "ru": "23 часа",
+            "ko": "23시간",
+            "ar": "٢٣ ساعة"
+          }
+        },
+        {
+          "id": "1440",
+          "title": {
+            "en": "24 hours",
+            "nl": "24 uur",
+            "da": "24 timer",
+            "de": "24 Stunden",
+            "es": "24 horas",
+            "fr": "24 heures",
+            "it": "24 ore",
+            "no": "24 timer",
+            "sv": "24 timmar",
+            "pl": "24 godziny",
+            "ru": "24 часа",
+            "ko": "24시간",
+            "ar": "٢٤ ساعة"
+          }
+        }
       ]
     },
     {

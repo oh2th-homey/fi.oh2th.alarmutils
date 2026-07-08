@@ -1,10 +1,34 @@
 {
   "type": "string",
   "title": {
-    "en": "Schedule Next"
+    "en": "Schedule Next",
+    "nl": "Volgende inplannen",
+    "da": "Planlæg Næste",
+    "de": "Nächste planen",
+    "es": "Programar siguiente",
+    "fr": "Planifier le suivant",
+    "it": "Pianifica Successivo",
+    "no": "Planlegg Neste",
+    "sv": "Schemalägg Nästa",
+    "pl": "Zaplanuj Następny",
+    "ru": "Запланировать следующее",
+    "ko": "다음 예약",
+    "ar": "جدولة التالي"
   },
   "hint": {
-    "en": "Next scheduled date and time"
+    "en": "Next scheduled date and time",
+    "nl": "Volgende geplande datum en tijd",
+    "da": "Næste planlagte dato og tid",
+    "de": "Nächstes geplantes Datum und Uhrzeit",
+    "es": "Próxima fecha y hora programadas",
+    "fr": "Prochaine date et heure programmées",
+    "it": "Prossima data e ora pianificate",
+    "no": "Neste planlagte dato og klokkeslett",
+    "sv": "Nästa schemalagda datum och tid",
+    "pl": "Następna zaplanowana data i godzina",
+    "ru": "Следующая запланированная дата и время",
+    "ko": "다음 예약된 날짜 및 시간",
+    "ar": "التاريخ والوقت المجدول التالي"
   },
   "icon": "./assets/clock-enable.svg",
   "uiComponent": null,

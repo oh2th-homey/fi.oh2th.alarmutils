@@ -1,0 +1,1 @@
+Dynamisk planlægning med en enhed, der kan konfigureres fra indstillinger og af flows.

@@ -1,9 +1,33 @@
 {
   "title": {
-    "en": "!{{Is|Isn't}} enabled"
+    "en": "!{{Is|Isn't}} enabled",
+    "nl": "!{{Is|Isn't}} ingeschakeld",
+    "da": "!{{Er|Er ikke}} aktiveret",
+    "de": "!{{Ist|Ist nicht}} aktiviert",
+    "es": "¡{{Está|No está}} habilitado!",
+    "fr": "!{{Est|N'est pas}} activé",
+    "it": "!{{È|Non è}} abilitato",
+    "no": "!{{Er|Er ikke}} aktivert",
+    "sv": "!{{Är|Är inte}} aktiverad",
+    "pl": "!{{Jest|Nie jest}} włączone",
+    "ru": "!{{Включено|Не включено}}",
+    "ko": "!{{Is|Isn't}} 활성화됨",
+    "ar": "!{{Is|Isn't}} مفعّل"
   },
   "hint": {
-    "en": "Scheduler is/isn't enabled."
+    "en": "Scheduler is/isn't enabled.",
+    "nl": "Scheduler is/isn't ingeschakeld.",
+    "da": "Planlæggeren er/er ikke aktiveret.",
+    "de": "Der Scheduler ist/ist nicht aktiviert.",
+    "es": "El programador está/no está habilitado.",
+    "fr": "Le planificateur est activé/désactivé.",
+    "it": "Il pianificatore è/ non è abilitato.",
+    "no": "Planlegger er/er ikke aktivert.",
+    "sv": "Schemaläggaren är/är inte aktiverad.",
+    "pl": "Harmonogram jest/nie jest włączony.",
+    "ru": "Планировщик включен/не включен.",
+    "ko": "스케줄러가 활성화되었습니다/비활성화되었습니다.",
+    "ar": "الجدولة مفعّلة/غير مفعّلة."
   },
   "args": [
     {

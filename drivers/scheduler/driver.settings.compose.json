@@ -2,17 +2,53 @@
   {
     "type": "group",
     "label": {
-      "en": "Schedule time of day"
+      "en": "Schedule time of day",
+      "nl": "Tijd van de dag plannen",
+      "da": "Planlæg tidspunkt på dagen",
+      "de": "Tageszeit planen",
+      "es": "Programar hora del día",
+      "fr": "Programmer l'heure de la journée",
+      "it": "Imposta l'orario del giorno",
+      "no": "Planlegg tidspunkt på dagen",
+      "sv": "Schemalägg tid på dagen",
+      "pl": "Ustaw czas dnia",
+      "ru": "Запланировать время дня",
+      "ko": "하루 중 시간 예약",
+      "ar": "حدد وقت اليوم"
     },
     "children": [
       {
         "id": "time",
         "type": "text",
         "label": {
-          "en": "Time HH:mm"
+          "en": "Time HH:mm",
+          "nl": "Tijd uu:mm",
+          "da": "Tid TT:mm",
+          "de": "Zeit HH:mm",
+          "es": "Hora HH:mm",
+          "fr": "Heure HH:mm",
+          "it": "Ora HH:mm",
+          "no": "Tid TT:mm",
+          "sv": "Tid HH:mm",
+          "pl": "Czas HH:mm",
+          "ru": "Время ЧЧ:мм",
+          "ko": "시간 HH:mm",
+          "ar": "الوقت HH:mm"
         },
         "hint": {
-          "en": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute."
+          "en": "The time (HH:mm) to execute the scheduler. HH='*' any hour, mm='*' any minute.",
+          "nl": "De tijd (HH:mm) om de planner uit te voeren. HH='*' elk uur, mm='*' elke minuut.",
+          "da": "Tidspunktet (TT:mm) for at udføre planlæggeren. TT='*' enhver time, mm='*' ethvert minut.",
+          "de": "Die Uhrzeit (HH:mm) zur Ausführung des Schedulers. HH='*' jede Stunde, mm='*' jede Minute.",
+          "es": "La hora (HH:mm) para ejecutar el programador. HH='*' cualquier hora, mm='*' cualquier minuto.",
+          "fr": "L'heure (HH:mm) pour exécuter le planificateur. HH='*' n'importe quelle heure, mm='*' n'importe quelle minute.",
+          "it": "L'orario (HH:mm) per eseguire il programmatore. HH='*' qualsiasi ora, mm='*' qualsiasi minuto.",
+          "no": "Tidspunktet (TT:mm) for å utføre planleggeren. TT='*' hvilken som helst time, mm='*' hvilket som helst minutt.",
+          "sv": "Tiden (HH:mm) för att köra schemaläggaren. HH='*' valfri timme, mm='*' valfri minut.",
+          "pl": "Godzina (HH:mm) wykonania harmonogramu. HH='*' dowolna godzina, mm='*' dowolna minuta.",
+          "ru": "Время (ЧЧ:мм) для выполнения планировщика. ЧЧ='*' любой час, мм='*' любая минута.",
+          "ko": "스케줄러를 실행할 시간 (HH:mm)입니다. HH='*'는 모든 시간, mm='*'는 모든 분을 의미합니다.",
+          "ar": "الوقت (HH:mm) لتنفيذ المجدول. HH='*' أي ساعة، mm='*' أي دقيقة."
         },
         "value": "00:00"
       },
@@ -20,10 +56,34 @@
         "id": "timezone",
         "type": "text",
         "label": {
-          "en": "Timezone"
+          "en": "Timezone",
+          "nl": "Tijdzone",
+          "da": "Tidszone",
+          "de": "Zeitzone",
+          "es": "Zona horaria",
+          "fr": "Fuseau horaire",
+          "it": "Fuso orario",
+          "no": "Tidssone",
+          "sv": "Tidszon",
+          "pl": "Strefa czasowa",
+          "ru": "Часовой пояс",
+          "ko": "시간대",
+          "ar": "المنطقة الزمنية"
         },
         "hint": {
-          "en": "Timezone name from TZ database."
+          "en": "Timezone name from TZ database.",
+          "nl": "Tijdzone naam uit TZ-database.",
+          "da": "Tidszonenavn fra TZ-databasen.",
+          "de": "Zeitzonenname aus der TZ-Datenbank.",
+          "es": "Nombre de la zona horaria de la base de datos TZ.",
+          "fr": "Nom du fuseau horaire de la base de données TZ.",
+          "it": "Nome del fuso orario dal database TZ.",
+          "no": "Tidssonenavn fra TZ-databasen.",
+          "sv": "Tidszonsnamn från TZ-databasen.",
+          "pl": "Nazwa strefy czasowej z bazy danych TZ.",
+          "ru": "Название часового пояса из базы данных TZ.",
+          "ko": "TZ 데이터베이스의 시간대 이름.",
+          "ar": "اسم المنطقة الزمنية من قاعدة بيانات TZ."
         },
         "value": "Europe/Helsinki"
       },
@@ -31,10 +91,34 @@
         "id": "runonce",
         "type": "checkbox",
         "label": {
-          "en": "Run Once"
+          "en": "Run Once",
+          "nl": "Eenmalig uitvoeren",
+          "da": "Kør én gang",
+          "de": "Einmal ausführen",
+          "es": "Ejecutar una vez",
+          "fr": "Exécuter une fois",
+          "it": "Esegui una volta",
+          "no": "Kjør én gang",
+          "sv": "Kör en gång",
+          "pl": "Uruchom raz",
+          "ru": "Запустить один раз",
+          "ko": "한 번 실행",
+          "ar": "تشغيل مرة واحدة"
         },
         "hint": {
-          "en": "Stop the scheduler after first execution."
+          "en": "Stop the scheduler after first execution.",
+          "nl": "Stop de planner na de eerste uitvoering.",
+          "da": "Stop planlæggeren efter første udførelse.",
+          "de": "Stoppe den Scheduler nach der ersten Ausführung.",
+          "es": "Detener el programador después de la primera ejecución.",
+          "fr": "Arrêter le planificateur après la première exécution.",
+          "it": "Ferma il programmatore dopo la prima esecuzione.",
+          "no": "Stopp planleggeren etter første kjøring.",
+          "sv": "Stoppa schemaläggaren efter första körningen.",
+          "pl": "Zatrzymaj harmonogram po pierwszym wykonaniu.",
+          "ru": "Остановить планировщик после первого выполнения.",
+          "ko": "첫 번째 실행 후 스케줄러 중지.",
+          "ar": "إيقاف المجدول بعد التنفيذ الأول."
         },
         "value": false
       }
@@ -43,17 +127,53 @@
   {
     "type": "group",
     "label": {
-      "en": "Repeat every"
+      "en": "Repeat every",
+      "nl": "Herhaal elke",
+      "da": "Gentag hver",
+      "de": "Wiederhole alle",
+      "es": "Repetir cada",
+      "fr": "Répéter tous les",
+      "it": "Ripeti ogni",
+      "no": "Gjenta hver",
+      "sv": "Upprepa varje",
+      "pl": "Powtarzaj co",
+      "ru": "Повторять каждые",
+      "ko": "매번 반복",
+      "ar": "كرر كل"
     },
     "children": [
       {
         "id": "repeat_help",
         "type": "label",
         "label": {
-          "en": "The days of the week to repeat."
+          "en": "The days of the week to repeat.",
+          "nl": "De dagen van de week om te herhalen.",
+          "da": "Ugedagene, der skal gentages.",
+          "de": "Die Wochentage, an denen wiederholt werden soll.",
+          "es": "Los días de la semana para repetir.",
+          "fr": "Les jours de la semaine à répéter.",
+          "it": "I giorni della settimana da ripetere.",
+          "no": "Dagene i uken å gjenta.",
+          "sv": "Veckodagarna att upprepa.",
+          "pl": "Dni tygodnia do powtórzenia.",
+          "ru": "Дни недели для повторения.",
+          "ko": "반복할 요일.",
+          "ar": "أيام الأسبوع للتكرار."
         },
         "hint": {
-          "en": "If no days selected, the scheduler is disabled."
+          "en": "If no days selected, the scheduler is disabled.",
+          "nl": "Als er geen dagen zijn geselecteerd, is de planner uitgeschakeld.",
+          "da": "Hvis ingen dage er valgt, er planlæggeren deaktiveret.",
+          "de": "Wenn keine Tage ausgewählt sind, ist der Scheduler deaktiviert.",
+          "es": "Si no se seleccionan días, el programador está desactivado.",
+          "fr": "Si aucun jour n'est sélectionné, le planificateur est désactivé.",
+          "it": "Se non vengono selezionati giorni, il pianificatore è disabilitato.",
+          "no": "Hvis ingen dager er valgt, er planleggeren deaktivert.",
+          "sv": "Om inga dagar är valda, är schemaläggaren inaktiverad.",
+          "pl": "Jeśli nie wybrano dni, harmonogram jest wyłączony.",
+          "ru": "Если дни не выбраны, планировщик отключен.",
+          "ko": "날짜가 선택되지 않으면 스케줄러가 비활성화됩니다.",
+          "ar": "إذا لم يتم اختيار أي أيام، يتم تعطيل المجدول."
         },
         "value": ""
       },
@@ -61,7 +181,19 @@
         "id": "repeat_monday",
         "type": "checkbox",
         "label": {
-          "en": "Monday"
+          "en": "Monday",
+          "nl": "Maandag",
+          "da": "Mandag",
+          "de": "Montag",
+          "es": "Lunes",
+          "fr": "Lundi",
+          "it": "Lunedì",
+          "no": "Mandag",
+          "sv": "Måndag",
+          "pl": "Poniedziałek",
+          "ru": "Понедельник",
+          "ko": "월요일",
+          "ar": "الاثنين"
         },
         "value": true
       },
@@ -69,7 +201,19 @@
         "id": "repeat_tuesday",
         "type": "checkbox",
         "label": {
-          "en": "Tuesday"
+          "en": "Tuesday",
+          "nl": "Dinsdag",
+          "da": "Tirsdag",
+          "de": "Dienstag",
+          "es": "Martes",
+          "fr": "Mardi",
+          "it": "Martedì",
+          "no": "Tirsdag",
+          "sv": "Tisdag",
+          "pl": "Wtorek",
+          "ru": "Вторник",
+          "ko": "화요일",
+          "ar": "الثلاثاء"
         },
         "value": true
       },
@@ -77,7 +221,19 @@
         "id": "repeat_wednesday",
         "type": "checkbox",
         "label": {
-          "en": "Wednesday"
+          "en": "Wednesday",
+          "nl": "Woensdag",
+          "da": "Onsdag",
+          "de": "Mittwoch",
+          "es": "Miércoles",
+          "fr": "Mercredi",
+          "it": "Mercoledì",
+          "no": "Onsdag",
+          "sv": "Onsdag",
+          "pl": "Środa",
+          "ru": "Среда",
+          "ko": "수요일",
+          "ar": "الأربعاء"
         },
         "value": true
       },
@@ -85,7 +241,19 @@
         "id": "repeat_thursday",
         "type": "checkbox",
         "label": {
-          "en": "Thursday"
+          "en": "Thursday",
+          "nl": "Donderdag",
+          "da": "Torsdag",
+          "de": "Donnerstag",
+          "es": "Jueves",
+          "fr": "Jeudi",
+          "it": "Giovedì",
+          "no": "Torsdag",
+          "sv": "Torsdag",
+          "pl": "Czwartek",
+          "ru": "Четверг",
+          "ko": "목요일",
+          "ar": "الخميس"
         },
         "value": true
       },
@@ -93,7 +261,19 @@
         "id": "repeat_friday",
         "type": "checkbox",
         "label": {
-          "en": "Friday"
+          "en": "Friday",
+          "nl": "Vrijdag",
+          "da": "Fredag",
+          "de": "Freitag",
+          "es": "Viernes",
+          "fr": "Vendredi",
+          "it": "Venerdì",
+          "no": "Fredag",
+          "sv": "Fredag",
+          "pl": "Piątek",
+          "ru": "Пятница",
+          "ko": "금요일",
+          "ar": "الجمعة"
         },
         "value": true
       },
@@ -101,7 +281,19 @@
         "id": "repeat_saturday",
         "type": "checkbox",
         "label": {
-          "en": "Saturday"
+          "en": "Saturday",
+          "nl": "Zaterdag",
+          "da": "Lørdag",
+          "de": "Samstag",
+          "es": "Sábado",
+          "fr": "Samedi",
+          "it": "Sabato",
+          "no": "Lørdag",
+          "sv": "Lördag",
+          "pl": "Sobota",
+          "ru": "Суббота",
+          "ko": "토요일",
+          "ar": "السبت"
         },
         "value": true
       },
@@ -109,7 +301,19 @@
         "id": "repeat_sunday",
         "type": "checkbox",
         "label": {
-          "en": "Sunday"
+          "en": "Sunday",
+          "nl": "Zondag",
+          "da": "Søndag",
+          "de": "Sonntag",
+          "es": "Domingo",
+          "fr": "Dimanche",
+          "it": "Domenica",
+          "no": "Søndag",
+          "sv": "Söndag",
+          "pl": "Niedziela",
+          "ru": "Воскресенье",
+          "ko": "일요일",
+          "ar": "الأحد"
         },
         "value": true
       }

@@ -1,22 +1,82 @@
 {
   "title": {
-    "en": "Scheduler time"
+    "en": "Scheduler time",
+    "nl": "Planner tijd",
+    "da": "Planlægningstid",
+    "de": "Planerzeit",
+    "es": "Hora del programador",
+    "fr": "Heure du planificateur",
+    "it": "Orario del pianificatore",
+    "no": "Planleggertid",
+    "sv": "Schemaläggningstid",
+    "pl": "Czas harmonogramu",
+    "ru": "Время расписания",
+    "ko": "일정 시간",
+    "ar": "وقت المجدول"
   },
   "titleFormatted": {
-    "en": "Set scheduler time to [[time]]"
+    "en": "Set scheduler time to [[time]]",
+    "nl": "Stel de plannertijd in op [[time]]",
+    "da": "Indstil planlægningstid til [[time]]",
+    "de": "Stelle die Planungszeit auf [[time]] ein",
+    "es": "Establecer la hora del programador a [[time]]",
+    "fr": "Définir l'heure du programmateur à [[time]]",
+    "it": "Imposta l'orario del pianificatore su [[time]]",
+    "no": "Sett planleggingstid til [[time]]",
+    "sv": "Ställ in schemaläggningstid till [[time]]",
+    "pl": "Ustaw czas harmonogramu na [[time]]",
+    "ru": "Установить время расписания на [[time]]",
+    "ko": "일정 시간을 [[time]]로 설정하세요.",
+    "ar": "اضبط وقت المجدول على [[time]]"
   },
   "hint": {
-    "en": "Sets schedule time as HH:mm."
+    "en": "Sets schedule time as HH:mm.",
+    "nl": "Stelt de geplande tijd in als uu:mm.",
+    "da": "Indstiller tidsplanen til HH:mm.",
+    "de": "Legt die Zeit im Format HH:mm fest.",
+    "es": "Establece la hora del horario como HH:mm.",
+    "fr": "Définit l'heure du programme au format HH:mm.",
+    "it": "Imposta l'orario del programma come HH:mm.",
+    "no": "Setter tidsplanen til HH:mm.",
+    "sv": "Ställer in schematiden som HH:mm.",
+    "pl": "Ustawia czas harmonogramu jako HH:mm.",
+    "ru": "Установите время расписания в формате ЧЧ:мм.",
+    "ko": "일정을 HH:mm 형식으로 설정합니다.",
+    "ar": "يضبط وقت الجدول كـ HH:mm."
   },
   "args": [
     {
       "type": "text",
       "name": "time",
       "title": {
-        "en": "Time"
+        "en": "Time",
+        "nl": "Tijd",
+        "da": "Tidspunkt",
+        "de": "Zeit",
+        "es": "Hora",
+        "fr": "Temps",
+        "it": "Tempo",
+        "no": "Tid",
+        "sv": "Tid",
+        "pl": "Czas",
+        "ru": "Время",
+        "ko": "시간",
+        "ar": "الوقت"
       },
       "placeholder": {
-        "en": "HH:mm"
+        "en": "HH:mm",
+        "nl": "uu:mm",
+        "da": "TT:mm",
+        "de": "HH:mm",
+        "es": "HH:mm",
+        "fr": "HH:mm",
+        "it": "HH:mm",
+        "no": "HH:mm",
+        "sv": "HH:mm",
+        "pl": "GG:mm",
+        "ru": "ЧЧ:мм",
+        "ko": "HH:mm",
+        "ar": "HH:mm"
       }
     },
     {

@@ -1,0 +1,1 @@
+Dynamische planning met een apparaat dat configureerbaar is vanuit instellingen en via flows.

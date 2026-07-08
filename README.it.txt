@@ -1,0 +1,1 @@
+Pianificazione dinamica con un dispositivo configurabile dalle impostazioni e tramite flow.

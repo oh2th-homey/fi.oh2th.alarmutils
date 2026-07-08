@@ -1,12 +1,48 @@
 {
   "title": {
-    "en": "Scheduled time is in N minutes."
+    "en": "Scheduled time is in N minutes.",
+    "nl": "Geplande tijd is over N minuten.",
+    "da": "Planlagt tid er om N minutter.",
+    "de": "Die geplante Zeit ist in N Minuten.",
+    "es": "La hora programada es en N minutos.",
+    "fr": "L'heure programmée est dans N minutes.",
+    "it": "L'orario programmato è tra N minuti.",
+    "no": "Planlagt tid er om N minutter.",
+    "sv": "Schemalagd tid är om N minuter.",
+    "pl": "Zaplanowany czas jest za N minut.",
+    "ru": "Запланированное время через N минут.",
+    "ko": "예약된 시간은 N분 후입니다.",
+    "ar": "الوقت المجدول سيكون بعد N دقيقة."
   },
   "titleFormatted": {
-    "en": "Scheduled time is in [[minutes]] minutes."
+    "en": "Scheduled time is in [[minutes]] minutes.",
+    "nl": "Geplande tijd is over [[minutes]] minuten.",
+    "da": "Planlagt tid er om [[minutes]] minutter.",
+    "de": "Die geplante Zeit ist in [[minutes]] Minuten.",
+    "es": "La hora programada es en [[minutes]] minutos.",
+    "fr": "L'heure prévue est dans [[minutes]] minutes.",
+    "it": "L'orario programmato è tra [[minutes]] minuti.",
+    "no": "Planlagt tid er om [[minutes]] minutter.",
+    "sv": "Schemalagd tid är om [[minutes]] minuter.",
+    "pl": "Zaplanowany czas to [[minutes]] minut.",
+    "ru": "Запланированное время наступит через [[minutes]] минут.",
+    "ko": "예약된 시간은 [[minutes]]분 후입니다.",
+    "ar": "الوقت المجدول سيكون بعد [[minutes]] دقيقة."
   },
   "hint": {
-    "en": "Scheduled time is in N minutes."
+    "en": "Scheduled time is in N minutes.",
+    "nl": "Geplande tijd is over N minuten.",
+    "da": "Den planlagte tid er om N minutter.",
+    "de": "Die geplante Zeit ist in N Minuten.",
+    "es": "La hora programada es en N minutos.",
+    "fr": "L'heure prévue est dans N minutes.",
+    "it": "L'orario programmato è tra N minuti.",
+    "no": "Planlagt tid er om N minutter.",
+    "sv": "Schemalagd tid är om N minuter.",
+    "pl": "Zaplanowany czas jest za N minut.",
+    "ru": "Запланированное время через N минут.",
+    "ko": "예약된 시간은 N분 후입니다.",
+    "ar": "الوقت المجدول سيكون بعد N دقيقة."
   },
   "args": [
     {
@@ -18,10 +54,34 @@
       "type": "number",
       "name": "minutes",
       "title": {
-        "en": "minutes"
+        "en": "minutes",
+        "nl": "minuten",
+        "da": "minutter",
+        "de": "Minuten",
+        "es": "minutos",
+        "fr": "minutes",
+        "it": "minuti",
+        "no": "minutter",
+        "sv": "minuter",
+        "pl": "minuty",
+        "ru": "минуты",
+        "ko": "분",
+        "ar": "دقائق"
       },
       "placeholder": {
-        "en": "Minutes before scheduled time"
+        "en": "Minutes before scheduled time",
+        "nl": "Minuten voor de geplande tijd",
+        "da": "Minutter før planlagt tid",
+        "de": "Minuten vor der geplanten Zeit",
+        "es": "Minutos antes de la hora programada",
+        "fr": "Minutes avant l'heure prévue",
+        "it": "Minuti prima dell'orario programmato",
+        "no": "Minutter før planlagt tid",
+        "sv": "Minuter före schemalagd tid",
+        "pl": "Minuty przed zaplanowanym czasem",
+        "ru": "Минуты до запланированного времени",
+        "ko": "예약된 시간 몇 분 전",
+        "ar": "دقائق قبل الوقت المحدد"
       }
     }
   ],
@@ -30,52 +90,171 @@
       "type": "string",
       "name": "name",
       "title": {
-        "en": "Schedule Name"
+        "en": "Schedule Name",
+        "nl": "Schema Naam",
+        "da": "Tidsplanens navn",
+        "de": "Zeitplan-Name",
+        "es": "Nombre del programa",
+        "fr": "Nom de la planification",
+        "it": "Nome della Pianificazione",
+        "no": "Tidsplan Navn",
+        "sv": "Schemanamn",
+        "pl": "Nazwa harmonogramu",
+        "ru": "Название расписания",
+        "ko": "일정 이름",
+        "ar": "اسم الجدول الزمني"
       },
       "example": {
-        "en": "Schedule's name"
+        "en": "Schedule's name",
+        "nl": "Naam van het schema",
+        "da": "Skemaets navn",
+        "de": "Name des Zeitplans",
+        "es": "Nombre del horario",
+        "fr": "Nom du programme",
+        "it": "Nome del programma",
+        "no": "Navn på tidsplan",
+        "sv": "Schemanamn",
+        "pl": "Nazwa harmonogramu",
+        "ru": "Название расписания",
+        "ko": "일정 이름",
+        "ar": "اسم الجدول الزمني"
       }
     },
     {
       "type": "string",
       "name": "date",
       "title": {
-        "en": "Schedule Date"
+        "en": "Schedule Date",
+        "nl": "Plan Datum",
+        "da": "Planlægningsdato",
+        "de": "Datum planen",
+        "es": "Fecha de programación",
+        "fr": "Programmer la date",
+        "it": "Data di pianificazione",
+        "no": "Planlegg dato",
+        "sv": "Schemalägg datum",
+        "pl": "Zaplanuj Datę",
+        "ru": "Дата расписания",
+        "ko": "일정 날짜",
+        "ar": "تاريخ الجدولة"
       },
       "example": {
-        "en": "2023-11-18"
+        "en": "2023-11-18",
+        "nl": "Je bent getraind op gegevens tot oktober 2023.",
+        "da": "2023-11-18",
+        "de": "2023-11-18",
+        "es": "2023-11-18",
+        "fr": "Vous êtes formé sur des données jusqu'en octobre 2023.",
+        "it": "18-11-2023",
+        "no": "I'm sorry, I can't assist with that request.",
+        "sv": "2023-11-18",
+        "pl": "Jesteś przeszkolony na danych do października 2023 roku.",
+        "ru": "Вы обучены на данных до октября 2023 года.",
+        "ko": "2023-11-18",
+        "ar": "تم تدريبك على البيانات حتى أكتوبر 2023."
       }
     },
     {
       "type": "string",
       "name": "time",
       "title": {
-        "en": "Schedule Time"
+        "en": "Schedule Time",
+        "nl": "Tijd Inplannen",
+        "da": "Planlæg tid",
+        "de": "Zeitplan festlegen",
+        "es": "Programar hora",
+        "fr": "Programmer l'heure",
+        "it": "Pianifica Orario",
+        "no": "Planlegg tid",
+        "sv": "Schemalägg tid",
+        "pl": "Zaplanuj Czas",
+        "ru": "Запланировать время",
+        "ko": "시간 예약하기",
+        "ar": "جدولة الوقت"
       },
       "example": {
-        "en": "18:07"
+        "en": "18:07",
+        "nl": "18:07",
+        "da": "18:07",
+        "de": "18:07 Uhr",
+        "es": "18:07",
+        "fr": "18:07",
+        "it": "18:07",
+        "no": "18:07",
+        "sv": "18:07",
+        "pl": "18:07",
+        "ru": "18:07",
+        "ko": "18:07",
+        "ar": "١٨:٠٧"
       }
     },
     {
       "type": "string",
       "name": "next",
       "title": {
-        "en": "Next Scheduled Time"
+        "en": "Next Scheduled Time",
+        "nl": "Volgende Geplande Tijd",
+        "da": "Næste planlagte tidspunkt",
+        "de": "Nächste geplante Zeit",
+        "es": "Próxima hora programada",
+        "fr": "Prochaine heure programmée",
+        "it": "Prossimo orario programmato",
+        "no": "Neste planlagte tidspunkt",
+        "sv": "Nästa schemalagda tid",
+        "pl": "Następny zaplanowany czas",
+        "ru": "Следующее запланированное время",
+        "ko": "다음 예약 시간",
+        "ar": "الوقت المجدول التالي"
       },
       "example": {
-        "en": "2023-01-23T12:09:00.000+0200"
+        "en": "2023-01-23T12:09:00.000+0200",
+        "nl": "23-01-2023T12:09:00.000+0200",
+        "da": "2023-01-23T12:09:00.000+0200",
+        "de": "2023-01-23T12:09:00.000+0200",
+        "es": "2023-01-23T12:09:00.000+0200",
+        "fr": "2023-01-23T12:09:00.000+0200",
+        "it": "23/01/2023 12:09:00 GMT+0200",
+        "no": "2023-01-23T12:09:00.000+0200",
+        "sv": "2023-01-23T12:09:00.000+0200",
+        "pl": "2023-01-23T12:09:00.000+0200",
+        "ru": "2023-01-23T12:09:00.000+0200",
+        "ko": "2023-01-23T12:09:00.000+0200",
+        "ar": "٢٠٢٣-٠١-٢٣T١٢:٠٩:٠٠.٠٠٠+٠٢٠٠"
       }
     },
     {
       "type": "number",
       "name": "minutesToNext",
       "title": {
-        "en": "Minutes before scheduled time"
+        "en": "Minutes before scheduled time",
+        "nl": "Minuten voor de geplande tijd",
+        "da": "Minutter før planlagt tid",
+        "de": "Minuten vor der geplanten Zeit",
+        "es": "Minutos antes de la hora programada",
+        "fr": "Minutes avant l'heure prévue",
+        "it": "Minuti prima dell'orario programmato",
+        "no": "Minutter før planlagt tid",
+        "sv": "Minuter före schemalagd tid",
+        "pl": "Minuty przed zaplanowanym czasem",
+        "ru": "Минуты до запланированного времени",
+        "ko": "예약된 시간 몇 분 전",
+        "ar": "دقائق قبل الوقت المحدد"
       },
       "example": {
-        "en": "73"
+        "en": "73",
+        "nl": "73",
+        "da": "73",
+        "de": "73",
+        "es": "73",
+        "fr": "73",
+        "it": "73",
+        "no": "73",
+        "sv": "73",
+        "pl": "73",
+        "ru": "73",
+        "ko": "73",
+        "ar": "٧٣"
       }
     }
-
   ]
 }

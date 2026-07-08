@@ -1,9 +1,33 @@
 {
   "title": {
-    "en": "Schedule triggered"
+    "en": "Schedule triggered",
+    "nl": "Schema geactiveerd",
+    "da": "Tidsplan udløst",
+    "de": "Zeitplan ausgelöst",
+    "es": "Programación activada",
+    "fr": "Planification déclenchée",
+    "it": "Programmazione attivata",
+    "no": "Tidsplan utløst",
+    "sv": "Schema utlöses",
+    "pl": "Harmonogram uruchomiony",
+    "ru": "Запланированное действие выполнено",
+    "ko": "일정이 시작되었습니다.",
+    "ar": "تم تفعيل الجدولة"
   },
   "hint": {
-    "en": "Triggered on scheduled time."
+    "en": "Triggered on scheduled time.",
+    "nl": "Geactiveerd op geplande tijd.",
+    "da": "Udløst på planlagt tidspunkt.",
+    "de": "Ausgelöst zur geplanten Zeit.",
+    "es": "Activado a la hora programada.",
+    "fr": "Déclenché à l'heure programmée.",
+    "it": "Attivato all'orario programmato.",
+    "no": "Utløst på planlagt tidspunkt.",
+    "sv": "Utlöst vid schemalagd tid.",
+    "pl": "Uruchomione o zaplanowanym czasie.",
+    "ru": "Запущено в запланированное время.",
+    "ko": "예약된 시간에 트리거되었습니다.",
+    "ar": "تم التشغيل في الوقت المحدد."
   },
   "args": [
     {
@@ -17,40 +41,136 @@
       "type": "string",
       "name": "name",
       "title": {
-        "en": "Schedule Name"
+        "en": "Schedule Name",
+        "nl": "Schema Naam",
+        "da": "Tidsplanens navn",
+        "de": "Zeitplan-Name",
+        "es": "Nombre del Programa",
+        "fr": "Nom de la planification",
+        "it": "Nome del Programma",
+        "no": "Tidsplan Navn",
+        "sv": "Schemanamn",
+        "pl": "Nazwa harmonogramu",
+        "ru": "Название расписания",
+        "ko": "일정 이름",
+        "ar": "اسم الجدول الزمني"
       },
       "example": {
-        "en": "Schedule's name"
+        "en": "Schedule's name",
+        "nl": "Naam van het schema",
+        "da": "Skemaets navn",
+        "de": "Name des Zeitplans",
+        "es": "Nombre del horario",
+        "fr": "Nom du programme",
+        "it": "Nome del programma",
+        "no": "Navn på tidsplan",
+        "sv": "Schemaläggarens namn",
+        "pl": "Nazwa harmonogramu",
+        "ru": "Название расписания",
+        "ko": "일정 이름",
+        "ar": "اسم الجدول الزمني"
       }
     },
     {
       "type": "string",
       "name": "date",
       "title": {
-        "en": "Triggered Date"
+        "en": "Triggered Date",
+        "nl": "Geactiveerde datum",
+        "da": "Udløst dato",
+        "de": "Ausgelöstes Datum",
+        "es": "Fecha de activación",
+        "fr": "Date de déclenchement",
+        "it": "Data di attivazione",
+        "no": "Utløst dato",
+        "sv": "Utlöst datum",
+        "pl": "Data wyzwolenia",
+        "ru": "Дата срабатывания",
+        "ko": "트리거된 날짜",
+        "ar": "التاريخ المحفّز"
       },
       "example": {
-        "en": "2023-11-18"
+        "en": "2023-11-18",
+        "nl": "Je bent getraind op gegevens tot oktober 2023.",
+        "da": "18-11-2023",
+        "de": "18.11.2023",
+        "es": "2023-11-18",
+        "fr": "Vous êtes formé sur des données jusqu'en octobre 2023.",
+        "it": "18-11-2023",
+        "no": "2023-11-18",
+        "sv": "Du är tränad på data fram till oktober 2023.",
+        "pl": "18.11.2023",
+        "ru": "Вы обучены на данных до октября 2023 года.",
+        "ko": "2023-11-18",
+        "ar": "تم تدريبك على البيانات حتى أكتوبر 2023."
       }
     },
     {
       "type": "string",
       "name": "time",
       "title": {
-        "en": "Triggered Time"
+        "en": "Triggered Time",
+        "nl": "Getriggerde Tijd",
+        "da": "Udløst Tidspunkt",
+        "de": "Ausgelöste Zeit",
+        "es": "Hora activada",
+        "fr": "Heure Déclenchée",
+        "it": "Ora di attivazione",
+        "no": "Utløst tidspunkt",
+        "sv": "Utlöst tid",
+        "pl": "Wyzwolony czas",
+        "ru": "Время срабатывания",
+        "ko": "트리거된 시간",
+        "ar": "الوقت المحفز"
       },
       "example": {
-        "en": "18:07"
+        "en": "18:07",
+        "nl": "18:07",
+        "da": "18:07",
+        "de": "18:07 Uhr",
+        "es": "18:07",
+        "fr": "18:07",
+        "it": "18:07",
+        "no": "18:07",
+        "sv": "18:07",
+        "pl": "18:07",
+        "ru": "18:07",
+        "ko": "18:07",
+        "ar": "١٨:٠٧"
       }
     },
     {
       "type": "string",
       "name": "next",
       "title": {
-        "en": "Next Scheduled Time"
+        "en": "Next Scheduled Time",
+        "nl": "Volgende Geplande Tijd",
+        "da": "Næste planlagte tid",
+        "de": "Nächste geplante Zeit",
+        "es": "Próxima hora programada",
+        "fr": "Prochaine heure programmée",
+        "it": "Prossimo orario programmato",
+        "no": "Neste planlagte tidspunkt",
+        "sv": "Nästa schemalagda tid",
+        "pl": "Następny zaplanowany czas",
+        "ru": "Следующее запланированное время",
+        "ko": "다음 예약 시간",
+        "ar": "الوقت المجدول التالي"
       },
       "example": {
-        "en": "2023-01-23T12:09:00.000+0200"
+        "en": "2023-01-23T12:09:00.000+0200",
+        "nl": "23-01-2023T12:09:00.000+0200",
+        "da": "2023-01-23T12:09:00.000+0200",
+        "de": "2023-01-23T12:09:00.000+0200",
+        "es": "2023-01-23T12:09:00.000+0200",
+        "fr": "2023-01-23T12:09:00.000+0200",
+        "it": "23/01/2023 12:09:00 +0200",
+        "no": "2023-01-23T12:09:00.000+0200",
+        "sv": "2023-01-23T12:09:00.000+0200",
+        "pl": "2023-01-23T12:09:00.000+0200",
+        "ru": "2023-01-23T12:09:00.000+0200",
+        "ko": "2023-01-23T12:09:00.000+0200",
+        "ar": "٢٠٢٣-٠١-٢٣T١٢:٠٩:٠٠.٠٠٠+٠٢٠٠"
       }
     }
   ]

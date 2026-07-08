@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Nouveau Planificateur",
+    "configuration": "Configuration",
+    "name": "Nom du planificateur:",
+    "time": "Heure",
+    "time_help": "L'heure (HH:mm) pour exécuter le planificateur. HH='*' toute heure, mm='*' toute minute",
+    "crontime": "Heure cron:",
+    "crontime_help": "L'heure cron pour exécuter le planificateur. Voir <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> pour plus d'informations.",
+    "timezone": "Fuseau horaire",
+    "runonce": "Exécuter une fois",
+    "runonce_help": "Arrêtez le planificateur après la première exécution.",
+    "repetition": "Répéter chaque",
+    "repetition_help": "Les jours de la semaine pour répéter le planificateur. Si aucun jour n'est sélectionné, le planificateur est désactivé.",
+    "monday": "Lundi",
+    "tuesday": "Mardi",
+    "wednesday": "Mercredi",
+    "thursday": "Jeudi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche",
+    "function_add": "Ajouter Planificateur",
+    "error": {
+      "name_required": "Le nom est requis",
+      "time_required": "L'heure est requise",
+      "time_invalid": "Entrez l'heure comme [HH]:[mm], [*]:[mm], [HH]:[*] ou [*]:[*]",
+      "crontime_required": "Le modèle d'heure cron est requis",
+      "crontime_invalid": "Entrez un modèle d'heure cron valide. Voir http://crontab.guru/ pour plus d'informations.",
+      "timezone_required": "Le fuseau horaire est requis.",
+      "timezone_invalid": "Entrez le fuseau horaire comme Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
+      "add_device": "Erreur lors de l'ajout de l'appareil."
+    }
+  },
+  "message": {
+    "not_scheduled": "Non planifié",
+    "init_cronjob_error": "Erreur lors de l'initialisation du cronjob, vérifiez les paramètres."
+  }
+}

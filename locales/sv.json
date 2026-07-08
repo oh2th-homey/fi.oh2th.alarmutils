@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Ny Schemaläggare",
+    "configuration": "Konfiguration",
+    "name": "Schemaläggarens namn:",
+    "time": "Tid",
+    "time_help": "Tiden (HH:mm) för att köra schemaläggaren. HH='*' valfri timme, mm='*' valfri minut",
+    "crontime": "Cron tid:",
+    "crontime_help": "Cron-tiden för att köra schemaläggaren. Se <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> för mer information.",
+    "timezone": "Tidszon",
+    "runonce": "Kör en gång",
+    "runonce_help": "Stoppa schemaläggaren efter första körningen.",
+    "repetition": "Repetera varje",
+    "repetition_help": "Veckodagarna som schemaläggaren ska upprepas. Om inga dagar är valda, är schemaläggaren avstängd.",
+    "monday": "Måndag",
+    "tuesday": "Tisdag",
+    "wednesday": "Onsdag",
+    "thursday": "Torsdag",
+    "friday": "Fredag",
+    "saturday": "Lördag",
+    "sunday": "Söndag",
+    "function_add": "Lägg till Schemaläggare",
+    "error": {
+      "name_required": "Namn är obligatoriskt",
+      "time_required": "Tid är obligatoriskt",
+      "time_invalid": "Ange tid som [HH]:[mm], [*]:[mm], [HH]:[*] eller [*]:[*]",
+      "crontime_required": "Cron tid mönster är obligatoriskt",
+      "crontime_invalid": "Ange ett giltigt cron tid mönster. Se http://crontab.guru/ för mer information.",
+      "timezone_required": "Tidszon är obligatorisk.",
+      "timezone_invalid": "Ange tidszonen som Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
+      "add_device": "Fel vid tillägg av enhet."
+    }
+  },
+  "message": {
+    "not_scheduled": "Ej Schemalagd",
+    "init_cronjob_error": "Fel vid initiering av cronjob, kontrollera inställningarna."
+  }
+}

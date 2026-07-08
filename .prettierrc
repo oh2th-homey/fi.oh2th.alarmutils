@@ -1,0 +1,37 @@
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 200,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.js", "*.json"],
+      "options": {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "printWidth": 200,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": "*.html",
+      "options": {
+        "printWidth": 200
+      }
+    },
+    {
+      "files": "*.py",
+      "options": {
+        "useTabs": true,
+        "tabWidth": 4
+      }
+    },
+    {
+      "files": "Makefile",
+      "options": {
+        "useTabs": true
+      }
+    }
+  ]
+}

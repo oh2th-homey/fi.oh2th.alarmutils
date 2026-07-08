@@ -1,6 +1,20 @@
 {
   "name": {
-    "en": "Scheduler"
+    "en": "Scheduler",
+    "nl": "Planner",
+    "da": "Planlægger",
+    "de": "Planer",
+    "es": "Programador de acciones",
+    "fr": "Planificateur",
+    "it": "Pianificatore",
+    "no": "Planlegger",
+    "sv": "Schemaläggare",
+    "pl": "Harmonogram",
+    "ru": "Планировщик",
+    "ko": "스케줄러",
+    "ar": "الجدول الزمني"
   },
-  "$extends": ["device"]
+  "$extends": [
+    "device"
+  ]
 }

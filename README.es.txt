@@ -1,0 +1,1 @@
+Programación dinámica con un dispositivo configurable desde la configuración y mediante flujos.

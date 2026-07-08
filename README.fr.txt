@@ -1,0 +1,1 @@
+Planification dynamique avec un appareil configurable depuis les paramètres et via les flux.

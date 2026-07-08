@@ -5,8 +5,9 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.js"],
+      "files": ["**/*.ts", "**/*.js"],
       "rules": {
+        "indent": ["error", 2, { "SwitchCase": 1 }],
         "max-len": "off",
         "no-undef": "off",
         "no-unused-vars": "off",
@@ -31,7 +32,8 @@
 	      "quote-props": ["error", "consistent-as-needed", { "keywords": true }],
         "dot-notation": "off",
         "arrow-body-style": "off",
-        "no-useless-escape": "off"
+        "no-useless-escape": "off",
+        "comma-dangle": "off"
       }
     }
   ]

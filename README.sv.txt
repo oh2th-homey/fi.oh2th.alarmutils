@@ -1,0 +1,1 @@
+Dynamisk schemaläggning med en enhet som kan konfigureras från inställningar och via flöden.

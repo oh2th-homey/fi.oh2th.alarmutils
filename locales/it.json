@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Nuovo Scheduler",
+    "configuration": "Configurazione",
+    "name": "Nome dello scheduler:",
+    "time": "Orario",
+    "time_help": "L'orario (HH:mm) per eseguire lo scheduler. HH='*' qualsiasi ora, mm='*' qualsiasi minuto",
+    "crontime": "Tempo cron:",
+    "crontime_help": "Il tempo cron per eseguire lo scheduler. Vedi <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> per ulteriori informazioni.",
+    "timezone": "Fuso orario",
+    "runonce": "Esegui una volta sola",
+    "runonce_help": "Ferma lo scheduler dopo la prima esecuzione.",
+    "repetition": "Ripeti ogni",
+    "repetition_help": "I giorni della settimana per ripetere lo scheduler. Se non si selezionano giorni, lo scheduler è disabilitato.",
+    "monday": "Lunedì",
+    "tuesday": "Martedì",
+    "wednesday": "Mercoledì",
+    "thursday": "Giovedì",
+    "friday": "Venerdì",
+    "saturday": "Sabato",
+    "sunday": "Domenica",
+    "function_add": "Aggiungi Scheduler",
+    "error": {
+      "name_required": "Il nome è obbligatorio",
+      "time_required": "L'orario è obbligatorio",
+      "time_invalid": "Inserisci l'orario come [HH]:[mm], [*]:[mm], [HH]:[*] o [*]:[*]",
+      "crontime_required": "Il pattern del tempo cron è obbligatorio",
+      "crontime_invalid": "Inserisci un pattern del tempo cron valido. Vedi http://crontab.guru/ per maggiori informazioni.",
+      "timezone_required": "Il fuso orario è obbligatorio.",
+      "timezone_invalid": "Inserisci il fuso orario come Europe/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, ecc.",
+      "add_device": "Errore nell'aggiungere il dispositivo."
+    }
+  },
+  "message": {
+    "not_scheduled": "Non Pianificato",
+    "init_cronjob_error": "Errore nell'inizializzazione del cronjob, controlla le impostazioni."
+  }
+}

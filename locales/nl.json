@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "title": "Nieuwe Planning",
+    "configuration": "Configuratie",
+    "name": "Naam van de planning:",
+    "time": "Tijd",
+    "time_help": "De tijd (HH:mm) om de planning uit te voeren. HH='*' elk uur, mm='*' elke minuut",
+    "crontime": "Cron tijd:",
+    "crontime_help": "De cron tijd om de planning uit te voeren. Zie <a href='http://crontab.guru/' target='_blank'>http://crontab.guru/</a> voor meer informatie.",
+    "timezone": "Tijdzone",
+    "runonce": "Eenmalig uitvoeren",
+    "runonce_help": "Stop de planning na de eerste uitvoering.",
+    "repetition": "Herhaal elke",
+    "repetition_help": "De dagen van de week waarop de planning herhaald moet worden. Als er geen dagen zijn geselecteerd, is de planning uitgeschakeld.",
+    "monday": "Maandag",
+    "tuesday": "Dinsdag",
+    "wednesday": "Woensdag",
+    "thursday": "Donderdag",
+    "friday": "Vrijdag",
+    "saturday": "Zaterdag",
+    "sunday": "Zondag",
+    "function_add": "Planning toevoegen",
+    "error": {
+      "name_required": "Naam is verplicht",
+      "time_required": "Tijd is verplicht",
+      "time_invalid": "Voer de tijd in als [HH]:[mm], [*]:[mm], [HH]:[*] of [*]:[*]",
+      "crontime_required": "Cron tijd patroon is verplicht",
+      "crontime_invalid": "Voer een geldig cron tijd patroon in. Zie http://crontab.guru/ voor meer informatie.",
+      "timezone_required": "Tijdzone is verplicht.",
+      "timezone_invalid": "Voer Tijdzone in als Europa/Helsinki, Pacific/Honolulu, UTC, EET, Etc/GMT+3, etc.",
+      "add_device": "Fout bij het toevoegen van apparaat."
+    }
+  },
+  "message": {
+    "not_scheduled": "Niet Gepland",
+    "init_cronjob_error": "Fout bij het initialiseren van cronjob, controleer de instellingen."
+  }
+}

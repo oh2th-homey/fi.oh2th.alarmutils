@@ -1,0 +1,1 @@
+Dynamiczne planowanie z urządzeniem konfigurowanym z poziomu ustawień oraz za pomocą flow.
