@@ -127,5 +127,8 @@
   },
   "2.4.6": {
     "en": "FIX: Schedule changed to trigger only when it actually changed."
+  },
+  "2.4.7": {
+    "en": "Device Icon updates"
   }
 }
