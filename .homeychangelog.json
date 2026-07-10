@@ -130,5 +130,8 @@
   },
   "2.4.7": {
     "en": "Device Icon updates"
+  },
+  "2.4.8": {
+    "en": "FIX: Driver icons"
   }
 }
