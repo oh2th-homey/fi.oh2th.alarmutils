@@ -133,5 +133,8 @@
   },
   "2.4.8": {
     "en": "FIX: Driver icons"
+  },
+  "2.4.9": {
+    "en": "FIX: Flow card translations and attach cards to crontime driver."
   }
 }
