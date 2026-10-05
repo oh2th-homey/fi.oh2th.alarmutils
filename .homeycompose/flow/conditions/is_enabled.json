@@ -1,22 +1,37 @@
 {
   "title": {
     "en": "!{{Is|Isn't}} enabled",
-    "nl": "!{{Is|Isn't}} ingeschakeld",
+    "nl": "!{{Is|Is niet}} ingeschakeld",
     "da": "!{{Er|Er ikke}} aktiveret",
     "de": "!{{Ist|Ist nicht}} aktiviert",
-    "es": "¡{{Está|No está}} habilitado!",
+    "es": "!{{Está|No está}} habilitado",
     "fr": "!{{Est|N'est pas}} activé",
     "it": "!{{È|Non è}} abilitato",
     "no": "!{{Er|Er ikke}} aktivert",
     "sv": "!{{Är|Är inte}} aktiverad",
     "pl": "!{{Jest|Nie jest}} włączone",
     "ru": "!{{Включено|Не включено}}",
-    "ko": "!{{Is|Isn't}} 활성화됨",
-    "ar": "!{{Is|Isn't}} مفعّل"
+    "ko": "활성화 !{{되어 있음|되어 있지 않음}}",
+    "ar": "!{{مفعّل|غير مفعّل}}"
+  },
+  "titleFormatted": {
+    "en": "Scheduler !{{is|isn't}} enabled.",
+    "nl": "De planner !{{is|is niet}} ingeschakeld.",
+    "da": "Planlæggeren !{{er|er ikke}} aktiveret.",
+    "de": "Der Scheduler !{{ist|ist nicht}} aktiviert.",
+    "es": "El programador !{{está|no está}} habilitado.",
+    "fr": "Le planificateur !{{est|n'est pas}} activé.",
+    "it": "Il pianificatore !{{è|non è}} abilitato.",
+    "no": "Planleggeren !{{er|er ikke}} aktivert.",
+    "sv": "Schemaläggaren !{{är|är inte}} aktiverad.",
+    "pl": "Harmonogram !{{jest|nie jest}} włączony.",
+    "ru": "Планировщик !{{включен|не включен}}.",
+    "ko": "스케줄러가 활성화 !{{되어 있습니다|되어 있지 않습니다}}.",
+    "ar": "الجدولة !{{مفعّلة|غير مفعّلة}}."
   },
   "hint": {
     "en": "Scheduler is/isn't enabled.",
-    "nl": "Scheduler is/isn't ingeschakeld.",
+    "nl": "De planner is wel/niet ingeschakeld.",
     "da": "Planlæggeren er/er ikke aktiveret.",
     "de": "Der Scheduler ist/ist nicht aktiviert.",
     "es": "El programador está/no está habilitado.",
@@ -33,7 +48,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler|crontab"
+      "filter": "driver_id=scheduler|crontime"
     }
   ]
 }

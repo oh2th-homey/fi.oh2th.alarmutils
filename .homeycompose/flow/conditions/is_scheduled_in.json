@@ -1,33 +1,33 @@
 {
   "title": {
     "en": "!{{Is|Isn't}} scheduled in",
-    "nl": "!{{Is|Isn't}} gepland in",
-    "da": "!{{Is|Isn't}} planlagt i",
+    "nl": "!{{Is|Is niet}} gepland over",
+    "da": "!{{Er|Er ikke}} planlagt om",
     "de": "!{{Ist|Ist nicht}} geplant in",
-    "es": "¡{{Is|Isn't}} programado en!",
+    "es": "!{{Está|No está}} programado en",
     "fr": "!{{Est|N'est pas}} programmé dans",
-    "it": "!{{È|Non è}} programmato in",
-    "no": "!{{Er|Er ikke}} planlagt i",
-    "sv": "!{{Är|Är inte}} schemalagd i",
-    "pl": "!{{Jest|Nie jest}} zaplanowane w",
-    "ru": "!{{Is|Isn't}} запланировано в",
-    "ko": "!{{Is|Isn't}} 일정에 포함됨",
-    "ar": "!{{Is|Isn't}} مجدول في"
+    "it": "!{{È|Non è}} programmato tra",
+    "no": "!{{Er|Er ikke}} planlagt om",
+    "sv": "!{{Är|Är inte}} schemalagd om",
+    "pl": "!{{Jest|Nie jest}} zaplanowane za",
+    "ru": "!{{Запланировано|Не запланировано}} через",
+    "ko": "다음 시간 후 !{{예정됨|예정되지 않음}}",
+    "ar": "!{{مجدول|غير مجدول}} خلال"
   },
   "titleFormatted": {
     "en": "Next run !{{is|isn't}} scheduled in [[minutes]].",
-    "nl": "Volgende uitvoering {{is|isn't}} gepland over [[minutes]].",
-    "da": "Næste kørsel {{er|er ikke}} planlagt om [[minutes]].",
-    "de": "Nächster Lauf {{ist|ist nicht}} in [[minutes]] geplant.",
-    "es": "¡La próxima ejecución {{está|no está}} programada en [[minutes]].",
-    "fr": "La prochaine exécution {{est|n'est pas}} prévue dans [[minutes]].",
-    "it": "La prossima esecuzione {{è|non è}} programmata tra [[minutes]].",
-    "no": "Neste kjøring {{er|er ikke}} planlagt om [[minutes]].",
+    "nl": "Volgende uitvoering !{{is|is niet}} gepland over [[minutes]].",
+    "da": "Næste kørsel !{{er|er ikke}} planlagt om [[minutes]].",
+    "de": "Nächster Lauf !{{ist|ist nicht}} in [[minutes]] geplant.",
+    "es": "La próxima ejecución !{{está|no está}} programada en [[minutes]].",
+    "fr": "La prochaine exécution !{{est|n'est pas}} prévue dans [[minutes]].",
+    "it": "La prossima esecuzione !{{è|non è}} programmata tra [[minutes]].",
+    "no": "Neste kjøring !{{er|er ikke}} planlagt om [[minutes]].",
     "sv": "Nästa körning !{{är|är inte}} schemalagd om [[minutes]].",
-    "pl": "Następne uruchomienie {{jest|nie jest}} zaplanowane za [[minutes]].",
-    "ru": "Следующий запуск {{запланирован|не запланирован}} через [[minutes]].",
-    "ko": "다음 실행은 [[minutes]]분 후로 예정되어 {{있습니다|있지 않습니다}}.",
-    "ar": "التشغيل التالي !{{مجدول|غير مجدول}} في [[minutes]]."
+    "pl": "Następne uruchomienie !{{jest|nie jest}} zaplanowane za [[minutes]].",
+    "ru": "Следующий запуск !{{запланирован|не запланирован}} через [[minutes]].",
+    "ko": "다음 실행은 [[minutes]] 후로 !{{예정되어 있습니다|예정되어 있지 않습니다}}.",
+    "ar": "التشغيل التالي !{{مجدول|غير مجدول}} خلال [[minutes]]."
   },
   "hint": {
     "en": "Next run is/isn't scheduled in selected time.",
@@ -576,7 +576,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler|crontab"
+      "filter": "driver_id=scheduler|crontime"
     }
   ]
 }

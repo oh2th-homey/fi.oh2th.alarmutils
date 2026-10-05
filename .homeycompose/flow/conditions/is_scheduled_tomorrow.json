@@ -1,33 +1,33 @@
 {
   "title": {
     "en": "!{{Is|Isn't}} scheduled tomorrow",
-    "nl": "!{{Is|Isn't}} gepland voor morgen",
+    "nl": "!{{Is|Is niet}} gepland voor morgen",
     "da": "!{{Er|Er ikke}} planlagt til i morgen",
     "de": "!{{Ist|Ist nicht}} für morgen geplant",
-    "es": "¡{{Está|No está}} programado para mañana!",
+    "es": "!{{Está|No está}} programado para mañana",
     "fr": "!{{Est|N'est pas}} programmé pour demain",
     "it": "!{{È|Non è}} programmato per domani",
     "no": "!{{Er|Er ikke}} planlagt i morgen",
     "sv": "!{{Är|Är inte}} schemalagd imorgon",
     "pl": "!{{Jest|Nie jest}} zaplanowane na jutro",
     "ru": "!{{Запланировано|Не запланировано}} на завтра",
-    "ko": "!{{Is|Isn't}} 내일로 예약됨",
+    "ko": "내일 !{{예정되어 있습니다|예정되어 있지 않습니다}}",
     "ar": "!{{مجدول|غير مجدول}} غدًا"
   },
   "titleFormatted": {
     "en": "Next run !{{is|isn't}} scheduled for tomorrow.",
-    "nl": "Volgende uitvoering {{is|isn't}} gepland voor morgen.",
-    "da": "Næste kørsel {{er|er ikke}} planlagt til i morgen.",
-    "de": "Nächster Lauf {{ist|ist nicht}} für morgen geplant.",
-    "es": "¡La próxima ejecución {{es|no es}} está programada para mañana!",
-    "fr": "La prochaine exécution {{est|n'est pas}} prévue pour demain.",
-    "it": "La prossima esecuzione {{è|non è}} programmata per domani.",
-    "no": "Neste kjøring {{er|er ikke}} planlagt til i morgen.",
-    "sv": "Nästa körning {{är|är inte}} schemalagd till imorgon.",
-    "pl": "Następne uruchomienie {{jest|nie jest}} zaplanowane na jutro.",
+    "nl": "Volgende uitvoering !{{is|is niet}} gepland voor morgen.",
+    "da": "Næste kørsel !{{er|er ikke}} planlagt til i morgen.",
+    "de": "Nächster Lauf !{{ist|ist nicht}} für morgen geplant.",
+    "es": "La próxima ejecución !{{está|no está}} programada para mañana.",
+    "fr": "La prochaine exécution !{{est|n'est pas}} prévue pour demain.",
+    "it": "La prossima esecuzione !{{è|non è}} programmata per domani.",
+    "no": "Neste kjøring !{{er|er ikke}} planlagt til i morgen.",
+    "sv": "Nästa körning !{{är|är inte}} schemalagd till imorgon.",
+    "pl": "Następne uruchomienie !{{jest|nie jest}} zaplanowane na jutro.",
     "ru": "Следующий запуск !{{запланирован|не запланирован}} на завтра.",
-    "ko": "다음 실행은 내일로 예정되어 {{있습니다|있지 않습니다}}.",
-    "ar": "التشغيل التالي {{مجدول|غير مجدول}} ليوم غد."
+    "ko": "다음 실행은 내일로 !{{예정되어 있습니다|예정되어 있지 않습니다}}.",
+    "ar": "التشغيل التالي !{{مجدول|غير مجدول}} لغد."
   },
   "hint": {
     "en": "Next run is/isn't scheduled for tomorrow.",
@@ -48,7 +48,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler|crontab"
+      "filter": "driver_id=scheduler|crontime"
     }
   ]
 }

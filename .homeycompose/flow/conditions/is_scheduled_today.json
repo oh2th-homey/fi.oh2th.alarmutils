@@ -1,33 +1,33 @@
 {
   "title": {
     "en": "!{{Is|Isn't}} scheduled today",
-    "nl": "!{{Is|Isn't}} gepland voor vandaag",
+    "nl": "!{{Is|Is niet}} gepland voor vandaag",
     "da": "!{{Er|Er ikke}} planlagt i dag",
     "de": "!{{Ist|Ist nicht}} für heute geplant",
-    "es": "¡{{Está|No está}} programado hoy!",
+    "es": "!{{Está|No está}} programado hoy",
     "fr": "!{{Est|N'est pas}} programmé aujourd'hui",
     "it": "!{{È|Non è}} programmato oggi",
     "no": "!{{Er|Er ikke}} planlagt i dag",
     "sv": "!{{Är|Är inte}} schemalagd idag",
     "pl": "!{{Jest|Nie jest}} zaplanowane na dziś",
     "ru": "!{{Запланировано|Не запланировано}} на сегодня",
-    "ko": "!{{Is|Isn't}} 오늘 예정되어 있습니다.",
+    "ko": "오늘 !{{예정되어 있습니다|예정되어 있지 않습니다}}",
     "ar": "!{{مجدول|غير مجدول}} اليوم"
   },
   "titleFormatted": {
     "en": "Next run !{{is|isn't}} scheduled for today.",
-    "nl": "Volgende uitvoering {{is|isn't}} gepland voor vandaag.",
-    "da": "Næste kørsel {{er|er ikke}} planlagt til i dag.",
-    "de": "Nächster Lauf {{ist|ist nicht}} für heute geplant.",
-    "es": "¡La próxima ejecución {{es|no es}} programada para hoy!",
+    "nl": "Volgende uitvoering !{{is|is niet}} gepland voor vandaag.",
+    "da": "Næste kørsel !{{er|er ikke}} planlagt til i dag.",
+    "de": "Nächster Lauf !{{ist|ist nicht}} für heute geplant.",
+    "es": "La próxima ejecución !{{está|no está}} programada para hoy.",
     "fr": "La prochaine exécution !{{est|n'est pas}} prévue pour aujourd'hui.",
-    "it": "La prossima esecuzione {{è|non è}} programmata per oggi.",
-    "no": "Neste kjøring {{er|er ikke}} planlagt for i dag.",
+    "it": "La prossima esecuzione !{{è|non è}} programmata per oggi.",
+    "no": "Neste kjøring !{{er|er ikke}} planlagt for i dag.",
     "sv": "Nästa körning !{{är|är inte}} schemalagd för idag.",
     "pl": "Następne uruchomienie !{{jest|nie jest}} zaplanowane na dzisiaj.",
     "ru": "Следующий запуск !{{запланирован|не запланирован}} на сегодня.",
-    "ko": "다음 실행은 오늘로 예정되어 {{있습니다|있지 않습니다}}.",
-    "ar": "التشغيل التالي !{{is|isn't}} مجدول لليوم."
+    "ko": "다음 실행은 오늘로 !{{예정되어 있습니다|예정되어 있지 않습니다}}.",
+    "ar": "التشغيل التالي !{{مجدول|غير مجدول}} لليوم."
   },
   "hint": {
     "en": "Next run is/isn't scheduled for today.",
@@ -48,7 +48,7 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=scheduler|crontab"
+      "filter": "driver_id=scheduler|crontime"
     }
   ]
 }
